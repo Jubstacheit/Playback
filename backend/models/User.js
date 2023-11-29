@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
 	email: {
 		type: String,
 		unique: true, // Prevent duplicate email
-		required: true
+		required: true,
+		validate: [isEmail, "Cet email n'est pas valide."], // Validate email
 	},
 	// Other user properties
 });

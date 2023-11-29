@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import axios from 'axios';
+// Regular import doesn't work, so we need to use the following:
+import axios from '../node_modules/axios';
+import { BACKEND_DB_HOST } from '@env';
 
 const HomeScreen = () => {
 	const [data, setData] = useState([]);
@@ -12,7 +14,8 @@ const HomeScreen = () => {
 	
 	const fetchData = async () => {
 		try {
-			const response = await axios.get('http://localhost:3000/api/users');
+			const url = `${BACKEND_DB_HOST}/users`;
+			const response = await axios.get(url);
 			setData(response.data);
 		} catch (error) {
 			console.log(error);

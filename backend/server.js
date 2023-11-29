@@ -1,19 +1,22 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const MONGO = process.env.MONGO_URI
+const PORT = process.env.PORT
 
 app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB using Mongoose
-mongoose.connect('mongodb://localhost:27017/playback', {
+mongoose.connect(MONGO, {
 })
 .then(() => {
-	console.log('Connected to MongoDB');
+	console.log('Connected to MongoDB on ' + MONGO);
 })
 .catch((err) => {
 	console.error('Failed to connect to MongoDB:', err);
