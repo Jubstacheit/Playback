@@ -6,16 +6,14 @@ import { BACKEND_DB_HOST } from '@env';
 
 const HomeScreen = () => {
 	const [data, setData] = useState([]);
-	
 	useEffect(() => {
 		fetchData();
-	}
-	, []);
+	},
+	[]);
 	
 	const fetchData = async () => {
 		try {
-			const url = `${BACKEND_DB_HOST}/users`;
-			const response = await axios.get(url);
+			const response = await axios.get(`${BACKEND_DB_HOST}/users`);
 			setData(response.data);
 		} catch (error) {
 			console.log(error);

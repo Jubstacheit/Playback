@@ -8,6 +8,7 @@ import HomeScreen from './screens/HomeScreen';
 export default function App() {
   return (
     <View style={styles.container}>
+      <StatusBar style="light" />
       <HomeScreen />
     </View>
   );
