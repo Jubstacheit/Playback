@@ -4,6 +4,9 @@ import { View, Text } from 'react-native';
 import axios from '../node_modules/axios';
 import { BACKEND_DB_HOST } from '@env';
 
+const RAWG_KEY = process.env.RAWG_KEY;
+const DB = process.env.DB_HOST_ROUTE;
+
 const HomeScreen = () => {
 	const [data, setData] = useState([]);
 	useEffect(() => {
@@ -13,7 +16,7 @@ const HomeScreen = () => {
 	
 	const fetchData = async () => {
 		try {
-			const response = await axios.get(`${BACKEND_DB_HOST}/users`);
+			const response = await axios.get(`${DB}/users}`);
 			setData(response.data);
 		} catch (error) {
 			console.log(error);
