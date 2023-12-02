@@ -1,22 +1,38 @@
 // User.js
 
-const mongoose = require('mongoose');
 const { isEmail } = require('validator');
+const sequelize = require('sequelize')
 
-const userSchema = new mongoose.Schema({
-	name: {
-		type: String,
-		required: true
-	},
-	email: {
-		type: String,
-		unique: true, // Prevent duplicate email
-		required: true,
-		validate: [isEmail, "Cet email n'est pas valide."], // Validate email
-	},
-	// Other user properties
-});
+// Model for User
 
-const User = mongoose.model('User', userSchema);
+const User = (sequelize, DataTypes) => {
+	const User = sequelize.define('user', {
+		firstName: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				notEmpty: true,
+			},
+		},
+		email: {
+			type: DataTypes.STRING,
+			unique: true,
+			allowNull: false,
+			validate: {
+				notEmpty: true,
+				isEmail: true,
+			},
+		},
+	});
+
+	// Class method to get all users
+	User.getAll = () => {
+		return User.findAll();
+	};
+
+	return User;
+}
+
+
 
 module.exports = User;

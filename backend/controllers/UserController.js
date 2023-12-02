@@ -5,19 +5,10 @@ const User = require('../models/User'); // Import User model
 const UserController = {
 	// Get all users
 	getAll(req, res) {
-		User.find({})
-		.then((users) => {
-			res.send(users);
-		})
-		.catch((error) => console.log(error));
+		User.getAll()
+			.then(users => res.json(users))
+			.catch(err => console.error('Error getting users', err));
 	},
-	createUser(req, res) {
-		User.create(req.body)
-		.then((user) => {
-			res.send(user);
-		})
-		.catch((error) => console.log(error));
-	}
 };
 
 module.exports = UserController;
