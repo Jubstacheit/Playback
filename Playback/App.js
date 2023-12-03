@@ -6,21 +6,22 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import axios from 'axios';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style="light" />
-      <HomeScreen />
+    <StatusBar style="light" />
+    <HomeScreen />
     </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    );
+  }
+  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
