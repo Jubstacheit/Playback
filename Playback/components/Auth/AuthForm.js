@@ -18,15 +18,15 @@ const AuthForm = () => {
 	const onSubmit = data => console.log(data);
 
 return (
-		<View  style={styles.container}>
+		<View style={styles.container}>
 
-			<Text style={styles.title}>Register on Playback</Text>
+		<Text id='title' style={styles.title}>Register on Playback</Text>
 
 		{errors.username?.type === 'required' && (
-        <Text style={styles.warning}>Username is required.</Text>
+        <Text style={styles.warning} id='usernameRequired'>Username is required.</Text>
     )}
     	{errors.username?.type === 'maxLength' && (
-        <Text style={styles.warning}>Username should be at most 20 characters long.</Text>
+        <Text style={styles.warning} id='usernameLong'>Username should be at most 20 characters long.</Text>
     	)}
 		<Controller
 			control={control}
@@ -37,14 +37,15 @@ return (
 					onBlur={onBlur}
 					onChangeText={onChange}
 					value={value}
+					id='username'
 				/>
 			)}
 			name="username"
 			rules={{ required: true, maxLength: 20 }}
 		/>
-		{errors.password?.type === 'required' && ( <Text style={styles.warning}>Password is required.</Text>)}
-		{errors.password?.type === 'minLength' && ( <Text style={styles.warning}>Minimum length is 8.</Text>)}
-		{errors.password?.type === 'maxLength' && ( <Text style={styles.warning}>Maximum length is 50.</Text>)}
+		{errors.password?.type === 'required' && ( <Text style={styles.warning} id='passwordRequired'>Password is required.</Text>)}
+		{errors.password?.type === 'minLength' && ( <Text style={styles.warning} id='passwordShort'>Minimum length is 8.</Text>)}
+		{errors.password?.type === 'maxLength' && ( <Text style={styles.warning} id='passwordLong'>Maximum length is 50.</Text>)}
 		<Controller
 			control={control}
 			render={({ field: { onChange, onBlur, value } }) => (
@@ -55,12 +56,13 @@ return (
 					onChangeText={onChange}
 					value={value}
 					secureTextEntry
+					id='password'
 				/>
 			)}
 			name="password"
 			rules={{ required: true, minLength: 8, maxLength: 50 }}
 		/>
-		{errors.confirmPassword && <Text style={styles.warning}>Confirmation is required.</Text>}
+		{errors.confirmPassword && <Text style={styles.warning} id='confirmPasswordRequired'>Confirmation is required.</Text>}
 		<Controller
 			control={control}
 			render={({ field: { onChange, onBlur, value } }) => (
@@ -71,14 +73,15 @@ return (
 					onChangeText={onChange}
 					value={value}
 					secureTextEntry
+					id='confirmPassword'
 				/>
 			)}
 			name="confirmPassword"
 			rules={{ required: true, minLength: 8, maxLength: 50}}
 		/>
-		{errors.email?.type === 'required' && <Text style={styles.warning}>Email is required.</Text>}
-		{errors.email?.type === 'maxLength' && <Text style={styles.warning}>Maximum length is 50.</Text>}
-		{errors.email?.type === 'pattern' && <Text style={styles.warning}>Invalid email address.</Text>}
+		{errors.email?.type === 'required' && <Text style={styles.warning} id='emailRequired'>Email is required.</Text>}
+		{errors.email?.type === 'maxLength' && <Text style={styles.warning} id='emailLong'>Maximum length is 50.</Text>}
+		{errors.email?.type === 'pattern' && <Text style={styles.warning} id='emailInvalid'>Invalid email address.</Text>}
 		<Controller
 			control={control}
 			render={({ field: { onChange, onBlur, value } }) => (
@@ -88,6 +91,7 @@ return (
 					onBlur={onBlur}
 					onChangeText={onChange}
 					value={value}
+					id='email'
 				/>
 			)}
 			name="email"
@@ -101,6 +105,7 @@ return (
 			mode="contained"
 			onPress={handleSubmit(onSubmit)}
 			method="post"
+			id="registerBtn"
 		>
 			Register
 		</Button>
