@@ -1,27 +1,27 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('user', {
+  return sequelize.define('list', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    email: {
+    list_type: {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    password: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
-    username: {
-      type: DataTypes.STRING(50),
-      allowNull: false
+    id_user: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
-    tableName: 'user',
+    tableName: 'list',
     timestamps: false,
     indexes: [
       {
@@ -30,6 +30,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
+        ]
+      },
+      {
+        name: "list_user_FK",
+        using: "BTREE",
+        fields: [
+          { name: "id_user" },
         ]
       },
     ]

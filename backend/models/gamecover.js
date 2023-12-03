@@ -1,27 +1,27 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('user', {
+  return sequelize.define('gamecover', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    email: {
-      type: DataTypes.STRING(50),
+    url: {
+      type: DataTypes.STRING(100),
       allowNull: false
     },
-    password: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
-    username: {
-      type: DataTypes.STRING(50),
-      allowNull: false
+    id_game: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'game',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
-    tableName: 'user',
+    tableName: 'gamecover',
     timestamps: false,
     indexes: [
       {
@@ -30,6 +30,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
+        ]
+      },
+      {
+        name: "gameCover_game_FK",
+        using: "BTREE",
+        fields: [
+          { name: "id_game" },
         ]
       },
     ]
