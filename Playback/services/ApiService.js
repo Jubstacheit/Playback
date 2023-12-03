@@ -1,6 +1,7 @@
 import axios from 'axios';
+require('dotenv').config();
 
-const API_BASE_URL = 'http://localhost:3000/api'; // Replace with your backend URL
+const API_BASE_URL = process.env.DB_HOST_ROUTE; // Replace with your backend URL
 
 const ApiService = {
     async getUsers() {

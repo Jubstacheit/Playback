@@ -3,35 +3,28 @@ import { View, Text } from 'react-native';
 // Regular import doesn't work, so we need to use the following:
 import axios from '../node_modules/axios';
 import { BACKEND_DB_HOST } from '@env';
+import AuthScreen from './AuthScreen';
+import { StyleSheet } from 'react-native';
 
 const RAWG_KEY = process.env.RAWG_KEY;
 const DB = process.env.DB_HOST_ROUTE;
 
 const HomeScreen = () => {
-		
-		const [users, setUsers] = useState([]);
-		
-		useEffect(() => {
-			const fetchUsers = async () => {
-				try {
-					const response = await axios.get(`${DB}/user`);
-					setUsers(response.data);
-				} catch {
-					console.log('Error fetching users');
-				}
-			};
-			
-			fetchUsers();
-		}, []);
-	
 	return (
-		<View>
-		<Text>Welcome to the Home Screen!</Text>
-		{users.map((user) => (
-			<Text key={user.id}>{user.username}</Text>
-			))}
+		<View style={styles.container}>
+		<AuthScreen />
 		</View>
 		);
 	};
+
+	const styles = StyleSheet.create({
+		container: {
+			flex: 1,
+			justifyContent: 'center',
+			alignItems: 'center',
+			width: '100%',
+			backgroundColor: '#00071a',
+		},
+	});
 	
 	export default HomeScreen;
