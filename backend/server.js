@@ -15,7 +15,7 @@ app.use(cors({
 	origin: FRONT,
 }));
 
-app.use('/user', userRoutes); // Routes for user
+app.use('/api/users', userRoutes); // Routes for user
 
 app.listen(PORT, () => {
 	console.log('Server running on port ' + PORT)}
