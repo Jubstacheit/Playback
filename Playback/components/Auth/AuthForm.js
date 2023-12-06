@@ -18,7 +18,7 @@ const onSubmit = data => console.log(data);
 	
 	return (
 		<View style={styles.container}>
-			<Text id='title' style={styles.title}>Register on Playback</Text>
+			<Text id='title' style={styles.title}>Join Playback</Text>
 
 			{errors.username?.type === 'required' && (
 				<Text style={styles.warning} id='usernameRequired'>Username is required.</Text>
