@@ -1,16 +1,23 @@
-const User = require('../models/User.js');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const UnauthorizedError = require('../errors/Unauthorized.js');
+const NotFoundError = require('../errors/NotFound.js');
+const config = require('../config/config.js');
+const userServices = require('../services/userServices.js');
 
-const userController = {
+class userController {
 	// GET all users
-	async getAllUsers(req, res) {
+	async getUsers(req, res, next) {
 		try {
-			const users = await User.findAll();
+			const users = await userServices.getAll();
+			if (!users) {
+				throw new NotFoundError();
+			}
 			res.json(users);
 		} catch (err) {
-			console.error('Error fetching users: ', err);
-			res.status(500).json({ error: 'Internal server error' });
+			next(err);
 		}
-	},
+	}
 };
 
-module.exports = userController;
+module.exports = new userController();
