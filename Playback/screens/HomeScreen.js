@@ -8,6 +8,7 @@ import GameCard from '../components/Game/GameCard';
 import colors from '../constants/Colors';
 import rem from '../constants/Rem';
 import SearchBar from '../components/Search/SearchBar';
+import { useNavigation } from '@react-navigation/native';
 
 const RAWG_KEY = process.env.RAWG_KEY;
 const DB = process.env.DB_HOST_ROUTE;
@@ -16,6 +17,10 @@ const HomeScreen = ({navigation}) => {
 
 	const [games, setGames] = useState([]);
 	const [page, setPage] = useState(1);
+
+	const handleSearch = (searchTerm) => {
+		navigation.navigate('Search', { searchTerm });
+	}
 
 	const loadGames = () => {
 		RAWGService.getGamesHome(page)
@@ -34,7 +39,7 @@ const HomeScreen = ({navigation}) => {
 			<View style={styles.titleSearchContainer}>
 				<Text style={styles.title}>Playback</Text>
 				<Text style={styles.subtitle}>Explore, list, backlog</Text>
-				<SearchBar />
+				<SearchBar onSearch={handleSearch} />
 			</View>
 			<FlatList
 				numColumns={2}

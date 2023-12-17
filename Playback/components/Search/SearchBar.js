@@ -5,15 +5,11 @@ import rem from '../../constants/Rem';
 import RAWGService from '../../services/RAWGService';
 import { useNavigation } from '@react-navigation/native';
 
-const SearchBar = () => {
-	const [games, setGames] = useState([]);
+const SearchBar = ({ onSearch }) => {
 	const [searchTerm, setSearchTerm] = useState("");
 	
-	const handleSearch = async () => {
-		RAWGService.search(searchTerm)
-		.then(data => {
-			setGames(data.results);
-		})
+	const handleSearch = () => {
+		onSearch(searchTerm);
 	};
 	
 	return (
@@ -24,12 +20,8 @@ const SearchBar = () => {
 		placeholder="Search..."
 		onChangeText={setSearchTerm}
 		onSubmitEditing={handleSearch}
-		onEndEditing={handleSearch}
 		/>
 		<Feather name="arrow-right" size={24} color="black" onPress={handleSearch} />
-		{games.map((game, index) => ( // Map over the games array
-		<Text key={index} style={{color: 'white'}}>{game.name}</Text> // Render each game's name
-		))}
 		</View>
 		);
 	};

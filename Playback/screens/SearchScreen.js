@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, TextInput, Text } from 'react-native';
+import RAWGService from '../services/RAWGService';
+import { useNavigation } from '@react-navigation/native';
 
-const SearchScreen = ({navigation}) => {
-	const [searchText, setSearchText] = useState('');
-
-	const handleSearch = () => {
-		// Perform search logic here
-		console.log('Searching for:', searchText);
-	};
-
-	return (
-		<View>
-			<TextInput
-				placeholder="Enter search text"
-				value={searchText}
-				onChangeText={setSearchText}
-			/>
-			<Button title="Search" onPress={handleSearch} />
+const SearchScreen = ({navigation, route}) => {
+	
+	const [games, setGames] = useState([]);
+	const { searchTerm } = route.params;
+	
+	useEffect(() => {
+		const fetchGames = async () => {
+			const data = await RAWGService.search(searchTerm);
+			setGames(data.results);
+		};
+		fetchGames();
+		
+	}, [searchTerm]);
+	
+return (
+	<View>
+	{games.map((game, index) => (
+		<Text key={index}>{game.name}</Text>
+		))}
 		</View>
-	);
-};
-
+		);
+	};
+	
 export default SearchScreen;
