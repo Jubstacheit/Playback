@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, ScrollView } from 'react-native';
 import { BACKEND_DB_HOST } from '@env';
 import ProfileScreen from './ProfileScreen';
 import { StyleSheet } from 'react-native';
@@ -7,6 +7,7 @@ import RAWGService from '../services/RAWGService';
 import GameCard from '../components/Game/GameCard';
 import colors from '../constants/Colors';
 import rem from '../constants/Rem';
+import SearchBar from '../components/Search/SearchBar';
 
 const RAWG_KEY = process.env.RAWG_KEY;
 const DB = process.env.DB_HOST_ROUTE;
@@ -30,8 +31,11 @@ const HomeScreen = ({navigation}) => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Playback</Text>
-			<Text style={styles.subtitle}>Explore, list, backlog</Text>
+			<View style={styles.titleSearchContainer}>
+				<Text style={styles.title}>Playback</Text>
+				<Text style={styles.subtitle}>Explore, list, backlog</Text>
+				<SearchBar />
+			</View>
 			<FlatList
 				numColumns={2}
 				data={games}
@@ -56,26 +60,26 @@ const HomeScreen = ({navigation}) => {
 			width: '100%',
 			backgroundColor: colors.background,
 		},
+		titleSearchContainer: {
+			width: '100%',
+			justifyContent: 'center',
+			alignItems: 'center',
+			marginVertical: rem(1),
+		},
 		text: {
 			color: '#fff',
 			fontSize: 24,
 			fontWeight: 'bold',
 		},
-		button: {
-			marginTop: 10,
-			backgroundColor: colors.primary,
-		},
 		title: {
 			color: '#fff',
 			fontSize: 64,
 			fontWeight: 'bold',
-			marginTop: rem(5),
 		},
 		subtitle: {
 			color: '#fff',
 			fontSize: 30,
-			marginBottom: rem(5),
-			fontWeight: '100'
+			fontWeight: '100',
 		},
 	});
 	
