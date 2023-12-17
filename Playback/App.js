@@ -5,23 +5,37 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import ProfileScreen from './screens/ProfileScreen';
 import axios from 'axios';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SearchScreen from './screens/SearchScreen';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { Platform } from 'react-native';
+import AppRouter from './navigation/Router';
+
+const Stack = createNativeStackNavigator();
+const Tabs = createMaterialBottomTabNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-    <StatusBar style="light" />
-    <HomeScreen />
-    </View>
+
+  if (Platform.OS === 'web') {
+    return (
+      <AppRouter />
     );
   }
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
+
+  return (
+    <NavigationContainer>
+          <Tabs.Navigator
+      screenOptions={
+        {
+          headerShown: false
+        }
+    }>
+      <Tabs.Screen name="Home page" component={HomeScreen} />
+      <Tabs.Screen name="Search" component={SearchScreen} />
+      <Tabs.Screen name="Profile" component={ProfileScreen} />
+    </Tabs.Navigator>
+    </NavigationContainer>
+    );
+  }
