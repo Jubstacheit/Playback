@@ -15,7 +15,7 @@ const getGamesHome = async (page = 1) => {
 	return res.data;
 };
 const search = async (searchTerm) => {
-	const res = await axios.get(`${RAWG_API_URL}games?key=${RAWG_KEY}&search=${searchTerm}`);
+	const res = await axios.get(`${RAWG_API_URL}games?key=${RAWG_KEY}&search=${searchTerm}&page_size=100`);
 	return res.data;
 };
 
