@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
-// Regular import doesn't work, so we need to use the following:
-import axios from '../node_modules/axios';
 import { BACKEND_DB_HOST } from '@env';
 import ProfileScreen from './ProfileScreen';
 import { StyleSheet } from 'react-native';

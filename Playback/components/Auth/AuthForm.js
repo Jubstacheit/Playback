@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { useForm, Controller } from 'react-hook-form';
-import axios from 'axios';
+import Colors from '../../constants/Colors';
+import rem from '../../constants/Rem';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const AuthForm = () => {
 	
@@ -119,13 +121,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		paddingHorizontal: 20,
 		borderRadius: 10,
+		width: '80%',
 		...Platform.select({
-			android: {
-				width: '80%',
-			},
 			web: {
-				width: '40%',
-			},
+				maxWidth: 400,
+			}
 		}),
 	},
 	input: {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		marginTop: 10,
-		backgroundColor: '#475C7D',
+		backgroundColor: Colors.primary,
 	},
 	warning: {
 		color: 'red'
