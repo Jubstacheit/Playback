@@ -10,31 +10,48 @@ const GameCard = ({ game }) => (
 	style={styles.image}
 	source={{uri: game.background_image}}
 	/>
-	<Text id={`GameCard` + `game.id`} style={styles.title}>{game.name}</Text>
+	<View style={styles.titleContainer}>
+		<Text style={styles.title}>{game.name}</Text>
+	</View>
 	</View>
 	);
 	
 	const styles = StyleSheet.create({
 		card: {
 			width: wp('40%'),
-			backgroundColor: colors.primary,
-			marginVertical: 10,
-			marginHorizontal: 20,
-			paddingHorizontal: 15,
-			borderRadius: 10,
-			justifyContent: 'center',
-			alignItems: 'center',
 			height: hp('40%'),
+			margin: rem(1),
+			borderRadius: 10,
+			shadowColor: '#000000',
+			shadowOffset: {
+				width: 0,
+				height: 3,
+			},
+			shadowOpacity: 1,
+			shadowRadius: 4.65,
+			elevation: 7,
+			alignItems: 'center',
+			justifyContent: 'space-between',
+			backgroundColor: 'black',
 		},
 		image: {
 			width: '100%',
-			height: '70%',
+			height: '80%',
+			borderTopLeftRadius: 10,
+			borderTopRightRadius: 10,
 			resizeMode: 'cover',
-			marginVertical: 10,
+			position: 'relative',
+			top: 0,
+			left: 0,
+		},
+		titleContainer: {
+			flex: 1,
+			justifyContent: 'center',
+			alignItems: 'center',
 		},
 		title: {
-			fontSize: rem(1.3),
-			color: '#000000',
+			color: '#fff',
+			fontSize: rem(1.5),
 			fontWeight: 'bold',
 		},
 	});

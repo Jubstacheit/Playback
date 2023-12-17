@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
-import { FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import { BACKEND_DB_HOST } from '@env';
 import ProfileScreen from './ProfileScreen';
 import { StyleSheet } from 'react-native';
 import RAWGService from '../services/RAWGService';
 import GameCard from '../components/Game/GameCard';
 import colors from '../constants/Colors';
+import rem from '../constants/Rem';
 
 const RAWG_KEY = process.env.RAWG_KEY;
 const DB = process.env.DB_HOST_ROUTE;
@@ -30,6 +30,8 @@ const HomeScreen = ({navigation}) => {
 
 	return (
 		<View style={styles.container}>
+			<Text style={styles.title}>Playback</Text>
+			<Text style={styles.subtitle}>Explore, list, backlog</Text>
 			<FlatList
 				numColumns={2}
 				data={games}
@@ -62,7 +64,19 @@ const HomeScreen = ({navigation}) => {
 		button: {
 			marginTop: 10,
 			backgroundColor: colors.primary,
-		}
+		},
+		title: {
+			color: '#fff',
+			fontSize: 64,
+			fontWeight: 'bold',
+			marginTop: rem(5),
+		},
+		subtitle: {
+			color: '#fff',
+			fontSize: 30,
+			marginBottom: rem(5),
+			fontWeight: '100'
+		},
 	});
 	
 	export default HomeScreen;
