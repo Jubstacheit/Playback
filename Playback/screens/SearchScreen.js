@@ -3,19 +3,20 @@ import { View, TextInput, Text } from 'react-native';
 import RAWGService from '../services/RAWGService';
 import { useNavigation } from '@react-navigation/native';
 
-const SearchScreen = ({navigation, route}) => {
+const SearchScreen = ({route}) => {
 	
 	const [games, setGames] = useState([]);
-	const { searchTerm } = route.params;
+	const { searchTerm } = route.params || {};
 	
 	useEffect(() => {
 		const fetchGames = async () => {
+		  if (searchTerm) {
 			const data = await RAWGService.search(searchTerm);
 			setGames(data.results);
+		  }
 		};
 		fetchGames();
-		
-	}, [searchTerm]);
+	  }, [searchTerm]);
 	
 return (
 	<View>

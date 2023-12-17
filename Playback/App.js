@@ -18,12 +18,6 @@ const Tabs = createMaterialBottomTabNavigator();
 
 export default function App() {
 
-  if (Platform.OS === 'web') {
-    return (
-      <AppRouter />
-    );
-  }
-
   return (
     <NavigationContainer>
           <Tabs.Navigator
