@@ -11,8 +11,8 @@ let todayStr = today.toISOString().slice(0, 10);
 let lastYearStr = lastYear.toISOString().slice(0, 10);
 
 const getGamesHome = async (page = 1) => {
-	const response = await axios.get(`${RAWG_API_URL}games?key=${RAWG_KEY}&dates=${lastYearStr},${todayStr}&ordering=-rating&page=${page}`);
-	return response.data;
+	const res = await axios.get(`${RAWG_API_URL}games?key=${RAWG_KEY}&ordering=-released, metacritic&page=${page}&page_size=20&dates=${lastYearStr},${todayStr}`);
+	return res.data;
 };
 
 export default {
