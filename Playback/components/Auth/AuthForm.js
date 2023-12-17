@@ -4,7 +4,6 @@ import { TextInput, Button } from 'react-native-paper';
 import { useForm, Controller } from 'react-hook-form';
 import Colors from '../../constants/Colors';
 import rem from '../../constants/Rem';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const AuthForm = () => {
 	

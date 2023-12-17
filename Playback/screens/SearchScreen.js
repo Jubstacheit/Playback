@@ -10,21 +10,21 @@ const SearchScreen = ({route}) => {
 	
 	useEffect(() => {
 		const fetchGames = async () => {
-		  if (searchTerm) {
-			const data = await RAWGService.search(searchTerm);
-			setGames(data.results);
-		  }
+			if (searchTerm) {
+				const data = await RAWGService.search(searchTerm);
+				setGames(data.results);
+			}
 		};
 		fetchGames();
-	  }, [searchTerm]);
+	}, [searchTerm]);
 	
-return (
-	<View>
-	{games.map((game, index) => (
-		<Text key={index}>{game.name}</Text>
-		))}
-		</View>
-		);
-	};
-	
-export default SearchScreen;
+	return (
+		<View>
+		{games.map((game, index) => (
+			<Text key={index}>{game.name}</Text>
+			))}
+			</View>
+			);
+		};
+		
+		export default SearchScreen;

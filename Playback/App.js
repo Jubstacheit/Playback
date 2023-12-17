@@ -1,25 +1,19 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import axios from 'axios';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SearchScreen from './screens/SearchScreen';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { Platform } from 'react-native';
-import AppRouter from './navigation/Router';
+import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const Stack = createNativeStackNavigator();
 const Tabs = createMaterialBottomTabNavigator();
 
 export default function App() {
 
   return (
     <NavigationContainer>
+      <SafeAreaProvider>
           <Tabs.Navigator
       screenOptions={
         {
@@ -30,6 +24,7 @@ export default function App() {
       <Tabs.Screen name="Search" component={SearchScreen} />
       <Tabs.Screen name="Profile" component={ProfileScreen} />
     </Tabs.Navigator>
+    </SafeAreaProvider>
     </NavigationContainer>
     );
   }
