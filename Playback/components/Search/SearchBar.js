@@ -35,7 +35,7 @@ const SearchBar = ({ onSearch }) => {
 			width: rem(30),
 			padding: 10,
 			borderRadius: 5,
-			marginVertical: rem(2.5),
+			marginVertical: rem(2),
 		},
 		input: {
 			flex: 1,

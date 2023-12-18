@@ -9,38 +9,44 @@ import colors from '../constants/Colors';
 import rem from '../constants/Rem';
 import SearchBar from '../components/Search/SearchBar';
 
-const SearchScreen = ({route}) => {
-	
-	const [games, setGames] = useState([]);
-	const { searchTerm } = route.params || {};
-	
-	useEffect(() => {
-		const fetchGames = async () => {
-			if (searchTerm) {
-				const data = await RAWGService.search(searchTerm);
-				setGames(data.results);
-			}
-		};
-		fetchGames();
-	}, [searchTerm]);
-	
-	return (
-		<View style={styles.container}>
-			<SearchBar onSearch={handleSearch} />
-		<FlatList
-		style={{width: '100%'}}
-		numColumns={2}
-		data={games}
-		keyExtractor={(item) => item.id.toString()}
-		renderItem={({item}) => (
-			<GameCard
-			game={item}
-			/>
-			)}
-			/>
+const SearchScreen = ({route, navigation}) => {
+    
+    const [games, setGames] = useState([]);
+    const [localSearchTerm, setLocalSearchTerm] = useState(route.params?.searchTerm || '');
+
+    useEffect(() => {
+        const fetchGames = async () => {
+            if (localSearchTerm) {
+                const data = await RAWGService.search(localSearchTerm);
+                setGames(data.results);
+            }
+        };
+        fetchGames();
+    }, [localSearchTerm]);
+
+    const handleSearch = async (newSearchTerm) => {
+        setLocalSearchTerm(newSearchTerm);
+    };
+
+    return (
+        <View style={styles.container}>
+			<View style={styles.topContainer}>
+            	<SearchBar onSearch={handleSearch} />
 			</View>
-			);
-		}
+            <FlatList
+                style={{width: '100%'}}
+                numColumns={2}
+                data={games}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({item}) => (
+                    <GameCard
+                        game={item}
+                    />
+                )}
+            />
+        </View>
+    );
+};
 
 		const styles = StyleSheet.create({
 			container: {
@@ -49,6 +55,12 @@ const SearchScreen = ({route}) => {
 				alignItems: 'center',
 				width: '100%',
 				backgroundColor: colors.background,
+			},
+			topContainer: {
+				width: '100%',
+			justifyContent: 'center',
+			alignItems: 'center',
+			marginVertical: rem(1),
 			},
 		});
 		

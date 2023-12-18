@@ -37,6 +37,7 @@ const HomeScreen = ({navigation}) => {
 				<Text style={styles.title}>Playback</Text>
 				<Text style={styles.subtitle}>Explore, list, backlog</Text>
 				<SearchBar onSearch={handleSearch} />
+				<Text style={{color: '#fff', fontSize: 30, fontWeight: 'bold', alignSelf: 'flex-start', marginHorizontal: rem(3)}}>Recent games</Text>
 			</View>
 			<FlatList
 				style={{width: '100%'}}
@@ -67,7 +68,7 @@ const HomeScreen = ({navigation}) => {
 			width: '100%',
 			justifyContent: 'center',
 			alignItems: 'center',
-			marginVertical: rem(1),
+			marginVertical: rem(0.4),
 		},
 		text: {
 			color: '#fff',
