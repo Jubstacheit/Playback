@@ -20,7 +20,7 @@ export default function App() {
           headerShown: false
         }
     }>
-      <Tabs.Screen name="Home page" component={HomeScreen} />
+      <Tabs.Screen name="Home" component={HomeScreen} />
       <Tabs.Screen name="Search" component={SearchScreen} />
       <Tabs.Screen name="Profile" component={ProfileScreen} />
     </Tabs.Navigator>
