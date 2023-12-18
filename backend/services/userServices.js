@@ -5,6 +5,10 @@ class UserService {
 	getAll() {
 		return User.find({}, '-password');
 	}
+	create(data) {
+		const user = new User(data);
+		return user.save();
+	}
 	checkPassword(email, password) {
 		const user = User.findOne({ email });
 		if (!user) {

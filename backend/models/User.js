@@ -31,4 +31,15 @@ const User = db.define('User', {
 	timestamps: false,
 });
 
+// Hash password before saving 
+User.beforeCreate(async (user) => {
+	const salt = await bcrypt.genSalt(10);
+	user.password = await bcrypt.hash(user.password, salt);
+});
+
+// Lowercase email before save 
+User.beforeCreate(async (user) => {
+	user.email = user.email.toLowerCase();
+});
+
 module.exports = User;

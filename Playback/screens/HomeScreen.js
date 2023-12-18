@@ -63,6 +63,7 @@ const HomeScreen = ({navigation}) => {
 			alignItems: 'center',
 			width: '100%',
 			backgroundColor: colors.background,
+			paddingTop: rem(2),
 		},
 		titleSearchContainer: {
 			width: '100%',

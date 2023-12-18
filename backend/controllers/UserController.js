@@ -6,6 +6,17 @@ const config = require('../config/config.js');
 const userServices = require('../services/userServices.js');
 
 class userController {
+	// Create method 
+	async create(req, res, next) {
+		try {
+			const user = await userServices.create(req.body);
+			user.password = undefined;
+			const hash = await bcrypt.hash(password, 10);
+			res.status(201).json(user);
+		} catch (err) {
+			next(err);
+		}
+	}
 	// Login method 
 	async login(req, res, next) {
 		try {

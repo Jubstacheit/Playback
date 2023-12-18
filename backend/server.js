@@ -19,6 +19,7 @@ app.use(cors({
 // Public routes 
 app.get('/api/users/getAll', UserController.getUsers);
 app.post('/api/users/login', UserController.login);
+app.post('/api/users/create', UserController.create);
 
 // Private routes
 app.use('/api/users', AuthMiddleware, userRoutes); // Routes for user

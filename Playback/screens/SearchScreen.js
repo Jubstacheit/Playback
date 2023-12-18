@@ -51,6 +51,7 @@ const SearchScreen = ({route, navigation}) => {
 		const styles = StyleSheet.create({
 			container: {
 				flex: 1,
+                paddingTop: rem(2),
 				justifyContent: 'center',
 				alignItems: 'center',
 				width: '100%',
