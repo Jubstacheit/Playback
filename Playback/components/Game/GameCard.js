@@ -17,8 +17,8 @@ const GameCard = ({ game }) => (
 	
 	const styles = StyleSheet.create({
 		card: {
-			width: '40%',
-			height: '40%',
+			width: '45%',
+			height: rem(20),
 			margin: rem(1),
 			borderRadius: 10,
 			shadowColor: '#000000',

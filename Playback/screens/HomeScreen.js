@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, ScrollView } from 'react-native';
-import { BACKEND_DB_HOST } from '@env';
-import ProfileScreen from './ProfileScreen';
 import { StyleSheet } from 'react-native';
 import RAWGService from '../services/RAWGService';
 import GameCard from '../components/Game/GameCard';
 import colors from '../constants/Colors';
 import rem from '../constants/Rem';
 import SearchBar from '../components/Search/SearchBar';
-import { useNavigation } from '@react-navigation/native';
 
 const RAWG_KEY = process.env.RAWG_KEY;
 const DB = process.env.DB_HOST_ROUTE;
@@ -42,6 +39,7 @@ const HomeScreen = ({navigation}) => {
 				<SearchBar onSearch={handleSearch} />
 			</View>
 			<FlatList
+				style={{width: '100%'}}
 				numColumns={2}
 				data={games}
 				keyExtractor={(item) => item.id.toString()}
