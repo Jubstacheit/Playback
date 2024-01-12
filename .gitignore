@@ -35,3 +35,4 @@ yarn-error.*
 *.tsbuildinfo
 backend/.env
 Playback/.env
+Playback2/.env

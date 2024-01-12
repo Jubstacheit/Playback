@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import { useForm, Controller } from 'react-hook-form';
 import Colors from '../../constants/Colors';
 import rem from '../../constants/Rem';
 

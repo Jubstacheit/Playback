@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, ScrollView } from 'react-native';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import RAWGService from '../services/RAWGService';
 import GameCard from '../components/Game/GameCard';
 import colors from '../constants/Colors';
@@ -32,7 +32,7 @@ const HomeScreen = ({navigation}) => {
 	}, []);
 
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<View style={styles.titleSearchContainer}>
 				<Text style={styles.title}>Playback</Text>
 				<Text style={styles.subtitle}>Explore, list, backlog</Text>
@@ -52,7 +52,7 @@ const HomeScreen = ({navigation}) => {
 					/>
 				)}
 			/>
-		</View>
+		</SafeAreaView>
 		);
 	};
 
@@ -62,8 +62,7 @@ const HomeScreen = ({navigation}) => {
 			justifyContent: 'center',
 			alignItems: 'center',
 			width: '100%',
-			backgroundColor: colors.background,
-			paddingTop: rem(2),
+			backgroundColor: colors.background
 		},
 		titleSearchContainer: {
 			width: '100%',
