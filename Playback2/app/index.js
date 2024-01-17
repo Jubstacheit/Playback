@@ -1,4 +1,5 @@
 import { useRouter, Stack } from "expo-router";
+import { Tabs } from "expo-router/tabs";
 import { useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 
@@ -14,12 +15,7 @@ const Home = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }} >
-      <Stack.Screen 
-      options={{
-        headerStyle: {backgroundColor: COLORS.tertiary},
-        headerShadowVisible: false,
-        headerTitle: ''
-      }}/>
+      
 
       <ScrollView>
 
