@@ -34,8 +34,8 @@ const Layout = () => {
 			tabBarStyle: {
 				height: 70,
 				borderTopWidth: 2,
-				borderTopColor: COLORS.secondary,
-				backgroundColor: COLORS.primary,
+				borderTopColor: COLORS.lightWhite,
+				backgroundColor: COLORS.background,
 			}
 		}}
 		>
