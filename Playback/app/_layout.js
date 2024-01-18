@@ -32,10 +32,18 @@ const Layout = () => {
 			tabBarActiveTintColor: COLORS.tertiary,
 			tabBarInactiveTintColor: COLORS.secondary,
 			tabBarStyle: {
+				elevation: 0,
+				shadowOffset: {
+					width: 0, height: 0 // for iOS
+				},
 				height: 70,
-				borderTopWidth: 2,
-				borderTopColor: COLORS.lightWhite,
+				padding: 0,
+				borderTopWidth: 0,
 				backgroundColor: COLORS.background,
+			},
+			tabBarItemStyle: {
+				borderBottomWidth: 2,
+				borderColor: COLORS.background,
 			}
 		}}
 		>
@@ -48,10 +56,9 @@ const Layout = () => {
 					tabBarIcon: () => (
 						<Image
 							source={require('../assets/icon.png')}
-							style={{ width: SIZES.xxLarge, height: SIZES.xxLarge, marginTop: 15 }}
+							style={{ width: SIZES.xxLarge, height: SIZES.xxLarge }}
 						/>
 					),
-					tabBarHideOnKeyboard: true,
 					title: '',
 					// Change tab icon to an asset
 				}}

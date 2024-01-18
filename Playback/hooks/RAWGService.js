@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './axios'
 
 const RAWG_KEY = process.env.RAWG_KEY;
 const RAWG_API_URL = `https://api.rawg.io/api/`;

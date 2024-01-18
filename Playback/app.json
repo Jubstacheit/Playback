@@ -1,45 +1,23 @@
 {
   "expo": {
-    "name": "Playback",
-    "slug": "Playback",
+    "description": "A React Native video-game backlog app.",
+    "owner": "Jubstacheit",
+    "privacy": "unlisted",
+    "version": "0.1.0",
     "platforms": [
       "android",
       "web"
     ],
-    "scheme": "playback",
-    "privacy": "public",
-    "description": "A React Native backlog app",
-    "version": "0.1.0",
+    "githubUrl": "https://github.com/Jubstacheit/Playback",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.jubstacheit.Playback",
-      "versionCode": 1
-    },
+    "scheme": "acme",
     "web": {
-      "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "extra": {
-      "eas": {
-        "projectId": "bee9d0e3-2067-4020-ba56-6aff3ad46dc4"
-      }
-    }
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "Playback",
+    "slug": "Playback"
   }
 }
