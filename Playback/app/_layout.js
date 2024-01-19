@@ -4,6 +4,7 @@ import { useFonts } from "expo-font"
 import * as Splashscreen from 'expo-splash-screen'
 import { COLORS, SIZES } from '../constants'
 import { Image } from 'react-native'
+import { AntDesign } from '@expo/vector-icons';
 
 Splashscreen.preventAutoHideAsync()
 
@@ -69,7 +70,15 @@ const Layout = () => {
 					// Ensure the tab always links to the same href.
 					href: '/search',
 					// Change tab name 
-					title: 'Search',
+					title: '',
+					headerShown: false,
+					tabBarIcon: () => (
+						<AntDesign 
+							name="search1" 
+							size={24} 
+							color={COLORS.lightWhite} 
+						/>
+					),
 				}}
 			/>
 			<Tabs.Screen
@@ -77,8 +86,16 @@ const Layout = () => {
 				options={{
 					// Ensure the tab always links to the same href.
 					href: '/profile',
+					headerShown: false,
 					// Change tab name 
-					title: 'Profile',
+					title: '',
+					tabBarIcon: () => (
+						<AntDesign 
+							name="profile" 
+							size={24} 
+							color={COLORS.lightWhite}
+						/>
+					),
 				}}
 			/>
 		</Tabs>
