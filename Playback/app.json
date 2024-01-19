@@ -14,6 +14,9 @@
       "androidMode": "collapse",
       "androidCollapsedTitle": "#{unread_notifications} new notifications"
     },
+    "androidStatusBar": {
+      "barStyle": "dark-content"
+    },
     "platforms": [
       "android",
       "web"
@@ -22,12 +25,37 @@
     "orientation": "portrait",
     "scheme": "acme",
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png",
+      "name": "Playback",
+      "shortName": "Playback",
+      "lang": "en-US",
+      "themeColor": "#FFFFFF",
+      "description": "A React Native video-game backlog app.",
+      "display": "browser",
+      "orientation": "landscape",
+      "backgroundColor": "#FFFFFF",
+      "splash": {
+        "image": "./assets/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#FFFFFF"
+      }
     },
     "plugins": [
       "expo-router"
     ],
     "name": "Playback",
-    "slug": "Playback"
+    "slug": "Playback",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    }
   }
 }
