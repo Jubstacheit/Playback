@@ -6,15 +6,17 @@ import { RAWG_KEY, DB } from "@env";
 
 import { COLORS, icons, images, SIZES } from "../constants";
 import { SafeAreaView } from "react-native-safe-area-context";
+import styles from "../styles/home";
 // Import components
 
 const Home = () => {
   const router = useRouter();
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.background }} >
+    <SafeAreaView style={styles.container} >
       
 
+      {/* Game list */}
       <ScrollView>
 
       </ScrollView>

@@ -55,36 +55,4 @@ const HomeScreen = ({navigation}) => {
 		</SafeAreaView>
 		);
 	};
-
-	const styles = StyleSheet.create({
-		container: {
-			flex: 1,
-			justifyContent: 'center',
-			alignItems: 'center',
-			width: '100%',
-			backgroundColor: colors.background
-		},
-		titleSearchContainer: {
-			width: '100%',
-			justifyContent: 'center',
-			alignItems: 'center',
-			marginVertical: rem(0.4),
-		},
-		text: {
-			color: '#fff',
-			fontSize: 24,
-			fontWeight: 'bold',
-		},
-		title: {
-			color: '#fff',
-			fontSize: 64,
-			fontWeight: 'bold',
-		},
-		subtitle: {
-			color: '#fff',
-			fontSize: 30,
-			fontWeight: '100',
-		},
-	});
-	
 	export default HomeScreen;
