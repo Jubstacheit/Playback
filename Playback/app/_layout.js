@@ -30,6 +30,7 @@ const Layout = () => {
 		<Tabs 
 		onLayout={onLayoutRootView}
 		screenOptions={{
+			tabBarHideOnKeyboard: true,
 			tabBarActiveTintColor: COLORS.tertiary,
 			tabBarInactiveTintColor: COLORS.secondary,
 			tabBarStyle: {

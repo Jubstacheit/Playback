@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native'
 
-import { COLORS, FONTS, SIZES } from '../constants'
+import { COLORS, FONTS, SIZES } from '../../constants'
 
 const styles = StyleSheet.create({
 	title: {

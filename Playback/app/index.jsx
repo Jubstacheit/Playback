@@ -4,15 +4,18 @@ import { useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { RAWG_KEY, DB } from "@env";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FlatList } from "react-native-gesture-handler";
 
 import { COLORS, icons, images, SIZES } from "../constants";
 import styles from "../styles/home";
 // Import components
 import Title from "../components/Title/Title.jsx";
-import { FlatList } from "react-native-gesture-handler";
+import SearchBar from "../components/Search/SearchBar.jsx";
 
 const Home = () => {
   const router = useRouter();
+
+  const [recentGames, setRecentGames] = useState([]);
 
   return (
     <SafeAreaView style={styles.container} >
@@ -22,13 +25,15 @@ const Home = () => {
       </Text>
 
       {/* Search bar */}
-      <Text>Search bar</Text>
+      <SearchBar />
 
-      <Text style={styles.recentGames}>Recent games</Text>
+      {/* <Text style={styles.recentGames}>Recent games</Text> */}
       
 
       {/* Game list */}
-      <FlatList >
+      <FlatList 
+        data={recentGames}
+      >
 
       </FlatList>
     </SafeAreaView>

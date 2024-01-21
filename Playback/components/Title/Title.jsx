@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 
-import styles from '../../styles/title'
+import styles from './title.style'
 
 const Title = () => {
 	return (
