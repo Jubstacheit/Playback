@@ -7,24 +7,37 @@ const styles = StyleSheet.create({
 		flex: 1,
 		width: '100%',
 		backgroundColor: COLORS.background,
-	},
-	titleSearchContainer: {
-		width: '100%',
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginVertical: 0.4,
-	},
-	text: {
-		color: '#fff',
-		fontSize: 24,
-		fontWeight: 'bold',
-	},
-	
+	},	
 	subtitle: {
-		color: '#fff',
-		fontSize: 30,
-		fontWeight: '100',
+		color: COLORS.lightWhite,
+		fontFamily: FONTS.medium,
+		fontSize: SIZES.medium,
+		...Platform.select({
+			web: {
+				fontSize: 30,
+				margin: SIZES.small,
+				textAlign: 'center'
+			},
+			android: {
+				marginLeft: SIZES.small
+			}
+		})
 	},
+	searchBar: {
+
+	},
+	recentGames: {
+		color: COLORS.lightWhite,
+		fontFamily: FONTS.medium,
+		fontSize: SIZES.medium,
+		textAlign: 'left',
+		marginHorizontal: SIZES.small,
+		...Platform.select({
+			web: {
+				fontSize: 30,
+			}
+		})
+	}
 })
 
 export default styles;
