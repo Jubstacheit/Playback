@@ -34,7 +34,6 @@ const HomeScreen = ({navigation}) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.titleSearchContainer}>
-				<Text style={styles.title}>Playback</Text>
 				<Text style={styles.subtitle}>Explore, list, backlog</Text>
 				<SearchBar onSearch={handleSearch} />
 				<Text style={{color: '#fff', fontSize: 30, fontWeight: 'bold', alignSelf: 'flex-start', marginHorizontal: rem(3)}}>Recent games</Text>
