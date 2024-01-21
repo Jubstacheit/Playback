@@ -8,12 +8,14 @@ import { COLORS, icons, images, SIZES } from "../constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "../styles/home";
 // Import components
+import Title from "../components/Title/Title.jsx";
 
 const Home = () => {
   const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container} >
+      <Title />
       
 
       {/* Game list */}

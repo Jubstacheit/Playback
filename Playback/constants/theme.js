@@ -11,9 +11,9 @@ const COLORS = {
 }
 
 const FONTS = {
-	regular: 'DMRegular',
-	medium: 'DMMedium',
-	bold: 'JetBrainsMonoBold',
+	regular: "DMRegular",
+	medium: "DMMedium",
+	bold: "JetBrainsMonoBold",
 }
 
 const SIZES = {
