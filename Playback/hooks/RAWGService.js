@@ -1,6 +1,6 @@
-import axios from './axios'
+import axios from 'axios';
+import { RAWG_KEY }	from '@env';
 
-const RAWG_KEY = process.env.RAWG_KEY;
 const RAWG_API_URL = `https://api.rawg.io/api/`;
 // Const for today's date
 let today = new Date();
@@ -10,7 +10,7 @@ let lastYear = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate
 let todayStr = today.toISOString().slice(0, 10);
 let lastYearStr = lastYear.toISOString().slice(0, 10);
 
-const getGamesHome = async (page = 1) => {
+const getGamesHome = async (page) => {
 	const res = await axios.get(`${RAWG_API_URL}games?key=${RAWG_KEY}&ordering=-released, metacritic&page=${page}&page_size=20&dates=${lastYearStr},${todayStr}`);
 	return res.data;
 };
