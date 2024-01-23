@@ -6,8 +6,6 @@ import { RAWG_KEY, DB } from "@env";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FlatList } from "react-native-gesture-handler";
 
-import RAWGService from "../hooks/RAWGService.js";
-
 import { COLORS, icons, images, SIZES } from "../constants";
 import styles from "../styles/home";
 // Import components
@@ -17,16 +15,6 @@ import GameList from "../components/Game/GameList.jsx";
 
 const Home = () => {
   const router = useRouter();
-
-  const [recentGames, setRecentGames] = useState([]);
-  const [page, setPage] = useState(1);
-
-  const loadGames = () => {
-		RAWGService.getGamesHome(page)
-		.then(data => {
-			setRecentGames([...recentGames, ...data.results])
-		})
-	}
 
   return (
     <SafeAreaView style={styles.container} >
@@ -42,10 +30,7 @@ const Home = () => {
       
 
       {/* Game list */}
-      <GameList 
-        gameList={recentGames}
-      />
-
+      <GameList />
     </SafeAreaView>
   );
 }
