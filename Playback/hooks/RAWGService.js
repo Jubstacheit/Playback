@@ -24,7 +24,7 @@ const getGamesHome = () => {
 		setIsLoading(true);
 
 		try {
-			const res = await axios.get(`${url}games?key=${key}&ordering=-released, metacritic&page=${page}&dates=${lastYearStr},${todayStr}`);
+			const res = await axios.get(`${url}games?key=${key}&ordering=-metacritic&page_size=40&page=${page}&dates=${lastYearStr},${todayStr}`);
 			setGames(previousGames => [...previousGames, ...res.data.results]);
 			setPage(previousPage => previousPage + 1);
 		} catch (error) {
