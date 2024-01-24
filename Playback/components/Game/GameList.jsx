@@ -13,31 +13,30 @@ import GameCard from './GameCard'
 
 const GameList = () => {
 	const router = useRouter();
-	const [page, setPage] = useState(1);
 	// Taken from RAWGService
-	const { games, isLoading, error } = getGamesHome(page);
+	const { games, isLoading, error, refetch, } = getGamesHome();
 
 	return (
-		<View style={styles.cardsContainer}>
-			{isLoading ? (
-				<ActivityIndicator size="large" color={COLORS.secondary} />
-			) : error ? (
+		<View style={styles.container}>
+			{error ? (
 				<Text>
 					Something went wrong
 				</Text>
-			) : (<FlatList 
-					data={games.results} 
-					style={{ color: COLORS.lightWhite }}
+			) : (
+				<FlatList 
+					data={games}
 					renderItem={({ item }) => (
-						<Text style={{ color: COLORS.lightWhite}} item={item}>
-							{item.id}
-						</Text>
-						/*<GameCard 
+						<GameCard 
 							item={item}
-						/>*/
+						/>
 					)}
 					keyExtractor={item => item.id}
-					contentContainerStyle={{ columnGap: SIZES.medium }}
+					contentContainerStyle={{ gap: SIZES.medium }}
+					onEndReached={refetch}
+					onEndReachedThreshold={2}
+					ListFooterComponent={isLoading ? <ActivityIndicator size="large" color={COLORS.secondary} /> : null}
+					numColumns={2}
+					showsVerticalScrollIndicator={false}
 				/>
 			)}
 		</View>

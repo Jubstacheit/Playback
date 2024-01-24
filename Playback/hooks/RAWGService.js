@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { RAWG_KEY }	from '@env';
-import { useState, useEffect} from 'react';
+import { useState, useEffect, ActivityIndicator } from 'react';
+import { COLORS } from '../constants';
 
 const url = `https://api.rawg.io/api/`;
 const key = RAWG_KEY;
@@ -13,18 +14,19 @@ let todayStr = today.toISOString().slice(0, 10);
 let lastYearStr = lastYear.toISOString().slice(0, 10);
 
 
-const getGamesHome = (page) => {
+const getGamesHome = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [games, setGames] = useState([]);
+	const [page, setPage] = useState(1);
 	const [error, setError] = useState(null);
 
 	const fetchData = async () => {
 		setIsLoading(true);
 
 		try {
-			const res = await axios.get(`${url}games?key=${key}&ordering=-released, metacritic&page=${page}&page_size=20&dates=${lastYearStr},${todayStr}`);
-			setGames(res.data);
-			setIsLoading(false);
+			const res = await axios.get(`${url}games?key=${key}&ordering=-released, metacritic&page=${page}&dates=${lastYearStr},${todayStr}`);
+			setGames(previousGames => [...previousGames, ...res.data.results]);
+			setPage(previousPage => previousPage + 1);
 		} catch (error) {
 			setError(error);
 			alert(error);
@@ -38,8 +40,9 @@ const getGamesHome = (page) => {
 	}, []);
 
 	const refetch = () => {
-		setIsLoading(true);
-		fetchData();
+		if (!isLoading) {
+			fetchData();
+		}
 	}
 	
 
@@ -48,7 +51,7 @@ const getGamesHome = (page) => {
 
 
 const search = async (searchTerm) => {
-	const res = await axios.get(`${RAWG_API_URL}games?key=${RAWG_KEY}&search=${searchTerm}&page_size=100`);
+	const res = await axios.get(`${RAWG_API_URL}games?key=${RAWG_KEY}&search=${searchTerm}&page_size=30`);
 	return res.data;
 };
 
