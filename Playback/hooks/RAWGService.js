@@ -29,7 +29,6 @@ const getGamesHome = () => {
 			setPage(previousPage => previousPage + 1);
 		} catch (error) {
 			setError(error);
-			alert(error);
 		} finally {
 			setIsLoading(false);
 		}
