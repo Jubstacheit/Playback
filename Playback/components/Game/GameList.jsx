@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, Platform } from 'react-native'
 import React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import { useState } from 'react'
@@ -15,6 +15,15 @@ const GameList = () => {
 	const router = useRouter();
 	// Taken from RAWGService
 	const { games, isLoading, error, refetch, } = getGamesHome();
+
+	// Change column number depending on platform
+	const col = () => {
+		if 
+			(Platform.OS === 'web') {return 3} 
+		else {
+			return 2
+		}
+	}
 
 	return (
 		<View style={styles.container}>
@@ -35,7 +44,7 @@ const GameList = () => {
 					onEndReached={refetch}
 					onEndReachedThreshold={2}
 					ListFooterComponent={isLoading ? <ActivityIndicator size="large" color={COLORS.secondary} /> : null}
-					numColumns={2}
+					numColumns={col()}
 					showsVerticalScrollIndicator={false}
 				/>
 			)}
