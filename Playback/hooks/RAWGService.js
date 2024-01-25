@@ -8,10 +8,10 @@ const key = RAWG_KEY;
 // Const for today's date
 let today = new Date();
 // Const for last year's date, day to day 
-let lastYear = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+let lastYears = new Date(today.getFullYear() - 2, today.getMonth(), today.getDate());
 // Format dates to RAWG API format
 let todayStr = today.toISOString().slice(0, 10);
-let lastYearStr = lastYear.toISOString().slice(0, 10);
+let lastYearsStr = lastYears.toISOString().slice(0, 10);
 
 
 const getGamesHome = () => {
@@ -24,7 +24,7 @@ const getGamesHome = () => {
 		setIsLoading(true);
 
 		try {
-			const res = await axios.get(`${url}games?key=${key}&ordering=-metacritic&page_size=40&page=${page}&dates=${lastYearStr},${todayStr}`);
+			const res = await axios.get(`${url}games?key=${key}&ordering=-metacritic&page_size=40&page=${page}&dates=${lastYearsStr},${todayStr}`);
 			setGames(previousGames => [...previousGames, ...res.data.results]);
 			setPage(previousPage => previousPage + 1);
 		} catch (error) {
@@ -39,13 +39,26 @@ const getGamesHome = () => {
 	}, []);
 
 	const refetch = () => {
-		if (!isLoading) {
+		if (!isLoading && !error) {
 			fetchData();
 		}
 	}
+
+	const retryFetch = () => {
+		// Stop the refetch function from running
+		setGames([]);
+		setPage(1);
+		setError(null);
+		setIsLoading(true);
+
+		// Interval to allow the loading animation to run
+		setTimeout(() => {
+			fetchData();
+		}, 1500);
+	}
 	
 
-	return { games, isLoading, error, refetch };
+	return { games, isLoading, error, refetch, retryFetch };
 };
 
 

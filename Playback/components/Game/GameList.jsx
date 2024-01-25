@@ -14,7 +14,7 @@ import GameCard from './GameCard'
 const GameList = () => {
 	const router = useRouter();
 	// Taken from RAWGService
-	const { games, isLoading, error, refetch, } = getGamesHome();
+	const { games, isLoading, error, refetch, retryFetch } = getGamesHome();
 	// Change column number depending on platform
 	const col = () => {
 		if 
@@ -36,7 +36,7 @@ const GameList = () => {
 				keyExtractor={item => item.id}
 				contentContainerStyle={{ gap: SIZES.medium }}
 				onEndReached={refetch}
-				onEndReachedThreshold={2}
+				onEndReachedThreshold={1}
 				ListFooterComponent={isLoading ? <ActivityIndicator size="large" color={COLORS.secondary} /> : null}
 				numColumns={col()}
 				showsVerticalScrollIndicator={false}
@@ -49,13 +49,16 @@ const GameList = () => {
 							Something went wrong : Network error.
 						</Text>
 					</View>
-					<TouchableOpacity style={styles.retryFetchButton}>
+					<TouchableOpacity 
+						style={styles.retryFetchButton}
+						onPress={retryFetch}
+					>
 						<Text style={styles.fetchErrorRetryText}>
 							Retry
 						</Text>
 					</TouchableOpacity>
 				</View>
-			): null}
+			) : null}
 			
 		</View>
 	)
