@@ -23,9 +23,6 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
-	searchBar: {
-
-	},
 	recentGames: {
 		color: COLORS.lightWhite,
 		fontFamily: FONTS.medium,
