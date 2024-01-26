@@ -8,10 +8,10 @@ const GameCard = ({ item }) => (
 	<View style={styles.container}>
 		<Image
 			source={{uri: item.background_image}}
-			style={{width: 192, height: 108}}
+			style={styles.gameImage}
 		/>
 		<View>
-			<Text style={{color: COLORS.lightWhite }}>{item.name}</Text>
+			<Text style={styles.gameTitle}>{item.name}</Text>
 		</View>
 	</View>
 );

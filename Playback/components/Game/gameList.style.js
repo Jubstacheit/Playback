@@ -6,7 +6,14 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
-		marginTop: SIZES.medium
+		marginTop: SIZES.medium,
+		paddingHorizontal: SIZES.small,
+	},
+	gameList: {
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
 	}
 });
 

@@ -14,11 +14,11 @@ import FetchError from '../Error/FetchError'
 const GameList = () => {
 	const router = useRouter();
 	// Taken from RAWGService
-	const { games, isLoading, error, refetch } = getGamesHome();
+	const { games, isLoading, error, refetch, retryFetch } = getGamesHome();
 	// Change column number depending on platform
 	const col = () => {
 		if 
-			(Platform.OS === 'web') {return 3} 
+			(Platform.OS === 'web') {return 5} 
 		else {
 			return 2
 		}
@@ -39,12 +39,15 @@ const GameList = () => {
 				onEndReachedThreshold={1}
 				ListFooterComponent={isLoading ? <ActivityIndicator size="large" color={COLORS.secondary} /> : null}
 				numColumns={col()}
+				gap={SIZES.medium}
 				showsVerticalScrollIndicator={false}
+				columnWrapperStyle={{ justifyContent: 'center'}}
 			/>
 
 			{error ? (
 				<FetchError 
 					message={error.message}
+					handlePress={retryFetch}
 				/>
 			) : null}
 			

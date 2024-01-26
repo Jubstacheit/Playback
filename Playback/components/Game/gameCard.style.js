@@ -4,26 +4,20 @@ import { COLORS, FONTS, SIZES } from "../../constants";
 
 const styles = StyleSheet.create({
 	container: {
-	},
-	image: {
-		width: '100%',
-		height: '80%',
-		borderTopLeftRadius: 10,
-		borderTopRightRadius: 10,
-		resizeMode: 'cover',
-		position: 'relative',
-		top: 0,
-		left: 0,
-	},
-	titleContainer: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+		borderRadius: SIZES.small,
 	},
-	title: {
-		color: '#fff',
-		fontWeight: 'bold',
+	gameImage: {
+		width: 'auto',
+		height: SIZES.xxLarge * 5,
+		borderRadius: SIZES.small,
+		resizeMode: 'cover',
 	},
+	gameTitle: {
+		color: COLORS.lightWhite,
+		fontFamily: FONTS.regular,
+		flex: 1
+	}
 });
 
 export default styles;

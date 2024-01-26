@@ -4,8 +4,7 @@ import { getGamesHome } from "../../hooks/RAWGService";
 
 import styles from './fetchError.style'
 
-const FetchError = ({ message }) => {
-	const { retryFetch } = getGamesHome();
+const FetchError = ({ message, handlePress }) => {
 
 	return (
 		<View style={styles.errorTextContainer}>
@@ -16,7 +15,7 @@ const FetchError = ({ message }) => {
 			</View>
 			<TouchableOpacity 
 				style={styles.retryFetchButton}
-				onPress={retryFetch}
+				onPress={handlePress}
 			>
 				<Text style={styles.fetchErrorRetryText}>
 					Retry
