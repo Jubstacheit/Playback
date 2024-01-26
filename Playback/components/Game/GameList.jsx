@@ -1,7 +1,6 @@
 import { View, Text, ActivityIndicator, Platform, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
-import { useState } from 'react'
 import { useRouter } from 'expo-router'
 
 import styles from './gameList.style'
@@ -10,11 +9,12 @@ import { COLORS, SIZES } from '../../constants'
 import { getGamesHome } from "../../hooks/RAWGService";
 
 import GameCard from './GameCard'
+import FetchError from '../Error/FetchError'
 
 const GameList = () => {
 	const router = useRouter();
 	// Taken from RAWGService
-	const { games, isLoading, error, refetch, retryFetch } = getGamesHome();
+	const { games, isLoading, error, refetch } = getGamesHome();
 	// Change column number depending on platform
 	const col = () => {
 		if 
@@ -42,22 +42,8 @@ const GameList = () => {
 				showsVerticalScrollIndicator={false}
 			/>
 
-			{error ? (
-				<View style={styles.errorTextContainer}>
-					<View style={styles.fetchErrorTextContainer}>
-						<Text style={styles.fetchErrorText}>
-							Something went wrong : Network error.
-						</Text>
-					</View>
-					<TouchableOpacity 
-						style={styles.retryFetchButton}
-						onPress={retryFetch}
-					>
-						<Text style={styles.fetchErrorRetryText}>
-							Retry
-						</Text>
-					</TouchableOpacity>
-				</View>
+			{!error ? (
+				<FetchError />
 			) : null}
 			
 		</View>

@@ -1,6 +1,8 @@
 import { View, Image, Text } from 'react-native';
-import { COLORS } from '../../constants';
+
 import styles from './gameCard.style';
+
+import { COLORS, FONTS, SIZES } from "../../constants";
 
 const GameCard = ({ item }) => (
 	<View style={styles.container}>
