@@ -42,8 +42,10 @@ const GameList = () => {
 				showsVerticalScrollIndicator={false}
 			/>
 
-			{!error ? (
-				<FetchError />
+			{error ? (
+				<FetchError 
+					message={error.message}
+				/>
 			) : null}
 			
 		</View>

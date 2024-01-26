@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 import { COLORS, FONTS, SIZES } from "../../constants";
 
@@ -10,26 +10,31 @@ export const styles = StyleSheet.create({
 		backgroundColor: COLORS.secondary,
 		padding: SIZES.xSmall,
 		borderRadius: SIZES.xSmall,
-		width: '85%',
+		width: '100%',
 		alignSelf: 'center',
-		borderWidth: 1,
-		borderColor: COLORS.primary,
 		alignItems: 'center',
+		...Platform.select({
+			web: {
+				width: 'auto',
+			}
+		})
 	},
 	fetchErrorTextContainer: {
 		flex: 1,
+		padding: SIZES.xSmall / 4,
+		paddingHorizontal: SIZES.xSmall / 2,
 	},
 	fetchErrorText: {
 		color: COLORS.warning,
 		fontFamily: FONTS.medium,
 	},
 	retryFetchButton: {
-		backgroundColor: COLORS.tertiary,
+		padding: SIZES.xSmall / 4,
+		paddingHorizontal: SIZES.xSmall / 2,
 	},
 	fetchErrorRetryText: {
 		color: COLORS.warning,
 		fontFamily: FONTS.bold,
-		textDecorationLine: 'underline',
 }});
 
 export default styles;

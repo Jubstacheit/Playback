@@ -4,14 +4,14 @@ import { getGamesHome } from "../../hooks/RAWGService";
 
 import styles from './fetchError.style'
 
-const FetchError = () => {
+const FetchError = ({ message }) => {
 	const { retryFetch } = getGamesHome();
 
 	return (
 		<View style={styles.errorTextContainer}>
 			<View style={styles.fetchErrorTextContainer}>
 				<Text style={styles.fetchErrorText}>
-					Something went wrong : Network error.
+					Something went wrong : {message}.
 				</Text>
 			</View>
 			<TouchableOpacity 
