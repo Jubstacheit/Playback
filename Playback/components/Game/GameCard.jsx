@@ -1,6 +1,5 @@
 import { View, Image, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Accelerometer } from 'expo-sensors';
 
 import styles from './gameCard.style';
 
