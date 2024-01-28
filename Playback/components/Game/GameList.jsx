@@ -11,10 +11,9 @@ import { getGamesHome } from "../../hooks/RAWGService";
 import GameCard from './GameCard'
 import FetchError from '../Error/FetchError'
 
-const GameList = () => {
+const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	const router = useRouter();
 	// Taken from RAWGService
-	const { games, isLoading, error, refetch, retryFetch } = getGamesHome();
 	// Change column number depending on platform
 	const col = () => {
 		if 
