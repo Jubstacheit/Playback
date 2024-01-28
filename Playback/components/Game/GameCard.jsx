@@ -12,6 +12,7 @@ const GameCard = ({ item }) => (
 				style={styles.gameImage}
 			/>
 			<View style={styles.textContainer}>
+				<Text style={styles.gameTitle}>{item.name}</Text>
 				<View style={styles.platformContainer}>
 					{item.platforms.map((platform, index) => (
 
@@ -24,7 +25,6 @@ const GameCard = ({ item }) => (
 						</Text>
 					))}
 				</View>
-				<Text style={styles.gameTitle}>{item.name}</Text>
 			</View>
 		</TouchableOpacity>
 		
