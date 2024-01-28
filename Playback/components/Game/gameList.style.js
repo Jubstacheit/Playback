@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		marginTop: SIZES.medium,
+		marginHorizontal: SIZES.xSmall,
 	},
 	gameList: {
 		flex: 1,

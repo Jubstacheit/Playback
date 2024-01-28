@@ -25,10 +25,28 @@ const styles = StyleSheet.create({
 		}),
 		resizeMode: 'cover',
 	},
-	titleContainer: {
+	textContainer: {
 		flexDirection: 'column',
 		marginVertical: SIZES.medium / 2,
-		marginHorizontal: SIZES.medium
+		marginHorizontal: SIZES.medium,
+		height: 'auto',
+		color: COLORS.lightWhite,
+	},
+	platformContainer: {
+		...Platform.select({
+			web: {
+				flexDirection: 'row',
+			},
+			android: {
+				flexDirection: 'column',
+			}
+		}),
+		flexWrap: 'wrap',
+	},
+	platformText: {
+		color: COLORS.white,
+		fontFamily: FONTS.regular,
+		fontSize: SIZES.xSmall
 	},
 	gameTitle: {
 		color: COLORS.lightWhite,

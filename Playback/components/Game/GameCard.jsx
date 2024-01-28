@@ -1,4 +1,4 @@
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Platform } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import styles from './gameCard.style';
@@ -11,7 +11,19 @@ const GameCard = ({ item }) => (
 				source={{uri: item.background_image}}
 				style={styles.gameImage}
 			/>
-			<View style={styles.titleContainer}>
+			<View style={styles.textContainer}>
+				<View style={styles.platformContainer}>
+					{item.platforms.map((platform, index) => (
+
+						<Text 
+							style={styles.platformText}
+							key={platform.platform.id}
+						>
+							
+							{platform.platform.name}
+						</Text>
+					))}
+				</View>
 				<Text style={styles.gameTitle}>{item.name}</Text>
 			</View>
 		</TouchableOpacity>
