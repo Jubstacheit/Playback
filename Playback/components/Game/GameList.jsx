@@ -17,7 +17,7 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	// Change column number depending on platform
 	const col = () => {
 		if 
-			(Platform.OS === 'web') {return 5} 
+			(Platform.OS === 'web') {return 4} 
 		else {
 			return 2
 		}
