@@ -17,7 +17,7 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	// Change column number depending on platform
 	const col = () => {
 		if 
-			(Platform.OS === 'web') {return 4} 
+			(Platform.OS === 'web') {return 5} 
 		else {
 			return 2
 		}
@@ -40,7 +40,7 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 				numColumns={col()}
 				gap={SIZES.medium}
 				showsVerticalScrollIndicator={false}
-				columnWrapperStyle={{ justifyContent: 'center'}}
+				columnWrapperStyle={{ justifyContent: 'center' }}
 			/>
 
 			{error ? (

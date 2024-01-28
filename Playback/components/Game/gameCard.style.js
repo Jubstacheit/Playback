@@ -5,31 +5,41 @@ import { COLORS, FONTS, SIZES, SHADOWS } from "../../constants";
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		flexDirection: 'column',
 		margin: SIZES.xSmall,
 		borderRadius: SIZES.small,
 		backgroundColor: COLORS.primary,
+		height: 'auto'
 	},
 	gameImage: {
 		width: 'auto',
-		height: 120,
+		borderTopRightRadius: SIZES.small,
+		borderTopLeftRadius: SIZES.small,
 		...Platform.select({
 			web: {
-				height: 270,
+				height: 180,
+			},
+			android: {
+				height: 160,
 			}
 		}),
 		resizeMode: 'cover',
 	},
+	titleContainer: {
+		flexDirection: 'column',
+		marginVertical: SIZES.medium / 2,
+		marginHorizontal: SIZES.medium
+	},
 	gameTitle: {
 		color: COLORS.lightWhite,
 		fontFamily: FONTS.medium,
-		fontSize: SIZES.small,
+		fontSize: SIZES.medium,
+		fontWeight: 'bold',
 		...Platform.select({
 			web: {
-				fontSize: SIZES.medium,
+				fontSize: SIZES.large,
 			}
-		}),
-		marginVertical: SIZES.small / 2,
-		marginHorizontal: SIZES.small,
+		})
 	}
 	/*container: {
     flex: 1,

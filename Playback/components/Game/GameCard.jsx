@@ -11,7 +11,7 @@ const GameCard = ({ item }) => (
 				source={{uri: item.background_image}}
 				style={styles.gameImage}
 			/>
-			<View>
+			<View style={styles.titleContainer}>
 				<Text style={styles.gameTitle}>{item.name}</Text>
 			</View>
 		</TouchableOpacity>
