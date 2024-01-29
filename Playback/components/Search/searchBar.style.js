@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		flexDirection: 'row',
-		marginVertical: SIZES.xxLarge,
+		marginVertical: SIZES.xSmall / 2,
 		marginHorizontal: SIZES.small,
 		height: 50,
 		...Platform.select({

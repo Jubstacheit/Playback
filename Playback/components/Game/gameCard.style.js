@@ -33,20 +33,14 @@ const styles = StyleSheet.create({
 		color: COLORS.lightWhite,
 	},
 	platformContainer: {
-		...Platform.select({
-			web: {
-				flexDirection: 'row',
-			},
-			android: {
-				flexDirection: 'column',
-			}
-		}),
+		flexDirection: 'row',
 		flexWrap: 'wrap',
 	},
-	platformText: {
+	platformIcon: {
 		color: COLORS.white,
 		fontFamily: FONTS.regular,
-		fontSize: SIZES.xSmall
+		fontSize: SIZES.xSmall,
+		margin: SIZES.xSmall / 2,
 	},
 	gameTitle: {
 		color: COLORS.lightWhite,

@@ -17,7 +17,7 @@ const GameCard = ({ item }) => (
 					{item.platforms.map((platform, index) => (
 
 						<Text 
-							style={styles.platformText}
+							style={styles.platformIcon}
 							key={platform.platform.id}
 						>
 							
