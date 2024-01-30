@@ -1,10 +1,25 @@
 import { View, Image, Text, Platform } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import styles from './gameCard.style';
+import { COLORS } from '../../constants';
+
+const platformIconMapping = {
+	'playstation5' : 'sony-playstation',
+	'xbox-series-x' : 'microsoft-xbox',
+	'pc' : 'laptop',
+	'nintendo-switch' : 'nintendo-switch',
+	'ios' : 'apple-ios',
+	'android' : 'android'
+}
 
 
-const GameCard = ({ item }) => (
+const GameCard = ({ item }) => {
+
+	// Giving a result only if the game is available on a platform
+	return item.platforms ? (
+
 	<View style={styles.container}>
 		<TouchableOpacity>
 			<Image
@@ -12,23 +27,21 @@ const GameCard = ({ item }) => (
 				style={styles.gameImage}
 			/>
 			<View style={styles.textContainer}>
-				<Text style={styles.gameTitle}>{item.name}</Text>
+				<Text style={styles.gameTitle} numberOfLines={1} ellipsizeMode={'tail'}>{item.name}</Text>
 				<View style={styles.platformContainer}>
-					{item.platforms.map((platform, index) => (
+					{item.platforms && item.platforms.map((platform, index) => {
+						const platformName = platform.platform.slug
+						const icon = platformIconMapping[platformName] || null
 
-						<Text 
-							style={styles.platformIcon}
-							key={platform.platform.id}
-						>
-							
-							{platform.platform.name}
-						</Text>
-					))}
+						return icon ? (
+							<MaterialCommunityIcons key={index} style={styles.platformIcon} name={icon} size={18} color={COLORS.white} />
+						) : null
+					})}
 				</View>
 			</View>
 		</TouchableOpacity>
-		
 	</View>
-);
+	) : null
+}
 	
 export default GameCard;

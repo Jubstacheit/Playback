@@ -27,25 +27,22 @@ const styles = StyleSheet.create({
 	},
 	textContainer: {
 		flexDirection: 'column',
-		marginVertical: SIZES.medium / 2,
+		paddingVertical: SIZES.medium / 2,
 		marginHorizontal: SIZES.medium,
 		height: 'auto',
 		color: COLORS.lightWhite,
 	},
 	platformContainer: {
 		flexDirection: 'row',
-		flexWrap: 'wrap',
+		flexGrow: 1,
 	},
 	platformIcon: {
-		color: COLORS.white,
-		fontFamily: FONTS.regular,
-		fontSize: SIZES.xSmall,
-		margin: SIZES.xSmall / 2,
+		marginRight: SIZES.xSmall / 2,
+		marginVertical: SIZES.xSmall / 2,
 	},
 	gameTitle: {
 		color: COLORS.lightWhite,
 		fontFamily: FONTS.medium,
-		fontSize: SIZES.medium,
 		fontWeight: 'bold',
 		...Platform.select({
 			web: {

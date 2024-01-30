@@ -13,7 +13,6 @@ import FetchError from '../Error/FetchError'
 
 const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	const router = useRouter();
-	// Taken from RAWGService
 	// Change column number depending on platform
 	const col = () => {
 		if 
@@ -38,9 +37,7 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 				onEndReachedThreshold={1}
 				ListFooterComponent={isLoading ? <ActivityIndicator size="large" color={COLORS.secondary} /> : null}
 				numColumns={col()}
-				gap={SIZES.medium}
 				showsVerticalScrollIndicator={false}
-				columnWrapperStyle={{ justifyContent: 'center' }}
 			/>
 
 			{error ? (
