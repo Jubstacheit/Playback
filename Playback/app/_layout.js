@@ -2,7 +2,7 @@ import { Stack, Tabs } from 'expo-router'
 import { useCallback } from 'react'
 import { useFonts } from "expo-font"
 import * as Splashscreen from 'expo-splash-screen'
-import { COLORS, SIZES } from '../constants'
+import { COLORS, SHADOWS, SIZES } from '../constants'
 import { Image } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
@@ -40,8 +40,9 @@ const Layout = () => {
 				},
 				height: 70,
 				padding: 0,
+				paddingTop: 12,
 				borderTopWidth: 0,
-				backgroundColor: COLORS.background,
+				backgroundColor: COLORS.gray3,
 			},
 			tabBarItemStyle: {
 				borderBottomWidth: 2,

@@ -13,6 +13,6 @@ module.exports = function (api) {
       "safe": false,
       "allowUndefined": true,
       "verbose": false
-    }]]
+    }], ['@babel/plugin-proposal-export-namespace-from'], ['react-native-reanimated/plugin']]
   };
 };
