@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { useFonts } from "expo-font"
 import * as Splashscreen from 'expo-splash-screen'
 import { COLORS, SHADOWS, SIZES } from '../constants'
-import { Image } from 'react-native'
+import { Button, Image, Platform } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
 Splashscreen.preventAutoHideAsync()
@@ -25,26 +25,35 @@ const Layout = () => {
 		return null
 	}
 
+	const handlePress = () => {
+		console.log('pressed')
+	}
+
 
 	return (
 		<Tabs 
 		onLayout={onLayoutRootView}
 		screenOptions={{
 			tabBarHideOnKeyboard: true,
-			tabBarActiveTintColor: COLORS.tertiary,
-			tabBarInactiveTintColor: COLORS.secondary,
 			tabBarStyle: {
 				elevation: 0,
 				shadowOffset: {
 					width: 0, height: 0 // for iOS
 				},
-				height: 70,
 				padding: 0,
-				paddingTop: 12,
+				height: 60,
 				borderTopWidth: 0,
-				backgroundColor: COLORS.gray3,
+				backgroundColor: COLORS.primary,
 			},
 			tabBarItemStyle: {
+				...Platform.select({
+					android: {
+						paddingTop: 12,
+					},
+					web: {
+						paddingBottom: 5
+					}
+				}),
 				borderBottomWidth: 2,
 				borderColor: COLORS.background,
 			}
@@ -56,14 +65,14 @@ const Layout = () => {
 					// Ensure the tab always links to the same href.
 					href: '/',
 					headerShown: false,
+					tabBarActiveBackgroundColor: COLORS.gray,
 					tabBarIcon: () => (
 						<Image
-							source={require('../assets/icon.png')}
-							style={{ width: SIZES.xxLarge, height: SIZES.xxLarge }}
+							source={require('../assets/icons/icon.png')}
+							style={{ width: 32, height: SIZES.xxLarge }}
 						/>
 					),
-					title: '',
-					// Change tab icon to an asset
+					title: ''
 				}}
 			/>
 			<Tabs.Screen
@@ -74,11 +83,12 @@ const Layout = () => {
 					// Change tab name 
 					title: '',
 					headerShown: false,
-					tabBarIcon: () => (
+					tabBarActiveBackgroundColor: COLORS.gray,
+					tabBarIcon: ({ focused }) => (
 						<AntDesign 
 							name="search1" 
 							size={24} 
-							color={COLORS.lightWhite} 
+							color={focused ? COLORS.background : COLORS.white} 
 						/>
 					),
 				}}
@@ -89,13 +99,14 @@ const Layout = () => {
 					// Ensure the tab always links to the same href.
 					href: '/profile',
 					headerShown: false,
+					tabBarActiveBackgroundColor: COLORS.gray,
 					// Change tab name 
 					title: '',
-					tabBarIcon: () => (
+					tabBarIcon: ({ focused }) => (
 						<AntDesign 
 							name="profile" 
 							size={24} 
-							color={COLORS.lightWhite}
+							color={focused ? COLORS.background : COLORS.white}
 						/>
 					),
 				}}
