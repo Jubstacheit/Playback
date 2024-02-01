@@ -25,10 +25,12 @@ const Layout = () => {
 		return null
 	}
 
-	const handlePress = () => {
-		console.log('pressed')
+	const tabHeight = () => {
+		if (Platform.OS === 'web') {
+			return 48
+		}
+		return 60
 	}
-
 
 	return (
 		<Tabs 
@@ -41,10 +43,10 @@ const Layout = () => {
 					width: 0, height: 0 // for iOS
 				},
 				padding: 0,
-				height: 60,
+				height: tabHeight(),
 				borderTopWidth: 0,
 				borderBottomWidth: 0,
-				backgroundColor: COLORS.tertiary,
+				backgroundColor: COLORS.gray2
 			},
 			tabBarItemStyle: {
 				...Platform.select({
@@ -54,8 +56,7 @@ const Layout = () => {
 					web: {
 						paddingBottom: 5
 					}
-				}),
-				borderColor: COLORS.background,
+				})
 			}
 		}}
 		>
@@ -65,7 +66,7 @@ const Layout = () => {
 					// Ensure the tab always links to the same href.
 					href: '/',
 					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.gray,
+					tabBarActiveBackgroundColor: COLORS.primary,
 					tabBarIcon: () => (
 						<Image
 							source={require('../assets/icons/icon.png')}
@@ -83,12 +84,12 @@ const Layout = () => {
 					// Change tab name 
 					title: '',
 					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.gray,
+					tabBarActiveBackgroundColor: COLORS.primary,
 					tabBarIcon: ({ focused }) => (
 						<AntDesign 
 							name="search1" 
 							size={24} 
-							color={focused ? COLORS.background : COLORS.white} 
+							color={focused ? COLORS.background : COLORS.black} 
 						/>
 					),
 				}}
@@ -99,14 +100,14 @@ const Layout = () => {
 					// Ensure the tab always links to the same href.
 					href: '/profile',
 					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.gray,
+					tabBarActiveBackgroundColor: COLORS.primary,
 					// Change tab name 
 					title: '',
 					tabBarIcon: ({ focused }) => (
 						<AntDesign 
 							name="profile" 
 							size={24} 
-							color={focused ? COLORS.background : COLORS.white}
+							color={focused ? COLORS.background : COLORS.black}
 						/>
 					),
 				}}

@@ -4,13 +4,13 @@ import { COLORS, FONTS, SIZES } from '../../constants'
 
 const styles = StyleSheet.create({
 	title: {
-		color: COLORS.primary,
+		color: COLORS.black,
 		fontSize: SIZES.xxLarge,
 		fontFamily: FONTS.bold,
 		...Platform.select({
 			web: {
 				textAlign: 'center',
-				fontSize: 60,
+				fontSize: 50,
 				marginTop: SIZES.small,
 			},
 			android: {

@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
 		...Platform.select({
 			web: {
 				fontSize: 30,
-				margin: SIZES.small,
 				textAlign: 'center'
 			},
 			android: {
@@ -32,6 +31,7 @@ const styles = StyleSheet.create({
 		...Platform.select({
 			web: {
 				fontSize: 30,
+				marginHorizontal: SIZES.large,
 			}
 		})
 	}

@@ -8,10 +8,10 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		marginVertical: SIZES.small,
 		marginHorizontal: SIZES.small,
-		height: 50,
+		height: 45,
 		...Platform.select({
 			web: {
-				width: '50%',
+				width: '30%',
 				alignSelf: 'center',
 			}
 		})
