@@ -4,7 +4,7 @@ import { COLORS, FONTS, SIZES } from '../../constants'
 
 const styles = StyleSheet.create({
 	title: {
-		color: '#fff',
+		color: COLORS.primary,
 		fontSize: SIZES.xxLarge,
 		fontFamily: FONTS.bold,
 		...Platform.select({

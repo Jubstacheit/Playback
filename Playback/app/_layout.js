@@ -43,7 +43,8 @@ const Layout = () => {
 				padding: 0,
 				height: 60,
 				borderTopWidth: 0,
-				backgroundColor: COLORS.primary,
+				borderBottomWidth: 0,
+				backgroundColor: COLORS.tertiary,
 			},
 			tabBarItemStyle: {
 				...Platform.select({
@@ -54,7 +55,6 @@ const Layout = () => {
 						paddingBottom: 5
 					}
 				}),
-				borderBottomWidth: 2,
 				borderColor: COLORS.background,
 			}
 		}}

@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
-		margin: SIZES.xSmall,
+		marginHorizontal: SIZES.xSmall,
 		borderRadius: SIZES.small,
-		backgroundColor: COLORS.primary,
+		backgroundColor: COLORS.black,
 		height: 'auto'
 	},
 	gameImage: {
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
 		paddingVertical: SIZES.medium / 2,
 		marginHorizontal: SIZES.medium,
 		height: 'auto',
-		color: COLORS.lightWhite,
 	},
 	platformContainer: {
 		flexDirection: 'row',

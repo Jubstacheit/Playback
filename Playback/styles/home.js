@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.background,
 	},	
 	subtitle: {
-		color: COLORS.lightWhite,
+		color: COLORS.black,
 		fontFamily: FONTS.medium,
 		fontSize: SIZES.medium,
 		...Platform.select({
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 		})
 	},
 	recentGames: {
-		color: COLORS.lightWhite,
+		color: COLORS.black,
 		fontFamily: FONTS.medium,
 		fontSize: SIZES.medium,
 		textAlign: 'left',

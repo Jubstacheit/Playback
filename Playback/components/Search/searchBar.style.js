@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
 	searchWrapper: {
 		flex: 1,
 		backgroundColor: COLORS.lightWhite,
+		borderWidth: 1,
+		borderColor: COLORS.black,
 		marginRight: SIZES.small,
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -36,11 +38,14 @@ const styles = StyleSheet.create({
 		height: "100%",
 		backgroundColor: COLORS.lightWhite,
 		justifyContent: 'center',
+		borderWidth: 1,
+		borderColor: COLORS.black,
 		borderRadius: SIZES.medium,
 		alignItems: 'center',
 	},
 	searchBtnImg: {
 		width: "50%",
+		color: COLORS.primary,
 		height: "50%"
 	}
 });

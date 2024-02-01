@@ -4,13 +4,13 @@
     "owner": "Jubstacheit",
     "privacy": "unlisted",
     "version": "0.1.0",
-    "backgroundColor": "#000000",
+    "backgroundColor": "#ffffff",
     "userInterfaceStyle": "automatic",
-    "primaryColor": "#1b0e29ff",
+    "primaryColor": "#B8336A",
     "icon": "./assets/icon.png",
     "notification": {
       "icon": "./assets/push-icon.png",
-      "color": "#1b0e29ff",
+      "color": "#B8336A",
       "androidMode": "collapse",
       "androidCollapsedTitle": "#{unread_notifications} new notifications"
     },
@@ -49,7 +49,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#000000"
+      "backgroundColor": "#ffffff"
     },
     "android": {
       "adaptiveIcon": {
