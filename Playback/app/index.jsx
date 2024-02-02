@@ -1,4 +1,5 @@
 import { useRouter, Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { Tabs } from "expo-router/tabs";
 import { useState } from "react";
 import { ScrollView, Text, View } from "react-native";
@@ -21,6 +22,8 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.container} >
+      <StatusBar style="dark"/>
+      {/* Title */}
       <Title />
       <Text style={styles.subtitle}>
         Explore, list, backlog

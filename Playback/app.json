@@ -15,7 +15,8 @@
       "androidCollapsedTitle": "#{unread_notifications} new notifications"
     },
     "androidStatusBar": {
-      "barStyle": "dark-content"
+      "barStyle": "dark-content",
+      "backgroundColor": "#E5FCFF"
     },
     "platforms": [
       "android",
@@ -30,15 +31,15 @@
       "name": "Playback",
       "shortName": "Playback",
       "lang": "en-US",
-      "themeColor": "#FFFFFF",
+      "themeColor": "#000000",
       "description": "A React Native video-game backlog app.",
       "display": "browser",
       "orientation": "landscape",
-      "backgroundColor": "#FFFFFF",
+      "backgroundColor": "#E5FCFF",
       "splash": {
         "image": "./assets/splash.png",
         "resizeMode": "contain",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#E5FCFF"
       }
     },
     "plugins": [
@@ -49,12 +50,12 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#E5FCFF"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#E5FCFF"
       }
     }
   }
