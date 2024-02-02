@@ -7,9 +7,10 @@ export const styles = StyleSheet.create({
 		position: 'absolute',
 		bottom: 0,
 		flexDirection: 'row',
-		backgroundColor: COLORS.secondary,
+		backgroundColor: COLORS.gray,
 		padding: SIZES.xSmall,
 		borderRadius: SIZES.xSmall,
+		marginBottom: SIZES.xSmall,
 		width: '100%',
 		alignSelf: 'center',
 		alignItems: 'center',
@@ -25,7 +26,7 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: SIZES.xSmall / 2,
 	},
 	fetchErrorText: {
-		color: COLORS.warning,
+		color: COLORS.black,
 		fontFamily: FONTS.medium,
 	},
 	retryFetchButton: {
@@ -33,7 +34,7 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: SIZES.xSmall / 2,
 	},
 	fetchErrorRetryText: {
-		color: COLORS.warning,
+		color: COLORS.black,
 		fontFamily: FONTS.bold,
 }});
 

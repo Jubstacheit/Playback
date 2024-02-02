@@ -66,7 +66,7 @@ const Layout = () => {
 					// Ensure the tab always links to the same href.
 					href: '/',
 					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.primary,
+					tabBarActiveBackgroundColor: COLORS.gray,
 					tabBarIcon: () => (
 						<Image
 							source={require('../assets/icons/icon.png')}
@@ -84,7 +84,7 @@ const Layout = () => {
 					// Change tab name 
 					title: '',
 					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.primary,
+					tabBarActiveBackgroundColor: COLORS.gray,
 					tabBarIcon: ({ focused }) => (
 						<AntDesign 
 							name="search1" 
@@ -100,7 +100,7 @@ const Layout = () => {
 					// Ensure the tab always links to the same href.
 					href: '/profile',
 					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.primary,
+					tabBarActiveBackgroundColor: COLORS.gray,
 					// Change tab name 
 					title: '',
 					tabBarIcon: ({ focused }) => (
