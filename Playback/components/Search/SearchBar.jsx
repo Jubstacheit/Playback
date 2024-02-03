@@ -11,18 +11,17 @@ const SearchBar = () => {
 			<View style={styles.searchWrapper}>
 				<TextInput 
 					style={styles.searchBar} 
-					value=''
-					onChange={() => {}}
+					onSubmitEditing={() => {console.log('searching')}}
 					placeholder='Search for a game'
 				/>
 			</View>
 			<TouchableOpacity 
 				style={styles.searchBtn}
-				onPress={() => {}}
+				onPress={() => {console.log('searching')}}
 			>
 				<AntDesign 
 					name="search1" 
-					size={24}
+					size={22}
 					color={COLORS.background}
 					style={styles.searchBtnImg}
 				/>
