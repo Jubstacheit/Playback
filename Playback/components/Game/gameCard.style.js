@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: SIZES.xSmall,
 		borderRadius: SIZES.small,
 		backgroundColor: COLORS.black,
-		height: 'auto'
+		height: 'auto',
 	},
 	gameImage: {
 		width: 'auto',
