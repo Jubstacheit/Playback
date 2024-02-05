@@ -36,3 +36,6 @@ yarn-error.*
 backend/.env
 Playback/.env
 Playback2/.env
+
+# Local Netlify folder
+.netlify
