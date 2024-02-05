@@ -1,6 +1,9 @@
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet, Platform, Dimensions } from 'react-native'
 
 import { COLORS, FONTS, SIZES } from '../../constants'
+
+const width = Dimensions.get('window').width;
+const fontSize = width < 800 ? 34 : 50;
 
 const styles = StyleSheet.create({
 	title: {
@@ -10,7 +13,7 @@ const styles = StyleSheet.create({
 		...Platform.select({
 			web: {
 				textAlign: 'center',
-				fontSize: 50,
+				fontSize: fontSize,
 				marginTop: SIZES.small,
 			},
 			android: {

@@ -1,6 +1,10 @@
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet, Platform, Dimensions } from 'react-native'
 
 import { COLORS, FONTS, SIZES } from '../constants'
+
+const width = Dimensions.get('window').width;
+const fontSize = width < 800 ? SIZES.xLarge : 30;
+const fontSizeRecentGames = width < 800 ? SIZES.large : 30;
 
 const styles = StyleSheet.create({
 	container: {
@@ -14,7 +18,7 @@ const styles = StyleSheet.create({
 		fontSize: SIZES.medium,
 		...Platform.select({
 			web: {
-				fontSize: 30,
+				fontSize: fontSize,
 				textAlign: 'center'
 			},
 			android: {
@@ -30,7 +34,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: SIZES.small,
 		...Platform.select({
 			web: {
-				fontSize: 30,
+				fontSize: fontSizeRecentGames,
 				marginHorizontal: SIZES.large,
 			}
 		})
