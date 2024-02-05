@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, Platform, TouchableOpacity } from 'react-native'
+import { View, Text, ActivityIndicator, Platform, Dimensions } from 'react-native'
 import React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import { useRouter } from 'expo-router'
@@ -13,10 +13,20 @@ import FetchError from '../Error/FetchError'
 
 const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	const router = useRouter();
-	// Change column number depending on platform
+
+	// Change column number depending on platform, or screen width on web
 	const col = () => {
 		if 
-			(Platform.OS === 'web') {return 5} 
+			(Platform.OS === 'web') {
+				const width = Dimensions.get('window').width
+				if (width > 1000) {
+					return 5
+				} else if (width > 600) {
+					return 3
+				} else {
+					return 2
+				}
+			} 
 		else {
 			return 2
 		}

@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './gameCard.style';
 import { COLORS } from '../../constants';
 
+// Mapping of platform names to icons
 const platformIconMapping = {
 	'playstation5' : 'sony-playstation',
 	'xbox-series-x' : 'microsoft-xbox',

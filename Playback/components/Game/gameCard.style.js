@@ -1,6 +1,9 @@
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform, Dimensions } from "react-native";
 
 import { COLORS, FONTS, SIZES } from "../../constants";
+
+const width = Dimensions.get('window').width;
+const fontSize = width < 800 ? SIZES.medium : SIZES.large;
 
 const styles = StyleSheet.create({
 	container: {
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		...Platform.select({
 			web: {
-				fontSize: SIZES.large,
+				fontSize: fontSize,
 			}
 		})
 	}
