@@ -1,7 +1,7 @@
 {
 	"build": {
 		"dev": {
-			"developmentClient": false,
+			"developmentClient": true,
 			"distribution": "internal",
 			"env": {
 				"RAWG_KEY": "9a24be3d1b594edca31569ae4da7b98b",
