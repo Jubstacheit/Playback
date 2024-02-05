@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from "react-native";
-import { COLORS, FONTS, SIZES } from "../../constants";
+import { COLORS, FONTS, SIZES, horizontalScale, moderateScale, verticalScale } from "../../constants";
 
 const styles = StyleSheet.create({
 	searchContainer: {
@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
 		height: 45,
 		...Platform.select({
 			web: {
-				width: '30%',
+				maxWidth: 500,
+				width: horizontalScale(340),
 				alignSelf: 'center',
 			}
 		})
