@@ -1,3 +1,14 @@
+import { Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
+
+const guidelineBaseWidth = 375;
+const guidelineBaseHeight = 812;
+
+const horizontalScale = (size) => (width / guidelineBaseWidth) * size;
+const verticalScale = (size) => (height / guidelineBaseHeight) * size;
+const moderateScale = (size, factor = 0.5) => size + (horizontalScale(size) - size) * factor;
+
 const COLORS = {
 	primary: '#B8336A',
 	secondary: '#C490D1',
@@ -51,4 +62,4 @@ const SHADOWS = {
 	},
 }
 
-export { COLORS, FONTS, SIZES, SHADOWS };
+export { COLORS, FONTS, SIZES, SHADOWS, horizontalScale, verticalScale, moderateScale };
