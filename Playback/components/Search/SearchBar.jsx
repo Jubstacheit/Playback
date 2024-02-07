@@ -1,11 +1,14 @@
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'
 
 import styles from './searchBar.style.js'
 import { COLORS } from '../../constants'
 
 const SearchBar = () => {
+	const [searchTerm, setSearchTerm] = useState('')
+
+
 	return (
 		<View style={styles.searchContainer}>
 			<View style={styles.searchWrapper}>

@@ -31,7 +31,7 @@ const SearchScreen = ({route, navigation}) => {
     return (
         <View style={styles.container}>
 			<View style={styles.topContainer}>
-            	<SearchBar onSearch={handleSearch} />
+                <SearchBar onSearch={handleSearch} />
 			</View>
             <FlatList
                 style={{width: '100%'}}
@@ -47,22 +47,4 @@ const SearchScreen = ({route, navigation}) => {
         </View>
     );
 };
-
-		const styles = StyleSheet.create({
-			container: {
-				flex: 1,
-                paddingTop: rem(2),
-				justifyContent: 'center',
-				alignItems: 'center',
-				width: '100%',
-				backgroundColor: colors.background,
-			},
-			topContainer: {
-				width: '100%',
-			justifyContent: 'center',
-			alignItems: 'center',
-			marginVertical: rem(1),
-			},
-		});
-		
 		export default SearchScreen;
