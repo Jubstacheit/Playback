@@ -62,12 +62,23 @@ const getGamesHome = () => {
 };
 
 
-const search = async (searchTerm) => {
-	const res = await axios.get(`${RAWG_API_URL}games?key=${RAWG_KEY}&search=${searchTerm}&page_size=30`);
-	return res.data;
+const searchGames = async (searchTerm) => {
+	const [isLoading, setIsLoading] = useState(false);
+	const [games, setGames] = useState([]);
+	const [page, setPage] = useState(1);
+	const [error, setError] = useState(null);
+
+	// Temporary
+	const refetch = null;
+	const retryFetch = null;
+
+	const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=30`);
+	
+
+	return { games, isLoading, page, error, refetch, retryFetch };
 };
 
 export {
 	getGamesHome,
-	search,
+	searchGames,
 };

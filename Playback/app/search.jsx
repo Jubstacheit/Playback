@@ -8,16 +8,12 @@ import styles from '../styles/search';
 import Title from '../components/Title/Title';
 import SearchBar from '../components/Search/SearchBar';
 import GameList from '../components/Game/GameList';
+import { searchGames } from '../hooks/RAWGService';
 
 const Search = () => {
 	const router = useRouter();
 
-	//Temporary
-	const games = null;
-	const isLoading = null;
-	const error = null;
-	const refetch = null;
-	const retryFetch = null;
+	const { games, isLoading, error, refetch, retryFetch } = searchGames();
 
 	return (
 		<SafeAreaView style={styles.container}>
