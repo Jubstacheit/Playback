@@ -8,7 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { FlatList } from "react-native-gesture-handler";
 
 import { COLORS, icons, images, SIZES } from "../constants";
-import { getGamesHome } from "../hooks/RAWGService";
+import { getGamesHome, searchGames } from "../hooks/RAWGService";
 
 import styles from "../styles/home";
 // Import components
@@ -19,6 +19,7 @@ import GameList from "../components/Game/GameList.jsx";
 const Home = () => {
   const router = useRouter();
   const { games, isLoading, error, refetch, retryFetch } = getGamesHome();
+  const { searchTerm, setSearchTerm, handleSearchRedirect } = searchGames();
 
   return (
     <SafeAreaView style={styles.container} >
@@ -30,7 +31,11 @@ const Home = () => {
       </Text>
 
       {/* Search bar */}
-      <SearchBar />
+      <SearchBar 
+        handleSearch={handleSearchRedirect}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
 
       <Text style={styles.recentGames}>Recent games</Text>
       

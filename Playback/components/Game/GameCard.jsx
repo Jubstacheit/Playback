@@ -19,7 +19,7 @@ const platformIconMapping = {
 const GameCard = ({ item }) => {
 
 	// Giving a result only if the game is available on a platform
-	return item.platforms ? (
+	return item.platforms && item.background_image ? (
 
 	<View style={styles.container}>
 		<TouchableOpacity>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { RAWG_KEY }	from '@env';
 import { useState, useEffect, ActivityIndicator } from 'react';
+import { useRouter } from 'expo-router';
 import { COLORS } from '../constants';
 
 const url = `https://api.rawg.io/api/`;
@@ -56,26 +57,79 @@ const getGamesHome = () => {
 			fetchData();
 		}, 1500);
 	}
-	
+
 
 	return { games, isLoading, error, refetch, retryFetch };
 };
 
 
-const searchGames = async (searchTerm) => {
+const searchGames = () => {
+	const router = useRouter();
+
 	const [isLoading, setIsLoading] = useState(false);
 	const [games, setGames] = useState([]);
 	const [page, setPage] = useState(1);
 	const [error, setError] = useState(null);
 
+	const [searchTerm, setSearchTerm] = useState("");
+
+	const fetchSearch = async (searchTerm) => {
+		setIsLoading(true);
+		setGames([]);
+		setPage(1);
+		setError(null);
+		searchTerm = searchTerm.toLowerCase();
+		console.log(searchTerm)
+
+		try {
+			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&page=${page}`);
+			setGames(previousGames => [...previousGames, ...res.data.results]);
+			setPage(previousPage => previousPage + 1);
+		}
+		catch (error) {
+			setError(error);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
 	// Temporary
-	const refetch = null;
-	const retryFetch = null;
+	const refetch = () => {
+		if (!isLoading && !error) {
+			fetchSearch();
+		}
+	}
 
-	const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=30`);
-	
+	const retryFetch = () => {
+		// Stop the refetch function from running
+		setGames([]);
+		setPage(1);
+		setError(null);
+		setIsLoading(true);
 
-	return { games, isLoading, page, error, refetch, retryFetch };
+		// Interval to allow the loading animation to run
+		setTimeout(() => {
+			fetchSearch();
+		}, 1500);
+	}
+
+	const handleSearchRedirect = () => {
+		// Redirect to search page
+		if (searchTerm) {
+			router.replace('/search');
+			setGames([]);
+			handleSearch();
+		}
+	}
+
+	const handleSearch = () => {
+		if (searchTerm) {
+			fetchSearch(searchTerm);
+			console.log(searchTerm);
+		}
+	}
+
+	return { games, isLoading, page, error, refetch, retryFetch, searchTerm, setSearchTerm, handleSearchRedirect, handleSearch };
 };
 
 export {
