@@ -22,14 +22,15 @@ const styles = StyleSheet.create({
 				textAlign: 'center'
 			},
 			android: {
-				marginLeft: SIZES.small
+				marginLeft: SIZES.small,
+				marginBottom: SIZES.xxLarge
 			}
 		})
 	},
 	recentGames: {
 		color: COLORS.black,
 		fontFamily: FONTS.medium,
-		fontSize: SIZES.medium,
+		fontSize: SIZES.large,
 		textAlign: 'left',
 		marginHorizontal: SIZES.small,
 		...Platform.select({
