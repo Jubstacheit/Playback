@@ -41,7 +41,7 @@ const SIZES = {
 
 const SHADOWS = {
 	small: {
-		shadowColor: "#000",
+		shadowColor: COLORS.black,
 		shadowOffset: {
 			width: 0,
 			height: 2,
@@ -51,7 +51,7 @@ const SHADOWS = {
 		elevation: 2,
 	},
 	medium: {
-		shadowColor: "#000",
+		shadowColor: COLORS.black,
 		shadowOffset: {
 			width: 0,
 			height: 2,
