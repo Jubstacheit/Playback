@@ -35,7 +35,7 @@ const GameCard = ({ item }) => {
 						const icon = platformIconMapping[platformName] || null
 
 						return icon ? (
-							<MaterialCommunityIcons key={index} style={styles.platformIcon} name={icon} size={18} color={COLORS.white} />
+							<MaterialCommunityIcons key={index} style={styles.platformIcon} name={icon} size={18} color={COLORS.black} />
 						) : null
 					})}
 				</View>

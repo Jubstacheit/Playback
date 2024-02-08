@@ -1,6 +1,6 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
 
-import { COLORS, FONTS, SIZES } from "../../constants";
+import { COLORS, FONTS, SIZES, SHADOWS } from "../../constants";
 
 const width = Dimensions.get('window').width;
 const fontSize = width < 800 ? SIZES.medium : SIZES.large;
@@ -11,8 +11,9 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		marginHorizontal: SIZES.xSmall,
 		borderRadius: SIZES.small,
-		backgroundColor: COLORS.black,
+		backgroundColor: COLORS.lightWhite,
 		height: 'auto',
+		...SHADOWS.medium,
 	},
 	gameImage: {
 		width: 'auto',
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
 		marginVertical: SIZES.xSmall / 2,
 	},
 	gameTitle: {
-		color: COLORS.lightWhite,
+		color: COLORS.black,
 		fontFamily: FONTS.medium,
 		fontWeight: 'bold',
 		...Platform.select({
