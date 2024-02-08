@@ -13,7 +13,13 @@ import { searchGames } from '../hooks/RAWGService';
 const Search = () => {
 	const router = useRouter();
 	
-	const { games, isLoading, error, refetch, retryFetch, handleSearch, searchTerm, setSearchTerm } = searchGames();
+	const { fetchSearch, games, isLoading, error, refetch, retryFetch, searchTerm, setSearchTerm } = searchGames();
+
+	const handleSearch = () => {
+		if (searchTerm) {
+			fetchSearch(searchTerm);
+		}
+	}
 
 	return (
 		<SafeAreaView style={styles.container}>

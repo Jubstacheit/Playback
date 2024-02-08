@@ -79,7 +79,6 @@ const searchGames = () => {
 		setPage(1);
 		setError(null);
 		searchTerm = searchTerm.toLowerCase();
-		console.log(searchTerm)
 
 		try {
 			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&page=${page}`);
@@ -93,7 +92,6 @@ const searchGames = () => {
 		}
 	};
 
-	// Temporary
 	const refetch = () => {
 		if (!isLoading && !error) {
 			fetchSearch();
@@ -113,23 +111,7 @@ const searchGames = () => {
 		}, 1500);
 	}
 
-	const handleSearchRedirect = () => {
-		// Redirect to search page
-		if (searchTerm) {
-			router.replace('/search');
-			setGames([]);
-			handleSearch();
-		}
-	}
-
-	const handleSearch = () => {
-		if (searchTerm) {
-			fetchSearch(searchTerm);
-			console.log(searchTerm);
-		}
-	}
-
-	return { games, isLoading, page, error, refetch, retryFetch, searchTerm, setSearchTerm, handleSearchRedirect, handleSearch };
+	return { fetchSearch, games, isLoading, page, error, refetch, retryFetch, searchTerm, setSearchTerm };
 };
 
 export {

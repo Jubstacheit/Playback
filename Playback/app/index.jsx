@@ -19,7 +19,6 @@ import GameList from "../components/Game/GameList.jsx";
 const Home = () => {
   const router = useRouter();
   const { games, isLoading, error, refetch, retryFetch } = getGamesHome();
-  const { searchTerm, setSearchTerm, handleSearchRedirect } = searchGames();
 
   return (
     <SafeAreaView style={styles.container} >
@@ -29,13 +28,6 @@ const Home = () => {
       <Text style={styles.subtitle}>
         Explore, list, backlog
       </Text>
-
-      {/* Search bar */}
-      <SearchBar 
-        handleSearch={handleSearchRedirect}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
 
       <Text style={styles.recentGames}>Recent games</Text>
       
