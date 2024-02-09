@@ -13,14 +13,7 @@ import { searchGames } from '../hooks/RAWGService';
 const Search = () => {
 	const router = useRouter();
 	
-	const { fetchSearch, games, isLoading, error, refetch, retryFetch, searchTerm, setSearchTerm } = searchGames();
-
-	const handleSearch = () => {
-		if (searchTerm) {
-			const lowercaseSearch = searchTerm.toLowerCase();
-			fetchSearch(lowercaseSearch);
-		}
-	}
+	const { fetchSearch, games, page, setPage, setError, setGames, isLoading, error, refetch, retryFetch, searchTerm, setSearchTerm, handleSearch } = searchGames();
 
 	return (
 		<SafeAreaView style={styles.container}>

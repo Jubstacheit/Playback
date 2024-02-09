@@ -28,6 +28,7 @@ const getGamesHome = () => {
 			const res = await axios.get(`${url}games?key=${key}&ordering=-metacritic&page_size=40&page=${page}&dates=${lastYearsStr},${todayStr}`);
 			setGames(previousGames => [...previousGames, ...res.data.results]);
 			setPage(previousPage => previousPage + 1);
+			console.log(page)
 		} catch (error) {
 			setError(error);
 		} finally {
@@ -73,15 +74,12 @@ const searchGames = () => {
 
 	const [searchTerm, setSearchTerm] = useState("");
 
-	const fetchSearch = async (searchTerm) => {
+	const fetchSearch = async (searchTerm, pageSearch) => {
 		setIsLoading(true);
-		setGames([]);
-		setPage(1);
-		setError(null);
 		console.log(searchTerm);
 
 		try {
-			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&page=${page}`);
+			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&page=${pageSearch ? pageSearch : page}`);
 			setGames(previousGames => [...previousGames, ...res.data.results]);
 			setPage(previousPage => previousPage + 1);
 		}
@@ -93,25 +91,39 @@ const searchGames = () => {
 	};
 
 	const refetch = () => {
-		if (!isLoading && !error) {
-			fetchSearch();
+		if (!isLoading && !error && searchTerm) {
+			const lowercaseSearch = searchTerm.toLowerCase();
+			fetchSearch(lowercaseSearch);
 		}
 	}
 
 	const retryFetch = () => {
+		if (searchTerm) {
 		// Stop the refetch function from running
 		setGames([]);
 		setPage(1);
 		setError(null);
 		setIsLoading(true);
 
+		const lowercaseSearch = searchTerm.toLowerCase();
+
 		// Interval to allow the loading animation to run
 		setTimeout(() => {
-			fetchSearch();
+			fetchSearch(lowercaseSearch);
 		}, 1500);
+		}
 	}
 
-	return { fetchSearch, games, isLoading, page, error, refetch, retryFetch, searchTerm, setSearchTerm };
+	const handleSearch = () => {
+		setGames([]);
+		setError(null);
+		setPage(0);
+		const lowercaseSearch = searchTerm.toLowerCase();
+		console.log(`Page number: ${page}`)
+		fetchSearch(lowercaseSearch, 1);
+	}
+
+	return { fetchSearch, setGames, setPage, games, setError, isLoading, page, error, refetch, retryFetch, searchTerm, setSearchTerm, handleSearch };
 };
 
 export {
