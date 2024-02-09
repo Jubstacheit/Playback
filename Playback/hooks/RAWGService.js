@@ -78,7 +78,7 @@ const searchGames = () => {
 		setGames([]);
 		setPage(1);
 		setError(null);
-		searchTerm = searchTerm.toLowerCase();
+		console.log(searchTerm);
 
 		try {
 			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&page=${page}`);

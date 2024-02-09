@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
 	platformContainer: {
 		flexDirection: 'row',
 		flexGrow: 1,
+		alignSelf: 'flex-start',
 	},
 	platformIcon: {
 		marginRight: SIZES.xSmall / 2,

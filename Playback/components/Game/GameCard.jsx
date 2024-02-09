@@ -28,7 +28,7 @@ const GameCard = ({ item }) => {
 				style={styles.gameImage}
 			/>
 			<View style={styles.textContainer}>
-				<Text style={styles.gameTitle} numberOfLines={1} ellipsizeMode={'tail'}>{item.name}</Text>
+				<Text style={styles.gameTitle} numberOfLines={2} ellipsizeMode={'tail'}>{item.name}</Text>
 				<View style={styles.platformContainer}>
 					{item.platforms && item.platforms.map((platform, index) => {
 						const platformName = platform.platform.slug

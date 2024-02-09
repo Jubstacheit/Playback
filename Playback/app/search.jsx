@@ -17,7 +17,8 @@ const Search = () => {
 
 	const handleSearch = () => {
 		if (searchTerm) {
-			fetchSearch(searchTerm);
+			const lowercaseSearch = searchTerm.toLowerCase();
+			fetchSearch(lowercaseSearch);
 		}
 	}
 
