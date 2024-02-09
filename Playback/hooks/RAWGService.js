@@ -114,13 +114,24 @@ const searchGames = () => {
 		}
 	}
 
-	const handleSearch = () => {
+	// Timeout for search
+	let timeoutId;
+	function handleSearch() {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+		}
+
+		setIsLoading(true);
 		setGames([]);
 		setError(null);
-		setPage(0);
-		const lowercaseSearch = searchTerm.toLowerCase();
-		console.log(`Page number: ${page}`)
-		fetchSearch(lowercaseSearch, 1);
+		setPage(1);
+
+		timeoutId = setTimeout(() => {
+			
+			const lowercaseSearch = searchTerm.toLowerCase();
+			console.log(`Page number: ${page}`)
+			fetchSearch(lowercaseSearch, 1);
+		}, 2500);
 	}
 
 	return { fetchSearch, setGames, setPage, games, setError, isLoading, page, error, refetch, retryFetch, searchTerm, setSearchTerm, handleSearch };
