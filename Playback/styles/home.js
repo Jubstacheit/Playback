@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 			web: {
 				fontSize: fontSizeRecentGames,
 				marginHorizontal: SIZES.large,
-				marginVertical: SIZES.small
+				marginTop: SIZES.small
 			}
 		})
 	}

@@ -28,7 +28,6 @@ const getGamesHome = () => {
 			const res = await axios.get(`${url}games?key=${key}&ordering=-metacritic&page_size=40&page=${page}&dates=${lastYearsStr},${todayStr}`);
 			setGames(previousGames => [...previousGames, ...res.data.results]);
 			setPage(previousPage => previousPage + 1);
-			console.log(page)
 		} catch (error) {
 			setError(error);
 		} finally {
@@ -76,7 +75,6 @@ const searchGames = () => {
 
 	const fetchSearch = async (searchTerm, pageSearch) => {
 		setIsLoading(true);
-		console.log(searchTerm);
 
 		try {
 			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&page=${pageSearch ? pageSearch : page}`);
@@ -129,7 +127,6 @@ const searchGames = () => {
 		timeoutId = setTimeout(() => {
 			
 			const lowercaseSearch = searchTerm.toLowerCase();
-			console.log(`Page number: ${page}`)
 			fetchSearch(lowercaseSearch, 1);
 		}, 2500);
 	}
