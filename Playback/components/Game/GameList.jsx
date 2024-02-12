@@ -54,6 +54,7 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 				<FetchError 
 					message={error.message}
 					handlePress={retryFetch}
+					noResults={false}
 				/>
 			) : null}
 			

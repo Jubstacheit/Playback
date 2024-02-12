@@ -70,16 +70,26 @@ const searchGames = () => {
 	const [games, setGames] = useState([]);
 	const [page, setPage] = useState(1);
 	const [error, setError] = useState(null);
+	const [noRes, setNoRes] = useState(false)
 
 	const [searchTerm, setSearchTerm] = useState("");
 
 	const fetchSearch = async (searchTerm, pageSearch) => {
 		setIsLoading(true);
+		setNoRes(false)
 
 		try {
 			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&page=${pageSearch ? pageSearch : page}`);
-			setGames(previousGames => [...previousGames, ...res.data.results]);
-			setPage(previousPage => previousPage + 1);
+			// Handling the error if there's no corresponding results
+			if (res && !res.data.count) {
+				setNoRes(true)
+				setIsLoading(false)
+				setPage(1)
+				setSearchTerm("")
+			} else {
+				setGames(previousGames => [...previousGames, ...res.data.results]);
+				setPage(previousPage => previousPage + 1);
+			}
 		}
 		catch (error) {
 			setError(error);
@@ -110,28 +120,35 @@ const searchGames = () => {
 			fetchSearch(lowercaseSearch);
 		}, 1500);
 		}
+
+		setNoRes(false)
 	}
 
 	// Timeout for search
 	let timeoutId;
 	function handleSearch() {
-		if (timeoutId) {
-			clearTimeout(timeoutId);
-		}
 
-		setIsLoading(true);
-		setGames([]);
-		setError(null);
-		setPage(1);
+		if (searchTerm) {
 
-		timeoutId = setTimeout(() => {
+			if (timeoutId) {
+				clearTimeout(timeoutId);
+			}
+
+			setIsLoading(true);
+			setGames([]);
+			setError(null);
+			setPage(1);
+
+
+			timeoutId = setTimeout(() => {
 			
-			const lowercaseSearch = searchTerm.toLowerCase();
-			fetchSearch(lowercaseSearch, 1);
-		}, 2500);
+				const lowercaseSearch = searchTerm.toLowerCase();
+				fetchSearch(lowercaseSearch, 1);
+			}, 2500);
+		}
 	}
 
-	return { fetchSearch, setGames, setPage, games, setError, isLoading, page, error, refetch, retryFetch, searchTerm, setSearchTerm, handleSearch };
+	return { fetchSearch, setGames, setPage, games, setError, isLoading, page, error, refetch, retryFetch, searchTerm, setSearchTerm, handleSearch, noRes };
 };
 
 export {

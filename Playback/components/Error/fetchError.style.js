@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
 		padding: SIZES.xSmall,
 		borderRadius: SIZES.xSmall,
 		marginBottom: SIZES.xSmall,
+		marginVertical: SIZES.large,
 		width: '100%',
 		alignSelf: 'center',
 		alignItems: 'center',
@@ -23,7 +24,7 @@ export const styles = StyleSheet.create({
 	fetchErrorTextContainer: {
 		flex: 1,
 		padding: SIZES.xSmall / 4,
-		paddingHorizontal: SIZES.xSmall / 2,
+		paddingHorizontal: SIZES.xSmall / 2
 	},
 	fetchErrorText: {
 		color: COLORS.black,

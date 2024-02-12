@@ -1,10 +1,9 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 
-import { getGamesHome } from "../../hooks/RAWGService";
 
 import styles from './fetchError.style'
 
-const FetchError = ({ message, handlePress }) => {
+const FetchError = ({ message, handlePress, noResults }) => {
 
 	return (
 		<View style={styles.errorTextContainer}>
@@ -13,14 +12,19 @@ const FetchError = ({ message, handlePress }) => {
 					Something went wrong : {message}.
 				</Text>
 			</View>
-			<TouchableOpacity 
-				style={styles.retryFetchButton}
-				onPress={handlePress}
-			>
-				<Text style={styles.fetchErrorRetryText}>
-					Retry
-				</Text>
-			</TouchableOpacity>
+
+			{
+				!noResults ? 
+					<TouchableOpacity 
+						style={styles.retryFetchButton}
+						onPress={handlePress}
+					>
+					<Text style={styles.fetchErrorRetryText}>
+						Retry
+					</Text>
+				</TouchableOpacity> : null
+			}
+
 		</View>
 		)
 	}
