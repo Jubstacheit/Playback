@@ -11,7 +11,8 @@ const getPlatformIcons = () => {
 		'pc' : 'laptop',
 		'nintendo-switch' : 'nintendo-switch',
 		'ios' : 'apple-ios',
-		'android' : 'android'
+		'android' : 'android',
+		'linux' : 'linux'
 	}
 
 	const getlogo = ({ iconName, index }) => {
