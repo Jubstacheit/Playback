@@ -9,7 +9,7 @@ const key = RAWG_KEY;
 // Const for today's date
 let today = new Date();
 // Const for last year's date, day to day 
-let lastYears = new Date(today.getFullYear() - 2, today.getMonth(), today.getDate());
+let lastYears = new Date(today.getFullYear() - 3, today.getMonth(), today.getDate());
 // Format dates to RAWG API format
 let todayStr = today.toISOString().slice(0, 10);
 let lastYearsStr = lastYears.toISOString().slice(0, 10);

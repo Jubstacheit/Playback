@@ -1,19 +1,12 @@
-import { useRouter, Stack } from "expo-router";
+import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Tabs } from "expo-router/tabs";
-import { useState } from "react";
-import { ScrollView, Text, View } from "react-native";
-import { RAWG_KEY, DB } from "@env";
+import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FlatList } from "react-native-gesture-handler";
-
-import { COLORS, icons, images, SIZES } from "../constants";
-import { getGamesHome, searchGames } from "../hooks/RAWGService";
+import { getGamesHome } from "../hooks/RAWGService";
 
 import styles from "../styles/home";
 // Import components
 import Title from "../components/Title/Title.jsx";
-import SearchBar from "../components/Search/SearchBar.jsx";
 import GameList from "../components/Game/GameList.jsx";
 
 const Home = () => {

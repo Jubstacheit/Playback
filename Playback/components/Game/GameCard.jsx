@@ -1,22 +1,13 @@
 import { View, Image, Text, Platform } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { getPlatformIcons } from '../../hooks/PlatformIcons';
 
 import styles from './gameCard.style';
-import { COLORS } from '../../constants';
-
-// Mapping of platform names to icons
-const platformIconMapping = {
-	'playstation5' : 'sony-playstation',
-	'xbox-series-x' : 'microsoft-xbox',
-	'pc' : 'laptop',
-	'nintendo-switch' : 'nintendo-switch',
-	'ios' : 'apple-ios',
-	'android' : 'android'
-}
 
 
 const GameCard = ({ item }) => {
+
+	const { getlogo, platformIconMappingMaterialCommunity } = getPlatformIcons();
 
 	// Giving a result only if the game is available on a platform
 	return item.platforms && item.background_image ? (
@@ -31,12 +22,10 @@ const GameCard = ({ item }) => {
 				<Text style={styles.gameTitle} numberOfLines={2} ellipsizeMode={'tail'}>{item.name}</Text>
 				<View style={styles.platformContainer}>
 					{item.platforms && item.platforms.map((platform, index) => {
-						const platformName = platform.platform.slug
-						const icon = platformIconMapping[platformName] || null
+						const platformName = platform.platform.slug;
+						const iconName = platformIconMappingMaterialCommunity[platformName] || null
 
-						return icon ? (
-							<MaterialCommunityIcons key={index} style={styles.platformIcon} name={icon} size={18} color={COLORS.black} />
-						) : null
+						return iconName ? getlogo({iconName, index}) : null
 					})}
 				</View>
 			</View>
