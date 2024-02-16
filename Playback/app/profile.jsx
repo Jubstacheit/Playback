@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Title from '../components/Title/Title';
+import AuthForm from '../components/Auth/AuthForm';
 import styles from '../styles/profile';
 
 const Profile = () => {
@@ -11,7 +12,11 @@ const Profile = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
+			{/* Title */}
 			<Title />
+
+			{/* Form */}
+			<AuthForm />
 		</SafeAreaView>
 	);
 };
