@@ -1,15 +1,26 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+import { SIZES } from "../../constants";
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	form: {
-		width: '100%',
-		padding: 20,
+		width: '70%',
+		...Platform.select({
+			web: {
+				width: '30%',
+			},
+		})
 	},
+	input: {
+		marginVertical: SIZES.xSmall,
+	},
+	submitBtn: {
+		marginVertical: SIZES.medium,
+		paddingVertical: SIZES.xSmall / 4,
+	}
 });
 
 export default styles;

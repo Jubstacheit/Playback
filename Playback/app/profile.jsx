@@ -12,11 +12,18 @@ const Profile = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
+
 			{/* Title */}
 			<Title />
 
+			{/* Welcome message */}
+			<View style={styles.welcomeTextContainer}>
+				<Text style={styles.welcomeText}>Create an account</Text>
+			</View>
+
 			{/* Form */}
 			<AuthForm />
+
 		</SafeAreaView>
 	);
 };
