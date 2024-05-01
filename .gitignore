@@ -41,3 +41,4 @@ Playback2/.env
 .netlify
 .vscode/settings.json
 .vercel
+express-backend/.env
