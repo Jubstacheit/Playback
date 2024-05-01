@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
+    "username": "24d5gLWrGgyfeaw.root",
     "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "database": "playback",
+    "host": "gateway01.eu-central-1.prod.aws.tidbcloud.com",
     "dialect": "mysql"
   }
 }
