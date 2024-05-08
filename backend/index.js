@@ -18,7 +18,7 @@ let playersModel;
 
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Express on NHost"));
+app.get("/", (req, res) => res.type('html').send(html));
 
 
 // Example of getting data
