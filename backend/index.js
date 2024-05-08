@@ -53,9 +53,6 @@ process.on('SIGINT', async () => {
     process.exit(0);
 });
 
-server.keepAliveTimeout = 120 * 1000;
-server.headersTimeout = 120 * 1000;
-
 const html = `
 <!DOCTYPE html>
 <html>
