@@ -6,7 +6,7 @@ import { getLogger } from './logger.js';
 const logger = getLogger('lib/tidb.js');
 
 const env = process.env;
-const certPath = path.resolve(process.env.TIDB_CA_PATH);
+const certPath = path.resolve(process.env.TIDB_CA_PATH) || process.env.CERT;
 let sequelize = initSequelize();
 
 export function initSequelize() {
