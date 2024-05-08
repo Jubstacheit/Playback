@@ -1,15 +1,58 @@
 import { Op } from 'sequelize';
-
+import express from 'express';
 import { getSequelize, closeSequelize } from './lib/tidb.js';
 import { getPlayersModel } from './lib/model.js';
 import { getLogger } from './lib/logger.js';
+import 'dotenv/config';
+
+const app = express();
+const port = process.env.MYSQL_PORT
 
 const logger = getLogger('playback');
 if (!logger) {
 	throw new Error('Logger is not initialized');
 }
 
-async function main() {
+let sequelize;
+let playersModel;
+
+app.use(express.json());
+
+
+// Example of getting data
+
+app.get('/players', async (req, res) => {
+    const players = await playersModel.findAll();
+    res.json(players);
+});
+
+
+
+async function startServer() {
+    logger.info('Getting sequelize instance...');
+    sequelize = await getSequelize();
+    logger.info('Got sequelize instance.');
+
+    logger.info('Getting players model...');
+    playersModel = getPlayersModel(sequelize);
+    logger.info('Got players model.');
+
+    app.listen(port, () => {
+        logger.info(`Server listening on port ${port}`);
+    });
+}
+
+startServer().catch(logger.error);
+
+process.on('SIGINT', async () => {
+    logger.info('Closing sequelize instance...');
+    await closeSequelize();
+    logger.info('Closed sequelize instance.');
+    process.exit(0);
+});
+
+
+/*async function main() {
 	// Get the sequelize instance
 	logger.info('Getting sequelize instance...');
 	const sequelize = await getSequelize();
@@ -81,22 +124,4 @@ async function main() {
 	logger.info('Closed sequelize instance.');
 	
 	logger.info('Done.');
-}
-
-main().catch(logger.error);
-
-/*const express = require("express");
-const app = express();
-const port = 3000;
-require("dotenv").config();
-
-const env = process.env;
-
-app.get("/", (req, res) => {
-	res.send("Hello World!");
-});
-
-app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
-});
-*/
+}*/
