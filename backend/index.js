@@ -18,6 +18,8 @@ let playersModel;
 
 app.use(express.json());
 
+app.get("/", (req, res) => res.send("Express on NHost"));
+
 
 // Example of getting data
 
@@ -50,6 +52,8 @@ process.on('SIGINT', async () => {
     logger.info('Closed sequelize instance.');
     process.exit(0);
 });
+
+module.exports = app;
 
 
 /*async function main() {
