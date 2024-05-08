@@ -1,10 +1,12 @@
 import { Sequelize } from 'sequelize';
+import path from 'path';
 import { readFileSync } from 'fs';
 import 'dotenv/config';
 import { getLogger } from './logger.js';
 const logger = getLogger('lib/tidb.js');
 
 const env = process.env;
+const certPath = path.resolve(process.env.TIDB_CA_PATH);
 let sequelize = initSequelize();
 
 export function initSequelize() {
@@ -21,8 +23,8 @@ export function initSequelize() {
 			? {
 				minVersion: 'TLSv1.2',
 				rejectUnauthorized: true,
-				ca: env.TIDB_CA_PATH
-				? readFileSync(env.TIDB_CA_PATH)
+				ca: certPath
+				? readFileSync(certPath)
 				: undefined,
 			}
 			: null,
