@@ -1,9 +1,9 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
 
-class UserIcon extends Model {}
+class UserLists extends Model {}
 
-export function getUserIconModel(sequelize) {
-	UserIcon.init(
+export function getUserListModel(sequelize) {
+	UserLists.init(
 		{
 			// Model attributes are defined here
 			id: {
@@ -11,12 +11,12 @@ export function getUserIconModel(sequelize) {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				comment: 'The unique ID of the icon.',
+				comment: 'The unique ID of the user list.',
 			},
-			url: {
-				type: DataTypes.CHAR(255),
+			listType: {
+				type: DataTypes.CHAR(50),
 				allowNull: false,
-				comment: 'The URL of the icon.',
+				comment: 'The type of the list.',
 			},
 			id_user: {
 				type: DataTypes.INTEGER,
@@ -31,8 +31,8 @@ export function getUserIconModel(sequelize) {
 		{
 			// Other model options go here
 			sequelize, // We need to pass the connection instance
-			modelName: 'userIcon', // We need to choose the model name
+			modelName: 'userLists', // We need to choose the model name
 		}
 	);
-	return UserIcon;
+	return UserLists;
 }

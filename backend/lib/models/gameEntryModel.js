@@ -1,9 +1,9 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
 
-class GameEntry extends Model {}
+class GameEntries extends Model {}
 
 export function getGameEntryModel(sequelize) {
-	GameEntry.init(
+	GameEntries.init(
 		{
 			// Model attributes are defined here
 			id: {
@@ -14,7 +14,7 @@ export function getGameEntryModel(sequelize) {
 				comment: 'The unique ID of the list.',
 			},
 			global_rating: {
-				type: DataTypes.INTEGER,
+				type: DataTypes.FLOAT,
 				allowNull: true,
 				comment: 'The global rating of the game.',
 			}
@@ -22,8 +22,8 @@ export function getGameEntryModel(sequelize) {
 		{
 			// Other model options go here
 			sequelize, // We need to pass the connection instance
-			modelName: 'gameEntry', // We need to choose the model name
+			modelName: 'gameEntries', // We need to choose the model name
 		}
 	);
-	return GameEntry;
+	return GameEntries;
 }
