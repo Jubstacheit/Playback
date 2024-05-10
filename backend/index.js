@@ -3,6 +3,8 @@ import express from 'express';
 import { getSequelize, closeSequelize } from './lib/tidb.js';
 import { getUserModel } from './lib/userModel.js';
 import { getUserIconModel } from './lib/userIconModel.js';
+import { getUserListModel } from './lib/userList.js';
+import { getGameEntryModel } from './lib/gameEntryModel.js';
 import { getLogger } from './lib/logger.js';
 import 'dotenv/config';
 
@@ -17,6 +19,8 @@ if (!logger) {
 let sequelize;
 let userModel;
 let userIconModel;
+let userListModel;
+let gameEntryModel;
 
 app.use(express.json());
 
@@ -44,6 +48,14 @@ async function startServer() {
 	logger.info('Getting user icons...');
 	userIconModel = getUserIconModel(sequelize);
 	logger.info('Got user icons.');
+
+	logger.info('Getting user lists...');
+	userListModel = getUserListModel(sequelize);
+	logger.info('Got user lists.');
+
+	logger.info('Getting game entries...');
+	gameEntryModel = getGameEntryModel(sequelize);
+	logger.info('Got game entries.');
 
     app.listen(port, () => {
         logger.info(`Server listening on port ${port}`);
