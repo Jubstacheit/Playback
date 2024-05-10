@@ -2,6 +2,7 @@ import { Op } from 'sequelize';
 import express from 'express';
 import { getSequelize, closeSequelize } from './lib/tidb.js';
 import { getUserModel } from './lib/userModel.js';
+import { getUserIconModel } from './lib/userIconModel.js';
 import { getLogger } from './lib/logger.js';
 import 'dotenv/config';
 
@@ -15,6 +16,7 @@ if (!logger) {
 
 let sequelize;
 let userModel;
+let userIconModel;
 
 app.use(express.json());
 
@@ -39,22 +41,9 @@ async function startServer() {
     userModel = getUserModel(sequelize);
     logger.info('Got users model.');
 
-	// Sync the model
-	logger.info('Syncing users model...');
-	logger.info(
-		'This creates the table, dropping it first if it already existed'
-	);
-	await userModel.sync({ force: true });
-	logger.info('Synced users model.');
-
-	logger.info('Creating a new user...');
-	await userModel.create({
-		id: 1,
-		email: "yes@gmail.com",
-		password: '1234',
-		username: 'yes'
-	});
-	logger.info('Created a new user.');
+	logger.info('Getting user icons...');
+	userIconModel = getUserIconModel(sequelize);
+	logger.info('Got user icons.');
 
     app.listen(port, () => {
         logger.info(`Server listening on port ${port}`);
