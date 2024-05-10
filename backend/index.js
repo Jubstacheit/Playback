@@ -23,7 +23,7 @@ app.get("/", (req, res) => res.type('html').send(html));
 
 // Example of getting data
 
-app.get('/user', async (req, res) => {
+app.get('/users', async (req, res) => {
     const user = await userModel.findAll();
     res.json(user);
 });
@@ -35,9 +35,26 @@ async function startServer() {
     sequelize = await getSequelize();
     logger.info('Got sequelize instance.');
 
-    logger.info('Getting user model...');
+    logger.info('Getting users model...');
     userModel = getUserModel(sequelize);
-    logger.info('Got user model.');
+    logger.info('Got users model.');
+
+	// Sync the model
+	logger.info('Syncing users model...');
+	logger.info(
+		'This creates the table, dropping it first if it already existed'
+	);
+	await userModel.sync({ force: true });
+	logger.info('Synced users model.');
+
+	logger.info('Creating a new user...');
+	await userModel.create({
+		id: 1,
+		email: "yes@gmail.com",
+		password: '1234',
+		username: 'yes'
+	});
+	logger.info('Created a new user.');
 
     app.listen(port, () => {
         logger.info(`Server listening on port ${port}`);
