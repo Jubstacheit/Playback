@@ -1,15 +1,15 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
 
-class Players extends Model {}
+class Users extends Model {}
 
-export function getPlayersModel(sequelize) {
+export function getUserModel(sequelize) {
 	// CREATE TABLE players (
 	//     `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'The unique ID of the player.',
 	//     `coins` INT(11) COMMENT 'The number of coins that the player had.',
 	//     `goods` INT(11) COMMENT 'The number of goods that the player had.',
 	//     PRIMARY KEY (`id`)
 	// );
-	Players.init(
+	Users.init(
 		{
 			// Model attributes are defined here
 			id: {
@@ -17,17 +17,17 @@ export function getPlayersModel(sequelize) {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				comment: 'The unique ID of the player.',
+				comment: 'The unique ID of the user.',
 			},
-			coins: {
-				type: DataTypes.INTEGER,
+			email: {
+				type: DataTypes.CHAR(50),
 				allowNull: false,
-				comment: 'The number of coins that the player had.',
+				comment: 'The email of the user.',
 			},
-			goods: {
-				type: DataTypes.INTEGER,
+			password: {
+				type: DataTypes.CHAR(50),
 				allowNull: false,
-				comment: 'The number of goods that the player had.',
+				comment: 'The password of the user.',
 			},
 		},
 		{
@@ -36,5 +36,5 @@ export function getPlayersModel(sequelize) {
 			modelName: 'players', // We need to choose the model name
 		}
 	);
-	return Players;
+	return Users;
 }

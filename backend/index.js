@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
 import express from 'express';
 import { getSequelize, closeSequelize } from './lib/tidb.js';
-import { getPlayersModel } from './lib/model.js';
+import { getUserModel } from './lib/userModel.js';
 import { getLogger } from './lib/logger.js';
 import 'dotenv/config';
 
@@ -14,7 +14,7 @@ if (!logger) {
 }
 
 let sequelize;
-let playersModel;
+let userModel;
 
 app.use(express.json());
 
@@ -23,9 +23,9 @@ app.get("/", (req, res) => res.type('html').send(html));
 
 // Example of getting data
 
-app.get('/players', async (req, res) => {
-    const players = await playersModel.findAll();
-    res.json(players);
+app.get('/user', async (req, res) => {
+    const user = await userModel.findAll();
+    res.json(user);
 });
 
 
@@ -35,9 +35,9 @@ async function startServer() {
     sequelize = await getSequelize();
     logger.info('Got sequelize instance.');
 
-    logger.info('Getting players model...');
-    playersModel = getPlayersModel(sequelize);
-    logger.info('Got players model.');
+    logger.info('Getting user model...');
+    userModel = getUserModel(sequelize);
+    logger.info('Got user model.');
 
     app.listen(port, () => {
         logger.info(`Server listening on port ${port}`);
