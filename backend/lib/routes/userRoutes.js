@@ -3,11 +3,14 @@ let userModel;
 
 const router = express.Router();
 
+// Get all users
 router.get('/', async (req, res) => {
     const user = await userModel.findAll();
     res.json(user);
 });
 
+// Create an user 
+// Need to edit to add password hash 
 router.post('/', async (req, res) => {
     const { username, email, password } = req.body; // replace with your actual required fields
     if (!username || !email || !password) { // replace with your actual required fields
@@ -18,6 +21,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Delete an user by ID 
 router.delete('/:id', async (req, res) => {
     const user = await userModel.findByPk(req.params.id);
     if (!user) {
