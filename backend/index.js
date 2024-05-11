@@ -1,5 +1,6 @@
 import { Op } from 'sequelize';
 import express from 'express';
+import cors from 'cors';
 import { getSequelize, closeSequelize } from './lib/tidb.js';
 import { getUserModel } from './lib/models/userModel.js';
 import { getUserIconModel } from './lib/models/userIconModel.js';
@@ -31,6 +32,9 @@ let ratingModel;
 let storesModel;
 
 app.use(express.json());
+app.use(cors({
+	origin: process.env.FRONT_HOST
+}));
 
 app.get("/", (req, res) => res.type('html').send(html));
 

@@ -32,6 +32,18 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// Update an user by ID
+// Need to edit to add password hash
+router.put('/:id', async (req, res) => {
+    const user = await userModel.findByPk(req.params.id);
+    if (!user) {
+        res.status(404).json({ message: 'User not found' });
+    } else {
+        await user.update(req.body);
+        res.json(user);
+    }
+});
+
 export default (model) => {
     userModel = model;
     return router;
