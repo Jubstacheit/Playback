@@ -13,6 +13,8 @@ import { getLogger } from './lib/logger.js';
 import 'dotenv/config';
 
 import userRoutes from "./lib/routes/userRoutes.js"
+import userListRoutes from "./lib/routes/userListsRoutes.js"
+import userListsRoutes from './lib/routes/userListsRoutes.js';
 
 const app = express();
 const port = process.env.MYSQL_PORT
@@ -86,8 +88,12 @@ async function startServer() {
 	logger.info('Synced models.');
 
 	// Users routes
-
+	logger.info('Setting up user routes...');
 	app.use('/users', userRoutes(userModel));
+
+	// User lists routes
+	logger.info('Setting up user lists routes...');
+	app.use('/userlists', userListsRoutes(userListModel));
 
     app.listen(port, () => {
         logger.info(`Server listening on port ${port}`);

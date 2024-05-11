@@ -1,5 +1,12 @@
 import express from 'express';
 let userModel;
+let sequelize;
+import { getSequelize } from '../tidb.js';
+
+sequelize = await getSequelize();
+
+import { getUserListModel } from '../models/userListModel.js';
+const UserList = getUserListModel(sequelize);
 
 const router = express.Router();
 
@@ -42,6 +49,41 @@ router.put('/:id', async (req, res) => {
         await user.update(req.body);
         res.json(user);
     }
+});
+
+// Create a list
+router.post('/:id/userlists', async (req, res) => {
+	// TODO: Add validation for req.body
+	const user = await userModel.findByPk(req.params.id);
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Not empty listType 
+    const { listType } = req.body;
+    if (!listType) {
+        return res.status(404).json({ message: 'Invalid list' });
+    }
+
+    // Check if listType already exists for the user
+    const existingList = await UserList.findOne({ where: { listType: listType, id_user: user.id } });
+    if (existingList) {
+        return res.status(400).json({ message: 'List already exists' });
+    }
+
+    // TODO: Add validation for req.body
+    const newList = await UserList.create({
+        ...req.body,
+        id_user: user.id
+    });
+
+    res.json(newList);
+});
+
+// Get all lists for a specific user
+router.get('/:userId/userlists', async (req, res) => {
+	const lists = await UserList.findAll({ where: { id_user: req.params.userId } });
+	res.json(lists);
 });
 
 export default (model) => {
