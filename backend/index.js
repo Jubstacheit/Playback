@@ -11,6 +11,8 @@ import { getStoresModel } from './lib/models/storesModel.js';
 import { getLogger } from './lib/logger.js';
 import 'dotenv/config';
 
+import userRoutes from "./lib/routes/userRoutes.js"
+
 const app = express();
 const port = process.env.MYSQL_PORT
 
@@ -31,16 +33,6 @@ let storesModel;
 app.use(express.json());
 
 app.get("/", (req, res) => res.type('html').send(html));
-
-
-// Example of getting data
-
-app.get('/users', async (req, res) => {
-    const user = await userModel.findAll();
-    res.json(user);
-});
-
-
 
 async function startServer() {
     logger.info('Getting sequelize instance...');
@@ -85,6 +77,10 @@ async function startServer() {
 	await userIconModel.sync({ force: false });
 	await userModel.sync({ force: false });
 	logger.info('Synced models.');
+
+	// Users routes
+
+	app.use('/users', userRoutes(userModel));
 
     app.listen(port, () => {
         logger.info(`Server listening on port ${port}`);
