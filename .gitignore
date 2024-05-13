@@ -42,3 +42,4 @@ Playback2/.env
 .vscode/settings.json
 .vercel
 express-backend/.env
+Playback/eas.json
