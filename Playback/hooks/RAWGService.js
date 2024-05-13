@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { RAWG_KEY }	from '@env';
 import { useState, useEffect, ActivityIndicator } from 'react';
 import { useRouter } from 'expo-router';
 import { COLORS } from '../constants';
 
 const url = `https://api.rawg.io/api/`;
-const key = RAWG_KEY;
+const key = process.env.RAWG_KEY;
+
 // Const for today's date
 let today = new Date();
 // Const for last year's date, day to day 
