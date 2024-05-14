@@ -1,10 +1,15 @@
-import { View, Text } from 'react-native'
+import { TamaguiProvider, createTamagui } from '@tamagui/core';
+import { Heading, YStack } from 'tamagui';
+import { config } from '@tamagui/config/v3'
+const tamaguiConfig = createTamagui(config);
 
-import styles from './title.style'
+import { FONTS, SIZES } from "../../constants"
 
 const Title = () => {
 	return (
-		<Text style={styles.title}>Playback</Text>
+		<TamaguiProvider config={tamaguiConfig}>
+				<Heading marginTop={SIZES.xSmall} alignSelf='center' style={{fontFamily: FONTS.bold }} fontSize={36}>Playback</Heading>
+		</TamaguiProvider>
 	)
 }
 	

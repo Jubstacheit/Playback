@@ -3,13 +3,15 @@ import React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import { useRouter } from 'expo-router'
 
-import styles from './gameList.style'
 import { COLORS, SIZES } from '../../constants'
 
-import { getGamesHome } from "../../hooks/RAWGService";
 
 import GameCard from './GameCard'
 import FetchError from '../Error/FetchError'
+
+import { TamaguiProvider, createTamagui } from '@tamagui/core';
+import { config } from '@tamagui/config/v3'
+const tamaguiConfig = createTamagui(config);
 
 const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	const router = useRouter();
@@ -33,32 +35,34 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	}
 
 	return (
-		<View style={styles.container}>
-			<FlatList 
-				data={games}
-				renderItem={({ item }) => (
-					<GameCard 
-						item={item}
-					/>
-				)}
-				keyExtractor={item => item.id}
-				contentContainerStyle={{ gap: SIZES.medium }}
-				onEndReached={refetch}
-				onEndReachedThreshold={1}
-				ListFooterComponent={isLoading ? <ActivityIndicator size="large" color={COLORS.secondary} /> : null}
-				numColumns={col()}
-				showsVerticalScrollIndicator={false}
-			/>
-
-			{error ? (
-				<FetchError 
-					message={error.message}
-					handlePress={retryFetch}
-					noResults={false}
+		<TamaguiProvider config={tamaguiConfig}>
+			<View style={{ flex: 1, flexDirection: 'column', marginVertical: SIZES.xSmall }}>
+				<FlatList 
+					data={games}
+					renderItem={({ item }) => (
+						<GameCard 
+							item={item}
+						/>
+					)}
+					keyExtractor={item => item.id}
+					contentContainerStyle={{ gap: SIZES.medium }}
+					onEndReached={refetch}
+					onEndReachedThreshold={1}
+					ListFooterComponent={isLoading ? <ActivityIndicator size="large" color={COLORS.secondary} /> : null}
+					numColumns={col()}
+					showsVerticalScrollIndicator={false}
 				/>
-			) : null}
-			
-		</View>
+
+				{error ? (
+					<FetchError 
+						message={error.message}
+						handlePress={retryFetch}
+						noResults={false}
+					/>
+				) : null}
+				
+			</View>
+		</TamaguiProvider>
 	)
 }
 					

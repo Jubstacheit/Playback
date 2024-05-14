@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -31,6 +31,7 @@ const FONTS = {
 }
 
 const SIZES = {
+	xxSmall: 6,
 	xSmall: 10,
 	small: 12,
 	medium: 16,

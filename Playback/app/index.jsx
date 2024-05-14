@@ -1,16 +1,16 @@
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getGamesHome } from "../hooks/RAWGService";
 
-import styles from "../styles/home";
 // Import components
 import Title from "../components/Title/Title.jsx";
 import GameList from "../components/Game/GameList.jsx";
 
 import { TamaguiProvider, createTamagui } from '@tamagui/core';
+import { Text } from "tamagui";
 import { config } from '@tamagui/config/v3'
+import { COLORS, FONTS, SIZES } from "../constants/theme.js";
 const tamaguiConfig = createTamagui(config);
 
 const Home = () => {
@@ -19,15 +19,26 @@ const Home = () => {
 
   return (
     <TamaguiProvider config={tamaguiConfig}>
-      <SafeAreaView style={styles.container} >
+      <SafeAreaView style={{ backgroundColor: COLORS.background, flex: 1 }} >
         <StatusBar style="dark"/>
         {/* Title */}
         <Title />
-        <Text style={styles.subtitle}>
+        <Text 
+          fontSize={SIZES.large} 
+          marginVertical={SIZES.xxSmall} 
+          fontFamily={FONTS.medium} 
+          textAlign="center"
+        >
           Explore, list, backlog
         </Text>
 
-        <Text style={styles.recentGames}>Recent games</Text>
+        <Text 
+          marginHorizontal={SIZES.xSmall} 
+          fontFamily={FONTS.medium} 
+          fontSize={SIZES.xxLarge}
+        >
+            Recent games
+        </Text>
         
 
         {/* Game list with home games*/}
