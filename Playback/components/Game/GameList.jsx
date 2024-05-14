@@ -19,12 +19,6 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 		if 
 			(Platform.OS === 'web') {
 				const width = Dimensions.get('window').width
-				if (width > 1500) {
-					return 8
-				} else
-				if (width > 1400) {
-					return 6
-				} else
 				if (width > 1000) {
 					return 5
 				} else if (width > 800) {

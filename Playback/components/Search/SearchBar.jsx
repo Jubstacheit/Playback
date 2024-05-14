@@ -1,36 +1,48 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { AntDesign } from '@expo/vector-icons'
 
-import styles from './searchBar.style.js'
-import { searchGames } from '../../hooks/RAWGService'
-import { COLORS } from '../../constants'
+import { COLORS, SIZES } from '../../constants'
+import { XStack, Button, Input } from 'tamagui'
 
 const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 
 	return (
-		<View style={styles.searchContainer}>
-			<View style={styles.searchWrapper}>
-				<TextInput 
-					style={styles.searchBar} 
-					onSubmitEditing={handleSearch}
-					placeholder='Search for a game'
-					value={searchTerm}
-					onChangeText={(text) => {setSearchTerm(text)}}
-				/>
-			</View>
-			<TouchableOpacity 
-				style={styles.searchBtn}
+		<XStack
+			minWidth={SIZES.xxLarge}
+			alignSelf='center'
+			height={40}
+			space='$2'
+			margin='$4'
+			padding='$2'
+		>
+			<Input 
+				flex={1}
+				size='$4'
+				borderWidth={2}
+				borderColor={COLORS.tertiary}
+				hoverStyle={{borderColor: COLORS.secondary}}
+				focusStyle={{borderColor: COLORS.secondary}}
+				onSubmitEditing={handleSearch}
+				placeholder='Search for a game'
+				value={searchTerm}
+				onChangeText={(text) => {setSearchTerm(text)}}
+			/>
+			<Button 
+				size='$4'
+				backgroundColor={COLORS.tertiary}
+				borderWidth={2}
+				borderColor={COLORS.primary}
+				hoverStyle={{backgroundColor: COLORS.secondary}}
+				focusStyle={{backgroundColor: COLORS.secondary}}
 				onPress={handleSearch}
 			>
 				<AntDesign 
 					name="search1" 
 					size={22}
 					color={COLORS.background}
-					style={styles.searchBtnImg}
 				/>
-			</TouchableOpacity>
-		</View>
+			</Button>
+		</XStack>
 	)
 }
 	

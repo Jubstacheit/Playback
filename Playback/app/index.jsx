@@ -8,7 +8,7 @@ import Title from "../components/Title/Title.jsx";
 import GameList from "../components/Game/GameList.jsx";
 
 import { TamaguiProvider, createTamagui } from '@tamagui/core';
-import { Text } from "tamagui";
+import { H2, H3, Text } from "tamagui";
 import { config } from '@tamagui/config/v3'
 import { COLORS, FONTS, SIZES } from "../constants/theme.js";
 const tamaguiConfig = createTamagui(config);
@@ -25,21 +25,12 @@ const Home = () => {
         <Title />
         <Text 
           fontSize={SIZES.large} 
-          marginVertical={SIZES.xxSmall} 
+          marginBottom={SIZES.medium} 
           fontFamily={FONTS.medium} 
           textAlign="center"
         >
           Explore, list, backlog
         </Text>
-
-        <Text 
-          marginHorizontal={SIZES.xSmall} 
-          fontFamily={FONTS.medium} 
-          fontSize={SIZES.xxLarge}
-        >
-            Recent games
-        </Text>
-        
 
         {/* Game list with home games*/}
         <GameList 
