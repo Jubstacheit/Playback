@@ -30,8 +30,6 @@ const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 			<Button 
 				size='$4'
 				backgroundColor={COLORS.tertiary}
-				borderWidth={2}
-				borderColor={COLORS.primary}
 				hoverStyle={{backgroundColor: COLORS.secondary}}
 				focusStyle={{backgroundColor: COLORS.secondary}}
 				onPress={handleSearch}

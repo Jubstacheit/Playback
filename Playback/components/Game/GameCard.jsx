@@ -38,12 +38,12 @@ const GameCard = ({ item }) => {
 			</Card.Header>
 
 			<Card.Footer size='$2' flexDirection='row' backgroundColor={COLORS.lightWhite} opacity={0.9}>
-					{item.platforms && item.platforms.map((platform, index) => {
-						const platformName = platform.platform.slug;
-						const iconName = platformIconMappingMaterialCommunity[platformName] || null
+				{item.platforms && item.platforms.map((platform, index) => {
+					const platformName = platform.platform.slug;
+					const iconName = platformIconMappingMaterialCommunity[platformName] || null
 
-						return iconName ? getlogo({iconName, index}) : null
-					})}
+					return iconName ? getlogo({iconName, index}) : null
+				})}
 			</Card.Footer>
 
 			<Card.Background>
@@ -52,7 +52,7 @@ const GameCard = ({ item }) => {
 					width='100%'
 					height='100%'
 					alignSelf='center'
-					source={{uri: item.background_image, width: 180, height: 300}}
+					source={{uri: item.background_image}}
 				/>
 			</Card.Background>
 			
