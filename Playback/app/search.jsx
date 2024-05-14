@@ -12,6 +12,10 @@ import FetchError from '../components/Error/FetchError';
 import { searchGames } from '../hooks/RAWGService';
 import { SIZES } from '../constants';
 
+import { TamaguiProvider, createTamagui } from '@tamagui/core';
+import { config } from '@tamagui/config/v3'
+const tamaguiConfig = createTamagui(config);
+
 const Search = () => {
 	const router = useRouter();
 	
@@ -20,36 +24,38 @@ const Search = () => {
 	
 
 	return (
-		<SafeAreaView style={styles.container}>
-			<Title />
+		<TamaguiProvider config={tamaguiConfig}>
+			<SafeAreaView style={styles.container}>
+				<Title />
 
-			{/* Search bar */}
-			<SearchBar 
-				handleSearch={handleSearch}
-				searchTerm={searchTerm}
-				setSearchTerm={setSearchTerm}
-			/>
+				{/* Search bar */}
+				<SearchBar 
+					handleSearch={handleSearch}
+					searchTerm={searchTerm}
+					setSearchTerm={setSearchTerm}
+				/>
 
-			{/* Search results as a gamelist */}
-			<GameList 
-				games={games}
-				retryFetch={retryFetch}
-				isLoading={isLoading}
-				error={error}
-				refetch={refetch}
-			/>
-			{
-				noRes ?
-				<View style={{marginHorizontal: SIZES.xSmall}}>
-					<FetchError
-						message={"No results found"}
-						handlePress={retryFetch}
-						noResults={noRes}
-					>
-					</FetchError>
-				</View> : null
-			}
-		</SafeAreaView>
+				{/* Search results as a gamelist */}
+				<GameList 
+					games={games}
+					retryFetch={retryFetch}
+					isLoading={isLoading}
+					error={error}
+					refetch={refetch}
+				/>
+				{
+					noRes ?
+					<View style={{marginHorizontal: SIZES.xSmall}}>
+						<FetchError
+							message={"No results found"}
+							handlePress={retryFetch}
+							noResults={noRes}
+						>
+						</FetchError>
+					</View> : null
+				}
+			</SafeAreaView>
+		</TamaguiProvider>
 	);
 };
 export default Search;

@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getGamesHome } from "../hooks/RAWGService";
 
@@ -8,8 +9,9 @@ import styles from "../styles/home";
 import Title from "../components/Title/Title.jsx";
 import GameList from "../components/Game/GameList.jsx";
 
-import { GluestackUIProvider, Text, Box } from "@gluestack-ui/themed"
-import { config } from "@gluestack-ui/config"
+import { TamaguiProvider, createTamagui } from '@tamagui/core';
+import { config } from '@tamagui/config/v3'
+const tamaguiConfig = createTamagui(config);
 
 const Home = () => {
   const router = useRouter();
