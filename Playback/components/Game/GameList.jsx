@@ -9,7 +9,7 @@ import { COLORS, SIZES } from '../../constants'
 import GameCard from './GameCard'
 import FetchError from '../Error/FetchError'
 
-import { Text, View } from 'tamagui'
+import { Text, View, XStack } from 'tamagui'
 
 const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	const router = useRouter();
@@ -41,7 +41,7 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 	}
 
 	return (
-		<View flex={1}>
+		<XStack flex={1}>
 			<FlatList 
 				data={games}
 				renderItem={({ item }) => (
@@ -65,7 +65,7 @@ const GameList = ({ games, retryFetch, isLoading, error, refetch }) => {
 				/>
 			) : null}
 			
-		</View>
+		</XStack>
 	)
 }
 					
