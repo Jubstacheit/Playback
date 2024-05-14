@@ -3,8 +3,6 @@ import { View, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import styles from '../styles/search';
-
 import Title from '../components/Title/Title';
 import SearchBar from '../components/Search/SearchBar';
 import GameList from '../components/Game/GameList';
@@ -25,7 +23,7 @@ const Search = () => {
 
 	return (
 		<TamaguiProvider config={tamaguiConfig}>
-			<SafeAreaView style={styles.container}>
+			<SafeAreaView>
 				<Title />
 
 				{/* Search bar */}
