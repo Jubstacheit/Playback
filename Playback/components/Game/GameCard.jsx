@@ -26,7 +26,7 @@ const GameCard = ({ item }) => {
 			elevate
 			bordered
 			animation="bouncy"
-			height={300}
+			height={340}
 			width='100%'
 			maxWidth={400}
 			scale={0.95}
@@ -34,7 +34,7 @@ const GameCard = ({ item }) => {
 			pressStyle={{ scale: 0.895 }}
 		>
 			<Card.Header padded borderRadius={SIZES.medium}>
-				<Heading size='$3' opacity={0.9} width='100%' textAlign='center' fontWeight={'bold'} alignSelf='center' maxWidth={250} wordWrap='break-word' padding={SIZES.xxSmall} backgroundColor={COLORS.lightWhite}>{item.name}</Heading>
+				<Heading ellipsizeMode='tail' numberOfLines={2} size='$3' opacity={0.9} width='100%' textAlign='center' fontWeight={'bold'} alignSelf='center' maxWidth={250} padding={SIZES.xxSmall} backgroundColor={COLORS.lightWhite}>{item.name}</Heading>
 			</Card.Header>
 
 			<Card.Footer size='$2' flexDirection='row' backgroundColor={COLORS.lightWhite} opacity={0.9}>
@@ -50,7 +50,7 @@ const GameCard = ({ item }) => {
 				<Image
 					borderRadius={SIZES.xxSmall}
 					width='100%'
-					height='90%'
+					height='100%'
 					marginTop='auto'
 					source={{uri: item.background_image}}
 				/>
