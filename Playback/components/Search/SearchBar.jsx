@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AntDesign } from '@expo/vector-icons'
 
 import { COLORS, SIZES } from '../../constants'
-import { XStack, Button, Input } from 'tamagui'
+import { XStack, Input, Button } from 'tamagui'
 
 const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 
@@ -11,7 +11,7 @@ const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 			minWidth={SIZES.xxLarge}
 			alignSelf='center'
 			height={40}
-			space='$2'
+			gap='$2'
 			margin='$4'
 			padding='$2'
 		>
@@ -22,23 +22,25 @@ const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 				borderColor={COLORS.tertiary}
 				hoverStyle={{borderColor: COLORS.secondary}}
 				focusStyle={{borderColor: COLORS.secondary}}
-				onSubmitEditing={handleSearch}
 				placeholder='Search for a game'
+				onSubmitEditing={handleSearch}
 				value={searchTerm}
 				onChangeText={(text) => {setSearchTerm(text)}}
 			/>
 			<Button 
 				size='$4'
+				onPress={() => {handleSearch()}}
 				backgroundColor={COLORS.tertiary}
-				hoverStyle={{backgroundColor: COLORS.secondary}}
+				hoverStyle={{backgroundColor: COLORS.secondary, borderColor: COLORS.secondary}}
 				focusStyle={{backgroundColor: COLORS.secondary}}
-				onPress={handleSearch}
+				icon={
+					<AntDesign 
+						name="search1" 
+						size={22}
+						color={COLORS.background}
+					/>}
 			>
-				<AntDesign 
-					name="search1" 
-					size={22}
-					color={COLORS.background}
-				/>
+				
 			</Button>
 		</XStack>
 	)

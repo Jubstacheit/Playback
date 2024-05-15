@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -8,7 +8,7 @@ import SearchBar from '../components/Search/SearchBar';
 import GameList from '../components/Game/GameList';
 import FetchError from '../components/Error/FetchError';
 import { searchGames } from '../hooks/RAWGService';
-import { SIZES } from '../constants';
+import { SIZES, COLORS } from '../constants';
 
 import { TamaguiProvider, createTamagui } from '@tamagui/core';
 import { config } from '@tamagui/config/v3'
@@ -19,11 +19,9 @@ const Search = () => {
 	
 	const { games, isLoading, error, refetch, retryFetch, searchTerm, setSearchTerm, handleSearch, noRes } = searchGames();
 
-	
-
 	return (
 		<TamaguiProvider config={tamaguiConfig}>
-			<SafeAreaView>
+			<SafeAreaView style={{ backgroundColor: COLORS.background, flex: 1 }}>
 				<Title />
 
 				{/* Search bar */}
@@ -43,14 +41,12 @@ const Search = () => {
 				/>
 				{
 					noRes ?
-					<View style={{marginHorizontal: SIZES.xSmall}}>
 						<FetchError
 							message={"No results found"}
 							handlePress={retryFetch}
 							noResults={noRes}
 						>
-						</FetchError>
-					</View> : null
+						</FetchError> : null
 				}
 			</SafeAreaView>
 		</TamaguiProvider>

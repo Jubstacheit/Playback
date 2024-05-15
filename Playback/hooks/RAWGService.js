@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect, ActivityIndicator } from 'react';
 import { useRouter } from 'expo-router';
-import { COLORS } from '../constants';
 
 const url = `https://api.rawg.io/api/`;
 const key = process.env.RAWG_KEY;
@@ -129,11 +128,9 @@ const searchGames = () => {
 	function handleSearch() {
 
 		if (searchTerm) {
-
 			if (timeoutId) {
 				clearTimeout(timeoutId);
 			}
-
 			setIsLoading(true);
 			setGames([]);
 			setError(null);

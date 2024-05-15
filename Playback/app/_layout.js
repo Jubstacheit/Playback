@@ -6,6 +6,8 @@ import { COLORS, SHADOWS, SIZES } from '../constants'
 import { Button, Image, Platform } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
+import { PortalProvider } from 'tamagui'
+
 Splashscreen.preventAutoHideAsync()
 
 const Layout = () => {
@@ -33,86 +35,88 @@ const Layout = () => {
 	}
 
 	return (
-		<Tabs 
-		onLayout={onLayoutRootView}
-		screenOptions={{
-			tabBarHideOnKeyboard: true,
-			tabBarStyle: {
-				elevation: 0,
-				shadowOffset: {
-					width: 0, height: 0 // for iOS
-				},
-				padding: 0,
-				height: tabHeight(),
-				borderTopWidth: 0,
-				borderBottomWidth: 0,
-				backgroundColor: COLORS.gray2
-			},
-			tabBarItemStyle: {
-				...Platform.select({
-					android: {
-						paddingTop: 12,
+		<PortalProvider>
+			<Tabs 
+			onLayout={onLayoutRootView}
+			screenOptions={{
+				tabBarHideOnKeyboard: true,
+				tabBarStyle: {
+					elevation: 0,
+					shadowOffset: {
+						width: 0, height: 0 // for iOS
 					},
-					web: {
-						paddingBottom: 5
-					}
-				})
-			}
-		}}
-		>
-			<Tabs.Screen
-				name="index"
-				options={{
-					// Ensure the tab always links to the same href.
-					href: '/',
-					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.gray,
-					tabBarIcon: () => (
-						<Image
-							source={require('../assets/icons/icon.png')}
-							style={{ width: 32, height: SIZES.xxLarge }}
-						/>
-					),
-					title: ''
-				}}
-			/>
-			<Tabs.Screen
-				name="search"
-				options={{
-					// Ensure the tab always links to the same href.
-					href: '/search',
-					// Change tab name 
-					title: '',
-					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.gray,
-					tabBarIcon: ({ focused }) => (
-						<AntDesign 
-							name="search1" 
-							size={24} 
-							color={focused ? COLORS.background : COLORS.black} 
-						/>
-					),
-				}}
-			/>
-			<Tabs.Screen
-				name="profile"
-				options={{
-					// Ensure the tab always links to the same href.
-					href: '/profile',
-					headerShown: false,
-					tabBarActiveBackgroundColor: COLORS.gray,
-					// Change tab name 
-					title: '',
-					tabBarIcon: ({ focused }) => (
-						<AntDesign 
-							name="profile" 
-							size={24} 
-							color={focused ? COLORS.background : COLORS.black}
-						/>
-					),
-				}}
-			/>
-		</Tabs>
+					padding: 0,
+					height: tabHeight(),
+					borderTopWidth: 0,
+					borderBottomWidth: 0,
+					backgroundColor: COLORS.gray2
+				},
+				tabBarItemStyle: {
+					...Platform.select({
+						android: {
+							paddingTop: 12,
+						},
+						web: {
+							paddingBottom: 5
+						}
+					})
+				}
+			}}
+			>
+				<Tabs.Screen
+					name="index"
+					options={{
+						// Ensure the tab always links to the same href.
+						href: '/',
+						headerShown: false,
+						tabBarActiveBackgroundColor: COLORS.gray,
+						tabBarIcon: () => (
+							<Image
+								source={require('../assets/icons/icon.png')}
+								style={{ width: 32, height: SIZES.xxLarge }}
+							/>
+						),
+						title: ''
+					}}
+				/>
+				<Tabs.Screen
+					name="search"
+					options={{
+						// Ensure the tab always links to the same href.
+						href: '/search',
+						// Change tab name 
+						title: '',
+						headerShown: false,
+						tabBarActiveBackgroundColor: COLORS.gray,
+						tabBarIcon: ({ focused }) => (
+							<AntDesign 
+								name="search1" 
+								size={24} 
+								color={focused ? COLORS.background : COLORS.black} 
+							/>
+						),
+					}}
+				/>
+				<Tabs.Screen
+					name="profile"
+					options={{
+						// Ensure the tab always links to the same href.
+						href: '/profile',
+						headerShown: false,
+						tabBarActiveBackgroundColor: COLORS.gray,
+						// Change tab name 
+						title: '',
+						tabBarIcon: ({ focused }) => (
+							<AntDesign 
+								name="profile" 
+								size={24} 
+								color={focused ? COLORS.background : COLORS.black}
+							/>
+						),
+					}}
+				/>
+			</Tabs>
+		</PortalProvider>
 	)
 }
 

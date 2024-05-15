@@ -11,7 +11,7 @@ const Profile = () => {
 	const router = useRouter();
 
 	return (
-		<SafeAreaView>
+		<SafeAreaView style={{ backgroundColor: COLORS.background, flex: 1 }}>
 			<Title />
 		</SafeAreaView>
 	);
