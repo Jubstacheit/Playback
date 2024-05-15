@@ -46,6 +46,7 @@ const GameCard = ({ item }) => {
 					minWidth={150}
 					maxWidth={175}
 					flexWrap='wrap'
+					fontWeight='bold'
 					paddingHorizontal={SIZES.xSmall} 
 					paddingVertical={SIZES.xxSmall}
 					backgroundColor={COLORS.lightWhite}
