@@ -1,5 +1,4 @@
-import React, {useEffect} from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -8,7 +7,7 @@ import SearchBar from '../components/Search/SearchBar';
 import GameList from '../components/Game/GameList';
 import FetchError from '../components/Error/FetchError';
 import { searchGames } from '../hooks/RAWGService';
-import { SIZES, COLORS } from '../constants';
+import { COLORS } from '../constants';
 
 import { TamaguiProvider, createTamagui } from '@tamagui/core';
 import { config } from '@tamagui/config/v3'

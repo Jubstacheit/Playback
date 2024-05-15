@@ -1,5 +1,3 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-
 import { AlertDialog, Button, YStack, XStack } from 'tamagui'
 
 import { COLORS } from '../../constants'
