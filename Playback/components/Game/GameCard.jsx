@@ -34,7 +34,24 @@ const GameCard = ({ item }) => {
 			pressStyle={{ scale: 0.895 }}
 		>
 			<Card.Header padded borderRadius={SIZES.medium}>
-				<Heading ellipsizeMode='tail' numberOfLines={2} size='$3' opacity={0.9} width='100%' textAlign='center' fontWeight={'bold'} alignSelf='center' maxWidth={250} padding={SIZES.xxSmall} backgroundColor={COLORS.lightWhite}>{item.name}</Heading>
+				<Heading 
+					ellipsizeMode='tail'
+					borderRadius='$1'
+					numberOfLines={2} 
+					size='$6'
+					fontSize='$6' 
+					opacity={0.9} 
+					textAlign='center' 
+					alignSelf='center' 
+					minWidth={150}
+					maxWidth={175}
+					flexWrap='wrap'
+					paddingHorizontal={SIZES.xSmall} 
+					paddingVertical={SIZES.xxSmall}
+					backgroundColor={COLORS.lightWhite}
+				>
+					{item.name}
+				</Heading>
 			</Card.Header>
 
 			<Card.Footer size='$2' flexDirection='row' backgroundColor={COLORS.lightWhite} opacity={0.9}>
