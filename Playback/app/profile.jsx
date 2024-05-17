@@ -11,9 +11,13 @@ import Title from '../components/Title/Title';
 const Profile = () => {
 	const router = useRouter();
 
+	const [status, setStatus] = useState<'off' | 'submitting' | 'submitted'>('off')
+
 	return (
 		<SafeAreaView style={{ backgroundColor: COLORS.background, flex: 1 }}>
 			<Title />
+
+
 		</SafeAreaView>
 	);
 };
