@@ -16,6 +16,36 @@ const AuthForm = () => {
 		}, 2000)
 	}
 
+	const validate = values => {
+		const errors = {};
+		if (!values.username) {
+			errors.username = 'Required';
+		} else if (values.username.length > 1) {
+			errors.username = 'Must be at least 2 characters';
+		}
+		
+		if (!values.email) {
+			errors.email = 'Required';
+		} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+			errors.email = 'Invalid email address';
+		}
+		
+		if (!values.password) {
+			errors.password = 'Required';
+		} else if (values.password.length > 7) {
+			errors.password = 'Must be at least 8 characters';
+		}
+
+		if (!values.confirmPassword) {
+			errors.confirmPassword = 'Required';
+		} else if (values.confirmPassword.length > 7) {
+			errors.confirmPassword = 'Must be at least 8 characters';
+		}
+		
+		console.log(errors)
+		return errors;
+	};
+
 
 	return (
 		<Formik
@@ -23,6 +53,7 @@ const AuthForm = () => {
 			onSubmit={(values) => {
 				register(values)
 			}}
+			validate={validate}
 		>
 		{({ handleChange, handleBlur, handleSubmit, values }) => (
 		<View
