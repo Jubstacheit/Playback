@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 import { COLORS } from '../constants';
 
 import Title from '../components/Title/Title';
 import AuthForm from '../components/Auth/AuthForm';
+
+import { TamaguiProvider, createTamagui } from '@tamagui/core';
+import { config } from '@tamagui/config/v3'
+const tamaguiConfig = createTamagui(config);
 
 
 const Profile = () => {
 	const router = useRouter();
 
 	return (
-		<SafeAreaView style={{ backgroundColor: COLORS.background, flex: 1 }}>
-			<Title />
+		<TamaguiProvider config={tamaguiConfig}>
+				<SafeAreaView style={{ backgroundColor: COLORS.background, flex: 1 }}>
+					<KeyboardAvoidingView
+						behavior={Platform.OS === "ios" ? "padding" : "height"}
+						style={{ flex: 1 }}
+					>
+					<Title />
 
-			<AuthForm />
-		</SafeAreaView>
+					<AuthForm />
+					</KeyboardAvoidingView>
+				</SafeAreaView>
+		</TamaguiProvider>
 	);
 };
 export default Profile;

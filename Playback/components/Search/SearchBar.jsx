@@ -22,6 +22,7 @@ const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 				borderColor={COLORS.tertiary}
 				hoverStyle={{borderColor: COLORS.secondary}}
 				focusStyle={{borderColor: COLORS.secondary}}
+				pressStyle={{borderColor: COLORS.secondary}}
 				placeholder='Search for a game'
 				onSubmitEditing={handleSearch}
 				value={searchTerm}
