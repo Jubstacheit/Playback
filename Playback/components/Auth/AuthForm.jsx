@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
-import { Form, H2, H4, Button, Input, View, Text } from 'tamagui';
+import { Form, H2, H3, H4, Button, Input, View, Text, H6, H5 } from 'tamagui';
 import { COLORS, SIZES } from '../../constants';
 import { Formik } from 'formik';
 
@@ -35,6 +35,9 @@ const AuthForm = () => {
 			margin={'auto'}
 			width='100%'
 		>
+			<H3 margin='$6' fontWeight={'bold'}>Create an account</H3>
+
+			<H6>Username</H6>
 			<Input
 				onChangeText={handleChange('username')}
 				onBlur={handleBlur('username')}
@@ -42,6 +45,8 @@ const AuthForm = () => {
 				width={'100%'}
 				maxWidth={260}
 			/>
+
+			<H6>Email</H6>
 			<Input
 				onChangeText={handleChange('email')}
 				onBlur={handleBlur('email')}
@@ -49,6 +54,8 @@ const AuthForm = () => {
 				width={'100%'}
 				maxWidth={260}
 			/>
+
+			<H6>Password</H6>
 			<Input
 				onChangeText={handleChange('password')}
 				onBlur={handleBlur('password')}
@@ -56,6 +63,8 @@ const AuthForm = () => {
 				width={'100%'}
 				maxWidth={260}
 			/>
+
+			<H6>Confirm Password</H6>
 			<Input
 				onChangeText={handleChange('confirmPassword')}
 				onBlur={handleBlur('confirmPassword')}
