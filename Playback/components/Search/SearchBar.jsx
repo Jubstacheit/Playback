@@ -33,6 +33,7 @@ const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 				backgroundColor={COLORS.tertiary}
 				hoverStyle={{backgroundColor: COLORS.secondary, borderColor: COLORS.secondary}}
 				focusStyle={{backgroundColor: COLORS.secondary}}
+				pressStyle={{backgroundColor: COLORS.secondary, borderColor: COLORS.secondary}}
 				icon={
 					<AntDesign 
 						name="search1" 
