@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
-import { Form, H2, H3, H4, Button, Input, View, Text, H6, H5, ScrollView } from 'tamagui';
+import { H3, Button, Input, View, Text, H6, ScrollView } from 'tamagui';
 import { COLORS, SIZES } from '../../constants';
 import { Formik } from 'formik';
+import { MaterialIcons } from "@expo/vector-icons"
 
 const AuthForm = () => {
 
 	const [status, setStatus] = useState('off');
+	const [showPassword, setShowPassword] = useState(false)
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
 	const register = (values) => {
 		setStatus('loading')
@@ -16,7 +19,7 @@ const AuthForm = () => {
 		}, 2000)
 	}
 
-	const validate = values => {
+	const validate = (values) => {
 		const errors = {};
 		if (!values.username) {
 			errors.username = 'Required';
@@ -38,8 +41,6 @@ const AuthForm = () => {
 
 		if (!values.confirmPassword) {
 			errors.confirmPassword = 'Required';
-		} else if (values.confirmPassword.length < 8) {
-			errors.confirmPassword = 'Must be at least 8 characters';
 		} else if (values.confirmPassword !== values.password) {
 			errors.confirmPassword = 'Passwords must match';
 		}
@@ -60,7 +61,7 @@ const AuthForm = () => {
 				}}
 				validate={validate}
 			>
-			{({ handleChange, handleBlur, handleSubmit, values }) => (
+			{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
 			<View
 				flexDirection='column'
 				justifyContent='center'
@@ -73,6 +74,7 @@ const AuthForm = () => {
 
 				<H6>Username</H6>
 				<Input
+					textContentType='username'
 					onChangeText={handleChange('username')}
 					onBlur={handleBlur('username')}
 					value={values.username}
@@ -84,9 +86,18 @@ const AuthForm = () => {
 					focusStyle={{borderColor: COLORS.secondary}}
 					pressStyle={{borderColor: COLORS.secondary}}
 				/>
+				{touched.username && errors.username ? 
+					<Text
+						color={COLORS.warning}
+						fontWeight={'bold'}
+					>
+						{errors.username}
+					</Text> : null
+				}
 
 				<H6>Email</H6>
 				<Input
+					textContentType='emailAddress'
 					onChangeText={handleChange('email')}
 					onBlur={handleBlur('email')}
 					value={values.email}
@@ -98,12 +109,19 @@ const AuthForm = () => {
 					focusStyle={{borderColor: COLORS.secondary}}
 					pressStyle={{borderColor: COLORS.secondary}}
 				/>
+				{touched.email && errors.email ? 
+					<Text
+						color={COLORS.warning}
+						fontWeight={'bold'}
+					>
+						{errors.email}
+					</Text> : null
+				}
 
 				<H6>Password</H6>
-				<Input
-					onChangeText={handleChange('password')}
-					onBlur={handleBlur('password')}
-					value={values.password}
+				<View
+					flexDirection='row'
+					borderRadius='$4'
 					width={'100%'}
 					maxWidth={260}
 					borderWidth={2}
@@ -111,13 +129,39 @@ const AuthForm = () => {
 					hoverStyle={{borderColor: COLORS.secondary}}
 					focusStyle={{borderColor: COLORS.secondary}}
 					pressStyle={{borderColor: COLORS.secondary}}
-				/>
+				>
+					<Input
+						secureTextEntry={!showPassword}
+						width={'100%'}
+						maskType='password'
+						textContentType='newPassword'
+						onChangeText={handleChange('password')}
+						onBlur={handleBlur('password')}
+						value={values.password}
+						
+					/>
+					<MaterialIcons 
+						name={showPassword ? "visibility" : "visibility-off"} 
+						size={24} 
+						alignSelf='center'
+						marginHorizontal={SIZES.small}
+						color="black" 
+						onPress={() => setShowPassword(!showPassword)} 
+					/>
+				</View>
+				{touched.password && errors.password ? 
+					<Text
+						color={COLORS.warning}
+						fontWeight={'bold'}
+					>
+						{errors.password}
+					</Text> : null
+				}
 
 				<H6>Confirm Password</H6>
-				<Input
-					onChangeText={handleChange('confirmPassword')}
-					onBlur={handleBlur('confirmPassword')}
-					value={values.confirmPassword}
+				<View
+					flexDirection='row'
+					borderRadius='$4'
 					width={'100%'}
 					maxWidth={260}
 					borderWidth={2}
@@ -125,7 +169,33 @@ const AuthForm = () => {
 					hoverStyle={{borderColor: COLORS.secondary}}
 					focusStyle={{borderColor: COLORS.secondary}}
 					pressStyle={{borderColor: COLORS.secondary}}
-				/>
+				>
+					<Input
+						secureTextEntry={!showConfirmPassword}
+						textContentType='password'
+						onChangeText={handleChange('confirmPassword')}
+						onBlur={handleBlur('confirmPassword')}
+						value={values.confirmPassword}
+						width={'100%'}
+					/>
+					<MaterialIcons 
+						name={showConfirmPassword ? "visibility" : "visibility-off"} 
+						size={24} 
+						alignSelf='center'
+						marginHorizontal={SIZES.small}
+						color="black" 
+						onPress={() => setShowConfirmPassword(!showConfirmPassword)} 
+					/>
+				</View>
+				{touched.confirmPassword && errors.confirmPassword ? 
+					<Text
+						color={COLORS.warning}
+						fontWeight={'bold'}
+					>
+						{errors.confirmPassword}
+					</Text> : null
+				}
+
 				<Button 
 					disabled={status !== 'off'} 
 					size='$4'
