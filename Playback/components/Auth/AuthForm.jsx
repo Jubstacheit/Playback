@@ -74,19 +74,33 @@ const AuthForm = () => {
 				<H3 margin='$6' fontWeight={'bold'}>Create an account</H3>
 
 				<H6>Username</H6>
-				<Input
-					textContentType='username'
-					onChangeText={handleChange('username')}
-					onBlur={handleBlur('username')}
-					value={values.username}
+				<View
+					flexDirection='column'
 					width={'100%'}
-					maxWidth={260}
-					borderWidth={2}
-					borderColor={COLORS.tertiary}
-					hoverStyle={{borderColor: COLORS.secondary}}
-					focusStyle={{borderColor: COLORS.secondary}}
-					pressStyle={{borderColor: COLORS.secondary}}
-				/>
+					alignItems='center'
+				>
+					<View
+						flex={1}
+						flexDirection='row'
+						borderRadius='$4'
+						width={'100%'}
+						maxWidth={260}
+					>
+						<Input
+							textContentType='username'
+							onChangeText={handleChange('username')}
+							onBlur={handleBlur('username')}
+							value={values.username}
+							width={'100%'}
+							maxWidth={260}
+							borderWidth={2}
+							borderColor={COLORS.tertiary}
+							hoverStyle={{borderColor: COLORS.secondary}}
+							focusStyle={{borderColor: COLORS.secondary}}
+							pressStyle={{borderColor: COLORS.secondary}}
+						/>
+					</View>
+				</View>
 				{touched.username && errors.username ? 
 					<Text
 						color={COLORS.warning}
@@ -97,19 +111,33 @@ const AuthForm = () => {
 				}
 
 				<H6>Email</H6>
-				<Input
-					textContentType='emailAddress'
-					onChangeText={handleChange('email')}
-					onBlur={handleBlur('email')}
-					value={values.email}
+				<View
+					flexDirection='column'
 					width={'100%'}
-					maxWidth={260}
-					borderWidth={2}
-					borderColor={COLORS.tertiary}
-					hoverStyle={{borderColor: COLORS.secondary}}
-					focusStyle={{borderColor: COLORS.secondary}}
-					pressStyle={{borderColor: COLORS.secondary}}
-				/>
+					alignItems='center'
+				>
+					<View
+						flex={1}
+						flexDirection='row'
+						borderRadius='$4'
+						width={'100%'}
+						maxWidth={260}
+					>
+						<Input
+							textContentType='emailAddress'
+							onChangeText={handleChange('email')}
+							onBlur={handleBlur('email')}
+							value={values.email}
+							width={'100%'}
+							maxWidth={260}
+							borderWidth={2}
+							borderColor={COLORS.tertiary}
+							hoverStyle={{borderColor: COLORS.secondary}}
+							focusStyle={{borderColor: COLORS.secondary}}
+							pressStyle={{borderColor: COLORS.secondary}}
+						/>
+					</View>
+				</View>
 				{touched.email && errors.email ? 
 					<Text
 						color={COLORS.warning}
@@ -121,34 +149,39 @@ const AuthForm = () => {
 
 				<H6>Password</H6>
 				<View
-					flexDirection='row'
-					borderRadius='$4'
+					flexDirection='column'
+					alignItems='center'
 					width={'100%'}
-					maxWidth={260}
-					borderWidth={2}
-					borderColor={COLORS.tertiary}
-					hoverStyle={{borderColor: COLORS.secondary}}
-					focusStyle={{borderColor: COLORS.secondary}}
-					pressStyle={{borderColor: COLORS.secondary}}
 				>
-					<Input
-						secureTextEntry={!showPassword}
+					<View
+						flex={1}
+						flexDirection='row'
+						borderRadius='$4'
 						width={'100%'}
-						maskType='password'
-						textContentType='newPassword'
-						onChangeText={handleChange('password')}
-						onBlur={handleBlur('password')}
-						value={values.password}
-						
-					/>
-					<MaterialIcons 
-						name={showPassword ? "visibility" : "visibility-off"} 
-						size={24} 
-						alignSelf='center'
-						marginHorizontal={SIZES.small}
-						color="black" 
-						onPress={() => setShowPassword(!showPassword)} 
-					/>
+						maxWidth={260}
+					>
+						<Input
+							secureTextEntry={!showPassword}
+							width={260}
+							maskType='password'
+							textContentType='newPassword'
+							onChangeText={handleChange('password')}
+							onBlur={handleBlur('password')}
+							value={values.password}
+							borderWidth={2}
+							borderColor={COLORS.tertiary}
+							hoverStyle={{borderColor: COLORS.secondary}}
+							focusStyle={{borderColor: COLORS.secondary}}
+							pressStyle={{borderColor: COLORS.secondary}}
+						/>
+						<MaterialIcons 
+							name={showPassword ? "visibility" : "visibility-off"} 
+							size={24} 
+							style={{alignSelf: 'center', marginHorizontal: SIZES.small}}
+							color="black" 
+							onPress={() => setShowPassword(!showPassword)} 
+						/>
+					</View>
 				</View>
 				{touched.password && errors.password ? 
 					<Text
@@ -161,32 +194,38 @@ const AuthForm = () => {
 
 				<H6>Confirm Password</H6>
 				<View
-					flexDirection='row'
-					borderRadius='$4'
+					flexDirection='column'
 					width={'100%'}
-					maxWidth={260}
-					borderWidth={2}
-					borderColor={COLORS.tertiary}
-					hoverStyle={{borderColor: COLORS.secondary}}
-					focusStyle={{borderColor: COLORS.secondary}}
-					pressStyle={{borderColor: COLORS.secondary}}
+					alignItems='center'
 				>
-					<Input
-						secureTextEntry={!showConfirmPassword}
-						textContentType='password'
-						onChangeText={handleChange('confirmPassword')}
-						onBlur={handleBlur('confirmPassword')}
-						value={values.confirmPassword}
+					<View
+						flex={1}
+						flexDirection={'row'}
+						borderRadius='$4'
 						width={'100%'}
-					/>
-					<MaterialIcons 
-						name={showConfirmPassword ? "visibility" : "visibility-off"} 
-						size={24} 
-						alignSelf='center'
-						marginHorizontal={SIZES.small}
-						color="black" 
-						onPress={() => setShowConfirmPassword(!showConfirmPassword)} 
-					/>
+						maxWidth={260}
+					>
+						<Input
+							width={'100%'}
+							secureTextEntry={!showConfirmPassword}
+							textContentType='password'
+							onChangeText={handleChange('confirmPassword')}
+							onBlur={handleBlur('confirmPassword')}
+							value={values.confirmPassword}
+							borderWidth={2}
+							borderColor={COLORS.tertiary}
+							hoverStyle={{borderColor: COLORS.secondary}}
+							focusStyle={{borderColor: COLORS.secondary}}
+							pressStyle={{borderColor: COLORS.secondary}}
+						/>
+						<MaterialIcons 
+							name={showConfirmPassword ? "visibility" : "visibility-off"} 
+							size={24} 
+							color="black" 
+							onPress={() => setShowConfirmPassword(!showConfirmPassword)} 
+							style={{alignSelf: 'center', marginHorizontal: SIZES.small}}
+						/>
+					</View>
 				</View>
 				{touched.confirmPassword && errors.confirmPassword ? 
 					<Text
