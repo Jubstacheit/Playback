@@ -69,6 +69,7 @@ const AuthForm = () => {
 				gap={SIZES.large}
 				padding={SIZES.large}
 				width='100%'
+				marginBottom={SIZES.xxLarge}
 			>
 				<H3 margin='$6' fontWeight={'bold'}>Create an account</H3>
 
