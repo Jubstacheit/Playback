@@ -13,7 +13,6 @@ const AuthForm = () => {
 
 	const register = (values) => {
 		setStatus('loading')
-		alert(JSON.stringify(values, null, 2));
 		setTimeout(() => {
 			setStatus('off')
 		}, 2000)
