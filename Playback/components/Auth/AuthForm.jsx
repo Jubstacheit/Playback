@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
-import { H3, Button, Input, View, Text, H6, ScrollView } from 'tamagui';
+import { H3, Button, Input, View, Text, H6, ScrollView, XStack } from 'tamagui';
 import { COLORS, SIZES } from '../../constants';
 import { Formik } from 'formik';
 import { MaterialIcons } from "@expo/vector-icons"
@@ -66,7 +66,7 @@ const AuthForm = () => {
 				flexDirection='column'
 				justifyContent='center'
 				alignItems='center'
-				gap={SIZES.large}
+				gap={SIZES.small}
 				padding={SIZES.large}
 				width='100%'
 				marginBottom={SIZES.xxLarge}
@@ -74,33 +74,24 @@ const AuthForm = () => {
 				<H3 margin='$6' fontWeight={'bold'}>Create an account</H3>
 
 				<H6>Username</H6>
-				<View
-					flexDirection='column'
-					width={'100%'}
+				<XStack
 					alignItems='center'
+					justifyContent='center'
+					width={312}
 				>
-					<View
-						flex={1}
-						flexDirection='row'
-						borderRadius='$4'
+					<Input
+						textContentType='username'
+						onChangeText={handleChange('username')}
+						onBlur={handleBlur('username')}
+						value={values.username}
 						width={'100%'}
-						maxWidth={260}
-					>
-						<Input
-							textContentType='username'
-							onChangeText={handleChange('username')}
-							onBlur={handleBlur('username')}
-							value={values.username}
-							width={'100%'}
-							maxWidth={260}
-							borderWidth={2}
-							borderColor={COLORS.tertiary}
-							hoverStyle={{borderColor: COLORS.secondary}}
-							focusStyle={{borderColor: COLORS.secondary}}
-							pressStyle={{borderColor: COLORS.secondary}}
-						/>
-					</View>
-				</View>
+						borderWidth={2}
+						borderColor={COLORS.tertiary}
+						hoverStyle={{borderColor: COLORS.secondary}}
+						focusStyle={{borderColor: COLORS.secondary}}
+						pressStyle={{borderColor: COLORS.secondary}}
+					/>
+				</XStack>
 				{touched.username && errors.username ? 
 					<Text
 						color={COLORS.warning}
@@ -111,33 +102,24 @@ const AuthForm = () => {
 				}
 
 				<H6>Email</H6>
-				<View
-					flexDirection='column'
-					width={'100%'}
+				<XStack
 					alignItems='center'
+					justifyContent='center'
+					width={312}
 				>
-					<View
-						flex={1}
-						flexDirection='row'
-						borderRadius='$4'
+					<Input
+						textContentType='emailAddress'
+						onChangeText={handleChange('email')}
+						onBlur={handleBlur('email')}
+						value={values.email}
 						width={'100%'}
-						maxWidth={260}
-					>
-						<Input
-							textContentType='emailAddress'
-							onChangeText={handleChange('email')}
-							onBlur={handleBlur('email')}
-							value={values.email}
-							width={'100%'}
-							maxWidth={260}
-							borderWidth={2}
-							borderColor={COLORS.tertiary}
-							hoverStyle={{borderColor: COLORS.secondary}}
-							focusStyle={{borderColor: COLORS.secondary}}
-							pressStyle={{borderColor: COLORS.secondary}}
-						/>
-					</View>
-				</View>
+						borderWidth={2}
+						borderColor={COLORS.tertiary}
+						hoverStyle={{borderColor: COLORS.secondary}}
+						focusStyle={{borderColor: COLORS.secondary}}
+						pressStyle={{borderColor: COLORS.secondary}}
+					/>
+				</XStack>
 				{touched.email && errors.email ? 
 					<Text
 						color={COLORS.warning}
@@ -148,41 +130,38 @@ const AuthForm = () => {
 				}
 
 				<H6>Password</H6>
-				<View
-					flexDirection='column'
+				<XStack
 					alignItems='center'
-					width={'100%'}
+					justifyContent='center'
+					borderWidth={2}
+					borderColor={COLORS.tertiary}
+					hoverStyle={{borderColor: COLORS.secondary}}
+					focusStyle={{borderColor: COLORS.secondary}}
+					pressStyle={{borderColor: COLORS.secondary}}
+					borderRadius={SIZES.small}
 				>
-					<View
+					<Input
 						flex={1}
-						flexDirection='row'
-						borderRadius='$4'
-						width={'100%'}
+						width={260}
 						maxWidth={260}
-					>
-						<Input
-							secureTextEntry={!showPassword}
-							width={260}
-							maskType='password'
-							textContentType='newPassword'
-							onChangeText={handleChange('password')}
-							onBlur={handleBlur('password')}
-							value={values.password}
-							borderWidth={2}
-							borderColor={COLORS.tertiary}
-							hoverStyle={{borderColor: COLORS.secondary}}
-							focusStyle={{borderColor: COLORS.secondary}}
-							pressStyle={{borderColor: COLORS.secondary}}
-						/>
-						<MaterialIcons 
-							name={showPassword ? "visibility" : "visibility-off"} 
-							size={24} 
-							style={{alignSelf: 'center', marginHorizontal: SIZES.small}}
-							color="black" 
-							onPress={() => setShowPassword(!showPassword)} 
-						/>
-					</View>
-				</View>
+						secureTextEntry={!showPassword}
+						maskType='password'
+						textContentType='newPassword'
+						onChangeText={handleChange('password')}
+						onBlur={handleBlur('password')}
+						value={values.password}
+					/>
+					
+					<MaterialIcons
+						name={showPassword ? "visibility" : "visibility-off"} 
+						size={24} 
+						style={{alignSelf: 'center', marginHorizontal: SIZES.small}}
+						color="black" 
+						onPress={() => setShowPassword(!showPassword)} 
+					/>
+
+				</XStack>
+					
 				{touched.password && errors.password ? 
 					<Text
 						color={COLORS.warning}
@@ -193,40 +172,35 @@ const AuthForm = () => {
 				}
 
 				<H6>Confirm Password</H6>
-				<View
-					flexDirection='column'
-					width={'100%'}
+				<XStack
 					alignItems='center'
+					justifyContent='center'
+					borderWidth={2}
+					borderColor={COLORS.tertiary}
+					hoverStyle={{borderColor: COLORS.secondary}}
+					focusStyle={{borderColor: COLORS.secondary}}
+					pressStyle={{borderColor: COLORS.secondary}}
+					borderRadius={SIZES.small}
 				>
-					<View
+					<Input
 						flex={1}
-						flexDirection={'row'}
-						borderRadius='$4'
-						width={'100%'}
 						maxWidth={260}
-					>
-						<Input
-							width={'100%'}
-							secureTextEntry={!showConfirmPassword}
-							textContentType='password'
-							onChangeText={handleChange('confirmPassword')}
-							onBlur={handleBlur('confirmPassword')}
-							value={values.confirmPassword}
-							borderWidth={2}
-							borderColor={COLORS.tertiary}
-							hoverStyle={{borderColor: COLORS.secondary}}
-							focusStyle={{borderColor: COLORS.secondary}}
-							pressStyle={{borderColor: COLORS.secondary}}
-						/>
-						<MaterialIcons 
-							name={showConfirmPassword ? "visibility" : "visibility-off"} 
-							size={24} 
-							color="black" 
-							onPress={() => setShowConfirmPassword(!showConfirmPassword)} 
-							style={{alignSelf: 'center', marginHorizontal: SIZES.small}}
-						/>
-					</View>
-				</View>
+						width={260}
+						secureTextEntry={!showConfirmPassword}
+						textContentType='password'
+						onChangeText={handleChange('confirmPassword')}
+						onBlur={handleBlur('confirmPassword')}
+						value={values.confirmPassword}
+					/>
+					<MaterialIcons 
+						name={showConfirmPassword ? "visibility" : "visibility-off"} 
+						size={24} 
+						color="black" 
+						onPress={() => setShowConfirmPassword(!showConfirmPassword)} 
+						style={{alignSelf: 'center', marginHorizontal: SIZES.small}}
+					/>
+				</XStack>
+					
 				{touched.confirmPassword && errors.confirmPassword ? 
 					<Text
 						color={COLORS.warning}
