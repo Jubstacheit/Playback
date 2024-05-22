@@ -1,21 +1,9 @@
-import GoogleRecaptcha, {
-	// Enums
-	GoogleRecaptchaSize, // Size enum: such GoogleRecaptchaSize.INVISIBLE
-	GoogleRecaptchaTheme, // Theme enum: such GoogleRecaptchaTheme.DARK
-	GoogleRecaptchaActionName, // Action name enum: such GoogleRecaptchaActionName.LOGIN
-	DEFAULT_GSTATIC_DOMAIN,
-	DEFAULT_RECAPTCHA_DOMAIN,
-	// Types (only typescript)
-	GoogleRecaptchaToken,
-	GoogleRecaptchaProps,
-	GoogleRecaptchaBaseProps,
-	GoogleRecaptchaRefAttributes
-} from 'react-native-google-recaptcha'
-
 import React from 'react'
 import { View, Button } from 'react-native'
 
 import GoogleRecaptcha, {
+  GoogleRecaptchaTheme,
+  GoogleRecaptchaActionName,
   GoogleRecaptchaSize,
   GoogleRecaptchaToken,
   GoogleRecaptchaRefAttributes

@@ -9,6 +9,7 @@ import AuthForm from '../components/Auth/AuthForm';
 
 import { TamaguiProvider, createTamagui } from '@tamagui/core';
 import { config } from '@tamagui/config/v3'
+import Captcha from '../components/Captcha/Captcha';
 const tamaguiConfig = createTamagui(config);
 
 
@@ -25,6 +26,7 @@ const Profile = () => {
 					<Title />
 
 					<AuthForm />
+					<Captcha />
 					</KeyboardAvoidingView>
 				</SafeAreaView>
 		</TamaguiProvider>
