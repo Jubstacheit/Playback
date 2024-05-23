@@ -35,7 +35,8 @@ let storesModel;
 
 app.use(express.json());
 app.use(cors({
-	"origin": process.env.FRONT_HOST,
+	// Change origin when working locally
+	"origin": [process.env.FRONT_HOST, 'http://localhost:4000'],
 	"optionsSuccessStatus": 200,
 	"methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
 }));

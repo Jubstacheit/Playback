@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { COLORS } from '../constants';
+import { createUser } from '../hooks/UsersService';
 
 import Title from '../components/Title/Title';
 import AuthForm from '../components/Auth/AuthForm';
@@ -14,6 +15,7 @@ const tamaguiConfig = createTamagui(config);
 
 const Profile = () => {
 	const router = useRouter();
+	const { postForm, status, setStatus } = createUser();
 
 	return (
 		<TamaguiProvider config={tamaguiConfig}>
@@ -24,7 +26,10 @@ const Profile = () => {
 					>
 					<Title />
 
-					<AuthForm />
+					<AuthForm 
+						postForm={postForm}
+						status={status}
+					/>
 					</KeyboardAvoidingView>
 				</SafeAreaView>
 		</TamaguiProvider>

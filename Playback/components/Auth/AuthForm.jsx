@@ -5,17 +5,14 @@ import { COLORS, SIZES } from '../../constants';
 import { Formik } from 'formik';
 import { MaterialIcons } from "@expo/vector-icons"
 
-const AuthForm = () => {
+const AuthForm = ({ postForm, status }) => {
 
-	const [status, setStatus] = useState('off');
+
 	const [showPassword, setShowPassword] = useState(false)
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
 	const register = (values) => {
-		setStatus('loading')
-		setTimeout(() => {
-			setStatus('off')
-		}, 2000)
+		postForm(values)
 	}
 
 	const validate = (values) => {

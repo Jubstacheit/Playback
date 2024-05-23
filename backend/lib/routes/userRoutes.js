@@ -12,6 +12,7 @@ const router = express.Router();
 
 // Get all users
 router.get('/', async (req, res) => {
+    console.log('Getting all users');
     const user = await userModel.findAll();
     res.json(user);
 });
