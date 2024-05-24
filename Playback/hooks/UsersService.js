@@ -13,30 +13,25 @@ const createUser = () => {
 			// Check if the username already exists
 			try {
 				const user = await db.get(`users/username/${values.username}`)
-				console.log(user)
-				
-				if (user.data.length > 0) {
+				if (user.data && user.data.username === values.username) {
 					alert(`Username ${values.username} already exists!`)
 					setStatus('off')
 					return
 				}
 			} catch (error) {
-				console.log('Username not already seen', error)
+				console.log('Username not used')
 			}
-			setStatus('off')
-			return
 
 			// Check if the email already exists
 			try {
-				//const email = await db.get(`users/email?email=${values.email}`)
-				const email = await axios.get(`http://localhost:4000/users/email/${values.email}`)
-				if (email.data.length > 0) {
+				const user = await db.get(`users/email/${values.email}`)
+				if (user.data && user.data.email === values.email) {
 					alert(`Email ${values.email} already exists!`)
 					setStatus('off')
 					return
 				}
-			} catch {
-				console.log('Email not already seen')
+			} catch (error) {
+				console.log('Email not used')
 			}
 
 
