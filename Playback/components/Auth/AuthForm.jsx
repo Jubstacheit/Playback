@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { H3, Button, Input, View, Text, H6, ScrollView, XStack } from 'tamagui';
 import { COLORS, SIZES } from '../../constants';
@@ -41,7 +41,6 @@ const AuthForm = ({ postForm, status }) => {
 			errors.confirmPassword = 'Passwords must match';
 		}
 		
-		console.log(errors)
 		return errors;
 	};
 
