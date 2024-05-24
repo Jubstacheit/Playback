@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import db from '../hooks/db'
 
-//Temporary
-import axios from 'axios';
+const LOCAL_URL = process.env.DB_HOST_LOCAL || null
 
 const createUser = () => {
 	const [status, setStatus] = useState('off');
