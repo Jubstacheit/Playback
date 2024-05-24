@@ -52,6 +52,26 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// Get an user by username
+router.get('/username/:username', async (req, res) => {
+    const user = await userModel.findOne({ where: { username: req.params.username } });
+    if (!user) {
+        res.status(404).json({ message: 'User not found' });
+    } else {
+        res.json(user);
+    }
+});
+
+// Get an user by email 
+router.get('/email/:email', async (req, res) => {
+    const user = await userModel.findOne({ where: { email: req.params.email } });
+    if (!user) {
+        res.status(404).json({ message: 'User not found' });
+    } else {
+        res.json(user);
+    }
+});
+
 // Create a list
 router.post('/:id/userlists', async (req, res) => {
 	// TODO: Add validation for req.body
