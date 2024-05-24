@@ -12,10 +12,9 @@ const createUser = () => {
 		try {
 			// Check if the username already exists
 			try {
-				console.log(values.username)
-				//const user = await db.get(`users/username${values.username}`)
-				console.log(`http://localhost:4000/users/username/${values.username}`)
-				const user = await axios.get(`http://localhost:4000/users/username/${values.username}`)
+				const user = await db.get(`users/username/${values.username}`)
+				console.log(user)
+				
 				if (user.data.length > 0) {
 					alert(`Username ${values.username} already exists!`)
 					setStatus('off')
