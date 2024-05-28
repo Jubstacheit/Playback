@@ -19,7 +19,7 @@ export function getUserModel(sequelize) {
 				comment: 'The email of the user.',
 			},
 			password: {
-				type: DataTypes.CHAR(50),
+				type: DataTypes.CHAR(255),
 				allowNull: false,
 				comment: 'The password of the user.',
 			},
