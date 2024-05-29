@@ -12,6 +12,11 @@ const AuthForm = ({ postForm, status }) => {
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
 	const register = (values) => {
+		// Remove spaces from the username, email and passwords before submitting
+		values.username = values.username.trim()
+		values.email = values.email.trim()
+		values.password = values.password.trim()
+		values.confirmPassword = values.confirmPassword.trim()
 		postForm(values)
 	}
 
@@ -22,6 +27,7 @@ const AuthForm = ({ postForm, status }) => {
 		} else if (values.username.length < 2) {
 			errors.username = 'Must be at least 2 characters';
 		}
+		// Put maximum length, and no spaces
 		
 		if (!values.email) {
 			errors.email = 'Required';

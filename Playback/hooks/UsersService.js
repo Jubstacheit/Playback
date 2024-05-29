@@ -5,6 +5,7 @@ const LOCAL_URL = process.env.DB_HOST_LOCAL || null
 
 const createUser = () => {
 	const [status, setStatus] = useState('off');
+	const [error, setError] = useState(null);
 	
 	const postForm = async (values) => {
 		setStatus('loading')
@@ -13,7 +14,7 @@ const createUser = () => {
 			try {
 				const user = await db.get(`users/username/${values.username}`)
 				if (user.data && user.data.username === values.username) {
-					alert(`Username ${values.username} already exists!`)
+					setError('Username already exists')
 					setStatus('off')
 					return
 				}
@@ -25,7 +26,7 @@ const createUser = () => {
 			try {
 				const user = await db.get(`users/email/${values.email}`)
 				if (user.data && user.data.email === values.email) {
-					alert(`Email ${values.email} already exists!`)
+					setError('Email already exists')
 					setStatus('off')
 					return
 				}
@@ -48,7 +49,7 @@ const createUser = () => {
 		}
 	}
 
-	return { postForm, status, setStatus }
+	return { postForm, status, setStatus, error, setError }
 }
 
 export {
