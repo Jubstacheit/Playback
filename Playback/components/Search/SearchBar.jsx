@@ -22,6 +22,7 @@ const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 				borderColor={COLORS.tertiary}
 				hoverStyle={{borderColor: COLORS.secondary}}
 				focusStyle={{borderColor: COLORS.secondary}}
+				pressStyle={{borderColor: COLORS.secondary}}
 				placeholder='Search for a game'
 				onSubmitEditing={handleSearch}
 				value={searchTerm}
@@ -33,6 +34,7 @@ const SearchBar = ({ handleSearch, searchTerm, setSearchTerm }) => {
 				backgroundColor={COLORS.tertiary}
 				hoverStyle={{backgroundColor: COLORS.secondary, borderColor: COLORS.secondary}}
 				focusStyle={{backgroundColor: COLORS.secondary}}
+				pressStyle={{backgroundColor: COLORS.secondary, borderColor: COLORS.secondary}}
 				icon={
 					<AntDesign 
 						name="search1" 

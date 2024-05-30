@@ -31,6 +31,7 @@
     "expo-splash-screen": "~0.20.4",
     "expo-status-bar": "~1.6.0",
     "expo-system-ui": "~2.4.0",
+    "formik": "^2.4.6",
     "nativewind": "^2.0.11",
     "normalize-css-color": "^1.0.2",
     "react": "18.2.0",
@@ -44,7 +45,8 @@
     "react-native-screens": "~3.22.0",
     "react-native-svg": "^13.4.0",
     "react-native-web": "~0.19.6",
-    "tamagui": "^1.98.0"
+    "tamagui": "^1.98.0",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
