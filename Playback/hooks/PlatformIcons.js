@@ -7,15 +7,22 @@ const getPlatformIcons = () => {
 
 	const platformIconMappingMaterialCommunity = {
 		'playstation5' : 'sony-playstation',
+		'playstation4' : 'sony-playstation',
 		'xbox-series-x' : 'microsoft-xbox',
 		'pc' : 'laptop',
 		'nintendo-switch' : 'nintendo-switch',
 		'ios' : 'apple-ios',
 		'android' : 'android',
-		'linux' : 'linux'
+		'linux' : 'linux',
+		'macos' : 'apple',
 	}
 
 	const getlogo = ({ iconName, index }) => {
+		const usedIcons = new Set();
+		const icon = platformIconMappingMaterialCommunity[iconName];
+        if (usedIcons.has(icon)) return null;
+        usedIcons.add(icon);
+		
 		return <MaterialCommunityIcons 
 				style={
 				{	marginRight: SIZES.xSmall / 2,
