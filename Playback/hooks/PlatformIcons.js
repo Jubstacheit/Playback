@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '../constants/theme';
 
-import styles from './platformIcons.style';
+import { SIZES } from '../constants/theme';
 
 const getPlatformIcons = () => {
 
@@ -16,7 +16,17 @@ const getPlatformIcons = () => {
 	}
 
 	const getlogo = ({ iconName, index }) => {
-		return <MaterialCommunityIcons style={styles.platformIcon} key={index} name={iconName} size={16} color={COLORS.black} />
+		return <MaterialCommunityIcons 
+				style={
+				{	marginRight: SIZES.xSmall / 2,
+					marginVertical: SIZES.xSmall / 2,
+				}
+				} 
+				key={index} 
+				name={iconName} 
+				size={16} 
+				color={COLORS.black} 
+			/>
 	}
 
 	return { getlogo, platformIconMappingMaterialCommunity };
