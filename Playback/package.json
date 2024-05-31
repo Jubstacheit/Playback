@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-react": "^2.2.1",
     "@expo/vector-icons": "^13.0.0",
     "@gluestack-style/react": "^1.0.56",
     "@gluestack-ui/config": "^1.1.18",
