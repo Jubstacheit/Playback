@@ -78,7 +78,7 @@ const searchGames = () => {
 		setNoRes(false)
 
 		try {
-			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&page=${pageSearch ? pageSearch : page}`);
+			const res = await axios.get(`${url}games?key=${key}&search=${searchTerm}&page_size=40&ordering=-metacritic&page=${pageSearch ? pageSearch : page}`);
 			// Handling the error if there's no corresponding results
 			if (res && !res.data.count) {
 				setNoRes(true)
