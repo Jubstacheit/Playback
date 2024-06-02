@@ -54,7 +54,7 @@ const GameCard = ({ item }) => {
 				</Heading>
 			</Card.Header>
 
-			<Card.Footer size='$2' flexDirection='row' backgroundColor={COLORS.lightWhite} opacity={0.9}>
+			<Card.Footer size='$2' flexDirection='row' flexWrap='wrap' style={{textAlign: 'center'}} backgroundColor={COLORS.lightWhite} opacity={0.9}>
 				{item.platforms && item.platforms.map((platform, index) => {
 					const platformName = platform.platform.slug;
 					const iconName = platformIconMappingMaterialCommunity[platformName] || null
