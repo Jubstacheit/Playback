@@ -59,7 +59,7 @@ const GameCard = ({ item }) => {
 					const platformName = platform.platform.slug;
 					const iconName = platformIconMappingMaterialCommunity[platformName] || null
 
-					return iconName ? getlogo({iconName, index}) : <FontAwesome5 style={{ marginRight: SIZES.xSmall / 2, marginVertical: SIZES.xSmall / 2 }} name="question" size={12} color="black" />
+					return iconName ? getlogo({iconName, index}) : <FontAwesome5 key={index} style={{ marginRight: SIZES.xSmall / 2, marginVertical: SIZES.xSmall / 2 }} name="question" size={12} color="black" />
 				})}
 			</Card.Footer>
 
