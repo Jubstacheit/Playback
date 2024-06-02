@@ -1,5 +1,4 @@
-import { Platform } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { getPlatformIcons } from '../../hooks/PlatformIcons';
 
 import { Card, Image, View, Text, XStack, H2, H4, H5, H6, Heading } from 'tamagui';
@@ -60,7 +59,7 @@ const GameCard = ({ item }) => {
 					const platformName = platform.platform.slug;
 					const iconName = platformIconMappingMaterialCommunity[platformName] || null
 
-					return iconName ? getlogo({iconName, index}) : null
+					return iconName ? getlogo({iconName, index}) : <FontAwesome5 style={{ marginRight: SIZES.xSmall / 2, marginVertical: SIZES.xSmall / 2 }} name="question" size={12} color="black" />
 				})}
 			</Card.Footer>
 
